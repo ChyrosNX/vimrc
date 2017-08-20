@@ -2,14 +2,14 @@ set nocompatible    " Use vim settings instead of vi
 set encoding=utf-8
 
 """ Plugins (https://github.com/junegunn/vim-plug)
-call plug#begin('~/.vim/plugged')
+call plug#begin("~/.vim/plugged")
     Plug 'altercation/vim-colors-solarized' " General theme
     Plug 'vim-airline/vim-airline'          " Status and Tab line
     Plug 'vim-airline/vim-airline-themes'   " vim-airline theme
     Plug 'scrooloose/nerdtree'              " File system explorer
     Plug 'kien/ctrlp.vim'                   " Fuzzy file search, mru, etc..
     Plug 'tpope/vim-fugitive'               " Git integration
-    Plug 'airblade/vim-gitgutter'           " Git diff in the 'gutter'
+    Plug 'airblade/vim-gitgutter'           " Git diff signs
     Plug 'tpope/vim-surround'               " Surround text w/ (), {}, etc..
     Plug 'scrooloose/nerdcommenter'         " Comment functions
     Plug 'scrooloose/syntastic'             " Syntax-checking
@@ -23,10 +23,10 @@ let g:airline#extensions#tabline#enabled=1  " Show Tab line
 let NERDTreeShowHidden=1                    " Show hidden files in NERDTree
 let g:ctrlp_show_hidden=1                   " Show hidden files in CtrlP
 """ Tagbar - ctags path (DL: http://ctags.sourceforge.net/)
-let g:tagbar_ctags_bin='~/.vim/plugged/ctags58/ctags.exe'
+let g:tagbar_ctags_bin="~/.vim/plugged/ctags58/ctags.exe"
 """ python-mode...
 let g:pymode_rope=0             " Disabled due to slow-caching issue
-"let g:pymode_python='python3'  " python2 | python3
+"let g:pymode_python="python3"  " python2 | python3
 """ Syntastic...
 set statusline+=%#warningmsg#               " Last given warning message
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -37,30 +37,25 @@ let g:syntastic_check_on_open=1             " Run syntax checks on open
 let g:syntastic_check_on_wq=0               " Skips check on close
 " NERDCommenter...
 let g:NERDSpaceDelims=1             " Space after comment delimiter
-let g:NERDDefaultAlign='left'       " Align when inserting a comment
+let g:NERDDefaultAlign="left"       " Align when inserting a comment
 let g:NERDCustomDelimiters={
-    \    'c'     : { 'left': '/**','right': '*/' }
-    \    , 'java': { 'left': '/**','right': '*/' }
+    \    "c"     : { "left": "/**","right": "*/" }
+    \    , "java": { "left": "/**","right": "*/" }
     \}
 let g:NERDCommentEmptyLines=1       " Include empty lines when commenting
 let g:NERDTrimTrailingWhitespace=1  " Uncommenting removes trailing spaces
 
-" Font & Themes
-" set guifont=Consolas:h11:cANSI:qDRAFT
-set guifont=Consolas:h11:cANSI
+" Font & Themes (GVIM only)
 if has("gui_running")
-    if has("gui_win32")
-        set guifont=Consolas:h11:cANSI
-    elseif has("gui_gtk")
-        set guifont=Monospace\ Regular\ 11
-    elseif has("gui_macvim")
-        set guifont=Menlo\ Regular:h14
-    endif
+    set background=dark                 " light | dark
+    colorscheme solarized
+    let g:airline_theme="solarized"
 endif
-set background=dark             " light | dark
-colorscheme solarized
-let g:airline_theme='solarized'
-
+let g:nx_font_size="normal"             " small | normal | large | xlarge
+let g:nx_font_unix="Monospace Regular"
+let g:nx_font_dos="Consolas"
+let g:nx_font_mac="Monaco"
+ 
 set backspace=indent,eol,start  " Make <BS> works as you would expect
 set clipboard=unnamed           " Make copy-paste works as you would expect
 
@@ -127,4 +122,48 @@ inoremap <A-k> <Esc>[c
 """ Ctrl+S - Save File
 nnoremap <C-s>      :w<CR>
 inoremap <C-s> <Esc>:w<CR>
+
+""" Ctrl+F2 - Change Background Theme
+nnoremap <C-F2> :call ChangeBackgroundTheme()<CR>
+
+""" Ctrl+F3 - Update Font Size
+nnoremap <C-F3> :call UpdateFontSize()<CR>
+
+function! ChangeBackgroundTheme()
+    if &background == "light"
+        set background=dark
+    else
+        set background=light
+    endif
+endfunction
+
+function! UpdateFontSize()
+    if !has("gui_running")
+        return 0
+    endif
+
+    if g:nx_font_size == "small"
+        let g:nx_font_sz = 9
+        let g:nx_font_size = "normal"
+    elseif g:nx_font_size == "normal"
+        let g:nx_font_sz = 11
+        let g:nx_font_size = "large"
+    elseif g:nx_font_size == "large"
+        let g:nx_font_sz = 13
+        let g:nx_font_size = "xlarge"
+    elseif g:nx_font_size == "xlarge"
+        let g:nx_font_sz = 15
+        let g:nx_font_size = "small"
+    endif
+
+    if has("gui_gtk")
+        let &guifont=g:nx_font_unix . " " . g:nx_font_sz
+    elseif has("gui_win32")
+        let &guifont=g:nx_font_dos . ":h" . g:nx_font_sz . ":cANSI"
+    elseif has("gui_macvim")
+        let &guifont=g:nx_font_mac . ":h" . g:nx_font_sz + 1
+    endif
+endfunction
+
+call UpdateFontSize()
 
