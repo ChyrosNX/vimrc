@@ -7,10 +7,10 @@ call plug#begin("~/.vim/plugged")
     Plug 'vim-airline/vim-airline'          " Status and Tab line
     Plug 'vim-airline/vim-airline-themes'   " vim-airline theme
     Plug 'scrooloose/nerdtree'              " File system explorer
-    Plug 'kien/ctrlp.vim'                   " Fuzzy file search, mru, etc..
+    Plug 'kien/ctrlp.vim'                   " Fuzzy file search, mru, etc
     Plug 'tpope/vim-fugitive'               " Git integration
     Plug 'airblade/vim-gitgutter'           " Git diff signs
-    Plug 'tpope/vim-surround'               " Surround text w/ (), {}, etc..
+    Plug 'tpope/vim-surround'               " Surround text w/ braces, etc
     Plug 'scrooloose/nerdcommenter'         " Comment functions
     Plug 'scrooloose/syntastic'             " Syntax-checking
     Plug 'majutsushi/tagbar'                " Class outline viewer
@@ -20,10 +20,16 @@ call plug#end()
 """ Plugin Settings
 filetype plugin on                          " Req'd for NERDCommenter
 let g:airline#extensions#tabline#enabled=1  " Show Tab line
-let NERDTreeShowHidden=1                    " Show hidden files in NERDTree
-let g:ctrlp_show_hidden=1                   " Show hidden files in CtrlP
-""" Tagbar - ctags path (DL: http://ctags.sourceforge.net/)
-let g:tagbar_ctags_bin="~/.vim/plugged/ctags58/ctags.exe"
+let NERDTreeShowHidden=1                    " Show hidden files (NERDTree)
+let g:ctrlp_show_hidden=1                   " Show hidden files (CtrlP)
+""" Tagbar...
+if has("gui_win32")
+    """ Win32 - download binary from: http://ctags.sourceforge.net/
+    let g:tagbar_ctags_bin="~/.vim/plugged/ctags58/ctags.exe"
+else
+    """ Unix/Max - Install ctags in unix/mac via software package
+    """ and Tagbar will auto-locate the binary file
+endif
 """ python-mode...
 let g:pymode_rope=0             " Disabled due to slow-caching issue
 "let g:pymode_python="python3"  " python2 | python3
@@ -56,8 +62,8 @@ let g:nx_font_unix="Monospace Regular"
 let g:nx_font_dos="Consolas"
 let g:nx_font_mac="Monaco"
  
-set backspace=indent,eol,start  " Make <BS> works as you would expect
-set clipboard=unnamed           " Make copy-paste works as you would expect
+set backspace=indent,eol,start  " Make <BS> works as expected
+set clipboard=unnamed           " Make copy-paste works as expected
 
 set tabstop=4                   " Number of spaces for <Tab>
 set shiftwidth=4                " Number of spaces for << and >>
