@@ -1,6 +1,19 @@
 set nocompatible    " Use vim settings instead of vi
 set encoding=utf-8
 
+""" gVim Font & Theme Settings
+let g:nx_font_size="normal"         " small | normal | large | xlarge
+let g:nx_theme_background="dark"    " light | dark
+let g:nx_theme="solarized"
+
+let g:nx_font_unix="Monospace Regular"
+let g:nx_font_dos="Consolas"
+let g:nx_font_mac="Monaco"
+
+let g:nx_font_size_unix=11
+let g:nx_font_size_dos=11
+let g:nx_font_size_mac=12
+
 """ Plugins (https://github.com/junegunn/vim-plug)
 call plug#begin("~/.vim/plugged")
     Plug 'altercation/vim-colors-solarized' " General theme
@@ -17,13 +30,23 @@ call plug#begin("~/.vim/plugged")
     Plug 'klen/python-mode'                 " Python plug-in
 call plug#end()
 
+""" Apply Theme (gVim only)
+if has("gui_running")
+    let &background=g:nx_theme_background
+    let cmd_colorscheme="colorscheme " . g:nx_theme
+    execute cmd_colorscheme
+    let g:airline_theme=g:nx_theme
+else
+    set background=dark
+endif
+
 """ Plugin Settings
 filetype plugin on                          " Req'd for NERDCommenter
 let g:airline#extensions#tabline#enabled=1  " Show Tab line
 let NERDTreeShowHidden=1                    " Show hidden files (NERDTree)
 let g:ctrlp_show_hidden=1                   " Show hidden files (CtrlP)
 """ Tagbar...
-if has("gui_win32")
+if has("win32")
     """ Win32 - download binary from: http://ctags.sourceforge.net/
     let g:tagbar_ctags_bin="~/.vim/plugged/ctags58/ctags.exe"
 else
@@ -51,19 +74,8 @@ let g:NERDCustomDelimiters={
 let g:NERDCommentEmptyLines=1       " Include empty lines when commenting
 let g:NERDTrimTrailingWhitespace=1  " Uncommenting removes trailing spaces
 
-" Font & Themes (GVIM only)
-if has("gui_running")
-    set background=dark                 " light | dark
-    colorscheme solarized
-    let g:airline_theme="solarized"
-endif
-let g:nx_font_size="normal"             " small | normal | large | xlarge
-let g:nx_font_unix="Monospace Regular"
-let g:nx_font_dos="Consolas"
-let g:nx_font_mac="Monaco"
- 
-set backspace=indent,eol,start  " Make <BS> works as expected
-set clipboard=unnamed           " Make copy-paste works as expected
+set backspace=indent,eol,start  " Make <BS> more useful
+set clipboard=unnamed           " Use gui-clipboard instead
 
 set tabstop=4                   " Number of spaces for <Tab>
 set shiftwidth=4                " Number of spaces for << and >>
@@ -71,13 +83,14 @@ set expandtab                   " Use spaces instead of a tab
 set autoindent                  " Copy indent to the next line
 set smartindent                 " Language-specific auto-indentation
 
-set number                      " Add line numbers
+set number                      " Show line numbers
 syntax on                       " Enable syntax highlighting
 
 set ignorecase                  " Ignore-case searching
 set hlsearch                    " Enable search highlighting
 set incsearch                   " Enable incremental search
 
+""" Mappings
 let mapleader=","
 
 """ python-mode Mappings
@@ -129,47 +142,50 @@ inoremap <A-k> <Esc>[c
 nnoremap <C-s>      :w<CR>
 inoremap <C-s> <Esc>:w<CR>
 
-""" Ctrl+F2 - Change Background Theme
-nnoremap <C-F2> :call ChangeBackgroundTheme()<CR>
+""" gVim-only Mappings
+if has("gui_running")
+    """ Ctrl+F2 - Change Background Theme
+    nnoremap <C-F2> :call ChangeBackgroundTheme()<CR>
 
-""" Ctrl+F3 - Update Font Size
-nnoremap <C-F3> :call UpdateFontSize()<CR>
+    """ Ctrl+F3 - Update Font Size
+    nnoremap <C-F3> :call UpdateFontSize()<CR>
+endif
 
-function! ChangeBackgroundTheme()
-    if &background == "light"
-        set background=dark
-    else
-        set background=light
-    endif
-endfunction
+""" gVim-only Functions
+if has("gui_running")
+    function! ChangeBackgroundTheme()
+        if &background == "light"
+            set background=dark
+        else
+            set background=light
+        endif
+    endfunction
 
-function! UpdateFontSize()
-    if !has("gui_running")
-        return 0
-    endif
+    function! UpdateFontSize()
+        if g:nx_font_size == "small"
+            let g:nx_szmod = -2
+            let g:nx_font_size = "normal"
+        elseif g:nx_font_size == "normal"
+            let g:nx_szmod = 0
+            let g:nx_font_size = "large"
+        elseif g:nx_font_size == "large"
+            let g:nx_szmod = 2
+            let g:nx_font_size = "xlarge"
+        elseif g:nx_font_size == "xlarge"
+            let g:nx_szmod = 4
+            let g:nx_font_size = "small"
+        endif
 
-    if g:nx_font_size == "small"
-        let g:nx_font_sz = 9
-        let g:nx_font_size = "normal"
-    elseif g:nx_font_size == "normal"
-        let g:nx_font_sz = 11
-        let g:nx_font_size = "large"
-    elseif g:nx_font_size == "large"
-        let g:nx_font_sz = 13
-        let g:nx_font_size = "xlarge"
-    elseif g:nx_font_size == "xlarge"
-        let g:nx_font_sz = 15
-        let g:nx_font_size = "small"
-    endif
+        if has("gui_gtk")
+            let &guifont = g:nx_font_unix . " " . (g:nx_font_size_unix + g:nx_szmod)
+        elseif has("gui_win32")
+            let &guifont = g:nx_font_dos . ":h" . (g:nx_font_size_dos + g:nx_szmod)
+        elseif has("gui_macvim")
+            let &guifont = g:nx_font_mac . ":h" . (g:nx_font_size_mac + g:nx_szmod)
+        endif
+    endfunction
 
-    if has("gui_gtk")
-        let &guifont=g:nx_font_unix . " " . g:nx_font_sz
-    elseif has("gui_win32")
-        let &guifont=g:nx_font_dos . ":h" . g:nx_font_sz . ":cANSI"
-    elseif has("gui_macvim")
-        let &guifont=g:nx_font_mac . ":h" . g:nx_font_sz + 1
-    endif
-endfunction
-
-call UpdateFontSize()
+    """ Apply font size
+    call UpdateFontSize()
+endif
 
