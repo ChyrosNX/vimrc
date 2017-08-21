@@ -1,0 +1,73 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+
+{ "key": "ctrl+shift+w",          "command": "editor.action.toggleWordWrap",
+                                     "when": "editorTextFocus" },
+// Cursor actions
+{ "key": "alt+shift+up",          "command": "cursorColumnSelectUp", // ctrl+meta+up
+                                     "when": "editorTextFocus" },
+{ "key": "alt+shift+down",        "command": "cursorColumnSelectDown", // ctrl+meta+down
+                                     "when": "editorTextFocus" },
+{ "key": "alt+shift+z",           "command": "cursorUndo", // ctrl+u
+                                     "when": "editorTextFocus" },
+
+// Delete/duplicate Line
+{ "key": "ctrl+d",                "command": "editor.action.deleteLines", // ctrl+shift+k
+                                     "when": "editorTextFocus" },
+{ "key": "ctrl+shift+d",          "command": "editor.action.copyLinesDownAction", // ctrl+shift+alt+down
+                                     "when": "editorTextFocus" },
+
+// Move lines up/down
+{ "key": "alt+down",              "command": "editor.action.moveLinesDownAction", // ctrl+down
+                                     "when": "editorTextFocus" },
+{ "key": "alt+up",                "command": "editor.action.moveLinesUpAction", // ctrl+up
+                                     "when": "editorTextFocus" },
+
+// Find/search
+{ "key": "ctrl+k",                "command": "editor.action.nextMatchFindAction", // f3
+                                     "when": "editorFocus" },
+{ "key": "ctrl+shift+k",          "command": "editor.action.previousMatchFindAction", // shift+f3
+                                     "when": "editorFocus" },
+{ "key": "ctrl+alt+k",            "command": "editor.action.moveSelectionToNextFindMatch", // ctrl+k ctrl+d
+                                     "when": "editorFocus" },
+{ "key": "alt+shift+g",           "command": "workbench.action.gotoSymbol" }, // ctrl+shift+o
+{ "key": "ctrl+;",                "command": "editor.action.marker.next", // f8
+                                     "when": "editorFocus" },
+{ "key": "ctrl+shift+;",          "command": "editor.action.marker.prev", // shift+f8
+                                     "when": "editorFocus" },
+
+// Code completion
+{ "key": "ctrl+p",                "command": "editor.action.triggerSuggest", // ctrl+shift+space
+                                     "when": "editorTextFocus" },
+{ "key": "ctrl+space",            "command": "editor.action.triggerSuggest", // ctrl+shift+space
+                                     "when": "editorTextFocus" },
+
+// Workbench files
+{ "key": "alt+c",                 "command": "workbench.action.closeActiveEditor" }, // ctrl+k w
+{ "key": "alt+shift+c",           "command": "workbench.action.closeOtherEditors" },
+{ "key": "ctrl+alt+shift+c",      "command": "workbench.action.closeAllEditors" }, // ctrl+k ctrl+w
+{ "key": "ctrl+alt+c",            "command": "workbench.action.closeAllEditors" },
+{ "key": "alt+x",                 "command": "workbench.action.nextEditor" }, // ctrl+k down
+{ "key": "alt+z",                 "command": "workbench.action.previousEditor" }, // ctrl+k up
+
+// Workbench Menu
+{ "key": "alt+1",                "command": "workbench.view.explorer" }, // ctrl+shift+e
+{ "key": "alt+4",                "command": "workbench.view.debug" }, // ctrl+shift+d
+{ "key": "alt+shift+o",           "command": "workbench.action.quickOpen" }, // ctrl+e, ctrl+p
+{ "key": "ctrl+shift+o",          "command": "workbench.action.showCommands" }, // f1, ctrl+shift+p
+{ "key": "ctrl+alt+shift+o",      "command": "workbench.action.showCommands" }, // f1, ctrl+shift+p
+
+// Select next occurrence
+{ "key": "ctrl+e",                "command": "editor.action.addSelectionToNextFindMatch", // ctrl+d
+                                     "when": "editorFocus" },
+
+// Miscellaneous
+{ "key": "ctrl+shift+w",          "command": "editor.action.toggleWordWrap",
+                                     "when": "editorTextFocus" },
+
+{ "key": "alt+shift+-",          "command": "editor.action.transformToLowercase",
+                                     "when": "editorTextFocus" },
+
+{ "key": "alt+shift+=",          "command": "editor.action.transformToUppercase",
+                                     "when": "editorTextFocus" },
+]
