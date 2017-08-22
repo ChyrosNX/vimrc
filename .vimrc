@@ -30,28 +30,19 @@ call plug#begin("~/.vim/plugged")
     Plug 'klen/python-mode'                 " Python plug-in
 call plug#end()
 
-""" Apply Theme (gVim only)
-if has("gui_running")
-    let &background=g:nx_theme_background
-    let cmd_colorscheme="colorscheme " . g:nx_theme
-    execute cmd_colorscheme
-    let g:airline_theme=g:nx_theme
-else
-    set background=dark
-endif
-
 """ Plugin Settings
 filetype plugin on                          " Req'd for NERDCommenter
 let g:airline#extensions#tabline#enabled=1  " Show Tab line
 let NERDTreeShowHidden=1                    " Show hidden files (NERDTree)
 let g:ctrlp_show_hidden=1                   " Show hidden files (CtrlP)
 """ Tagbar...
-if has("win32")
-    """ Win32 - download binary from: http://ctags.sourceforge.net/
-    let g:tagbar_ctags_bin="~/.vim/plugged/ctags58/ctags.exe"
-else
-    """ Unix/Max - Install ctags in unix/mac via software package
+if has("unix")
+    """ Unix/Mac - Install ctags in unix/mac via software package
     """ and Tagbar will auto-locate the binary file
+elseif has("win32")
+    """ Win32 - download binary from: http://ctags.sourceforge.net/
+    """ and place it in the same directory below:
+    let g:tagbar_ctags_bin="~/.vim/plugged/ctags58/ctags.exe"
 endif
 """ python-mode...
 let g:pymode_rope=0             " Disabled due to slow-caching issue
@@ -89,6 +80,21 @@ syntax on                       " Enable syntax highlighting
 set ignorecase                  " Ignore-case searching
 set hlsearch                    " Enable search highlighting
 set incsearch                   " Enable incremental search
+
+""" Platform-specific Settings
+if has("unix")
+    set shell=bash\ -i          " Source .bashrc environment
+endif
+
+""" Apply Theme (gVim only)
+if has("gui_running")
+    let &background=g:nx_theme_background
+    let cmd_colorscheme="colorscheme " . g:nx_theme
+    execute cmd_colorscheme
+    let g:airline_theme=g:nx_theme
+else
+    set background=dark
+endif
 
 """ Mappings
 let mapleader="\\"
