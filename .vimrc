@@ -91,7 +91,7 @@ set hlsearch                    " Enable search highlighting
 set incsearch                   " Enable incremental search
 
 """ Mappings
-let mapleader=","
+let mapleader="\\"
 
 """ python-mode Mappings
 let g:pymode_rope_goto_definition_bind="<A-g>"  " Alt+G -> Goto-definition
@@ -141,6 +141,14 @@ inoremap <A-k> <Esc>[c
 """ Ctrl+S - Save File
 nnoremap <C-s>      :w<CR>
 inoremap <C-s> <Esc>:w<CR>
+
+""" Speed Mappings
+""" Find/replace
+nnoremap <Leader>r :s/
+""" Replace all from buffer with (Requires value in register *)
+nnoremap <Leader>R :%s/*//g<Left><Left>
+""" Count all from buffer with (Requires value in register *)
+nnoremap <Leader>c :%s/*//gn<Left><Left><Left>
 
 """ gVim-only Mappings
 if has("gui_running")
