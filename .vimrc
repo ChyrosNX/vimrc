@@ -41,7 +41,7 @@ if has("unix")
     """ and Tagbar will auto-locate the binary file
 elseif has("win32")
     """ Win32 - download binary from: http://ctags.sourceforge.net/
-    """ and place it in the same directory below:
+    """ and put the contents inside the specified directory below:
     let g:tagbar_ctags_bin="~/.vim/plugged/ctags58/ctags.exe"
 endif
 """ python-mode...
@@ -74,6 +74,7 @@ set expandtab                   " Use spaces instead of a tab
 set autoindent                  " Copy indent to the next line
 set smartindent                 " Language-specific auto-indentation
 
+set autochdir                   " Auto change dir based on the open file
 set number                      " Show line numbers
 syntax on                       " Enable syntax highlighting
 
@@ -84,16 +85,6 @@ set incsearch                   " Enable incremental search
 """ Platform-specific Settings
 if has("unix")
     set shell=bash\ -i          " Source .bashrc environment
-endif
-
-""" Apply Theme (gVim only)
-if has("gui_running")
-    let &background=g:nx_theme_background
-    let cmd_colorscheme="colorscheme " . g:nx_theme
-    execute cmd_colorscheme
-    let g:airline_theme=g:nx_theme
-else
-    set background=dark
 endif
 
 """ Mappings
@@ -109,8 +100,8 @@ noremap <left>  <nop>
 noremap <right> <nop>
 
 """ Alt+1 NERDTreeToggle
-nnoremap <A-1>      :NERDTreeToggle<CR>
-inoremap <A-1> <Esc>:NERDTreeToggle<CR>
+nnoremap <A-1>      :call NERDTreeToggle()<CR>
+inoremap <A-1> <Esc>:call NERDTreeToggle()<CR>
 
 """ Alt+2 TagbarToggle
 nnoremap <A-2>      :TagbarToggle<CR>
@@ -165,6 +156,27 @@ if has("gui_running")
     nnoremap <C-F3> :call UpdateFontSize()<CR>
 endif
 
+""" Apply Theme (gVim only)
+if has("gui_running")
+    let &background=g:nx_theme_background
+    let cmd_colorscheme="colorscheme " . g:nx_theme
+    execute cmd_colorscheme
+    let g:airline_theme=g:nx_theme
+else
+    set background=dark
+endif
+
+""" Custom functions
+function! NERDTreeToggle()
+    " Check if NERDTree window is visible in the current tabpage
+    if exists('t:NERDTreeBufName') && bufwinnr(t:NERDTreeBufName) != -1
+        :NERDTreeClose
+    else
+        :NERDTreeCWD
+        :NERDTreeFocus
+    endif
+endfunction
+
 """ gVim-only Functions
 if has("gui_running")
     function! ChangeBackgroundTheme()
@@ -191,11 +203,14 @@ if has("gui_running")
         endif
 
         if has("gui_gtk")
-            let &guifont = g:nx_font_unix . " " . (g:nx_font_size_unix + g:nx_szmod)
+            let &guifont = g:nx_font_unix . " " .
+                \ (g:nx_font_size_unix + g:nx_szmod)
         elseif has("gui_win32")
-            let &guifont = g:nx_font_dos . ":h" . (g:nx_font_size_dos + g:nx_szmod)
+            let &guifont = g:nx_font_dos . ":h" .
+                \ (g:nx_font_size_dos + g:nx_szmod)
         elseif has("gui_macvim")
-            let &guifont = g:nx_font_mac . ":h" . (g:nx_font_size_mac + g:nx_szmod)
+            let &guifont = g:nx_font_mac . ":h" .
+                \ (g:nx_font_size_mac + g:nx_szmod)
         endif
     endfunction
 
