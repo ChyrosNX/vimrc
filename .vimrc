@@ -10,7 +10,7 @@ let g:nx_font_unix="Monospace Regular"
 let g:nx_font_dos="Consolas"
 let g:nx_font_mac="Monaco"
 
-let g:nx_font_size_unix=11
+let g:nx_font_size_unix=10
 let g:nx_font_size_dos=11
 let g:nx_font_size_mac=12
 
