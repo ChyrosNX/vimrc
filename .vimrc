@@ -146,11 +146,11 @@ inoremap <A-q> <Esc>:q!<CR>
 nnoremap <A-C>      :tabonly<CR>
 inoremap <A-C> <Esc>:tabonly<CR>
 
-" Alt+[J|K] - Next/Prev Change (diff)
-nnoremap <A-j>      ]c
-inoremap <A-j> <Esc>]c
-nnoremap <A-k>      [c
-inoremap <A-k> <Esc>[c
+" Alt+[J|K] - Move lines up/down
+nnoremap <A-j>      :m . +1<CR>
+inoremap <A-j> <Esc>:m . +1<CR>
+nnoremap <A-k>      :m . -2<CR>
+inoremap <A-k> <Esc>:m . -2<CR>
 
 " Ctrl+S - Save File
 nnoremap <C-s>      :w<CR>
