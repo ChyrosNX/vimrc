@@ -30,6 +30,23 @@ call plug#begin("~/.vim/plugged")
     Plug 'klen/python-mode'                 " Python plug-in
 call plug#end()
 
+function! NX_PimpMyVim()
+    " Enhance VIM experience
+    if has("gui_running")
+        call NX_UpdateFontSize()    " Update font size based on settings
+
+        " Ctrl+F2 - Change Background Theme
+        nnoremap <C-F2> :call NX_ChangeBackgroundTheme()<CR>
+
+        " Ctrl+F3 - Update Font Size
+        nnoremap <C-F3> :call NX_UpdateFontSize()<CR>
+    endif
+
+    call NX_ApplyTheme()            " Apply color schemes (gVim only)
+    call NX_SetTempDirectory()      " Set swap file directory
+    call NX_EnablePersistentUndo()  " Persist undo forever
+endfunction
+
 """ Plugin Settings
 filetype plugin on                          " Req'd for NERDCommenter
 let g:airline#extensions#tabline#enabled=1  " Show Tab line
@@ -37,11 +54,11 @@ let NERDTreeShowHidden=1                    " Show hidden files (NERDTree)
 let g:ctrlp_show_hidden=1                   " Show hidden files (CtrlP)
 """ Tagbar...
 if has("unix")
-    """ Unix/Mac - Install ctags in unix/mac via software package
-    """ and Tagbar will auto-locate the binary file
+    " Unix/Mac - Install ctags in unix/mac via software package
+    " and Tagbar will auto-locate the binary file
 elseif has("win32")
-    """ Win32 - download binary from: http://ctags.sourceforge.net/
-    """ and put the contents inside the specified directory below:
+    " Win32 - download binary from: http://ctags.sourceforge.net/
+    " and put the contents inside the specified directory below:
     let g:tagbar_ctags_bin="~/.vim/plugged/ctags58/ctags.exe"
 endif
 """ python-mode...
@@ -99,87 +116,106 @@ noremap <down>  <nop>
 noremap <left>  <nop>
 noremap <right> <nop>
 
-""" Alt+1 NERDTreeToggle
-nnoremap <A-1>      :call NERDTreeToggle()<CR>
-inoremap <A-1> <Esc>:call NERDTreeToggle()<CR>
+" Alt+1 Custom NERDTree Toggle
+nnoremap <A-1>      :call NX_NERDTreeToggle()<CR>
+inoremap <A-1> <Esc>:call NX_NERDTreeToggle()<CR>
 
-""" Alt+2 TagbarToggle
+" Alt+2 TagbarToggle
 nnoremap <A-2>      :TagbarToggle<CR>
 inoremap <A-2> <Esc>:TagbarToggle<CR>
 
-""" Alt+[X|Z] Next/Prev Tab
+" Alt+[X|Z] Next/Prev Tab
 nnoremap <A-x>      :tabn<CR>
 inoremap <A-x> <Esc>:tabn<CR>
 nnoremap <A-z>      :tabp<CR>
 inoremap <A-z> <Esc>:tabp<CR>
 
-""" Ctrl+N New Tab
+" Ctrl+N New Tab
 nnoremap <C-n>      :tabnew<CR>
 inoremap <C-n> <Esc>:tabnew<CR>
 
-""" Alt+C - Close Current Tab
+" Alt+C - Close Current Tab
 nnoremap <A-c>      :q<CR>
 inoremap <A-c> <Esc>:q<CR>
 
-""" Alt+Q - Close Current Tab Without Saving!
+" Alt+Q - Close Current Tab Without Saving!
 nnoremap <A-q>      :q!<CR>
 inoremap <A-q> <Esc>:q!<CR>
 
-""" Shift+Alt+C - Close Other Tabs
+" Shift+Alt+C - Close Other Tabs
 nnoremap <A-C>      :tabonly<CR>
 inoremap <A-C> <Esc>:tabonly<CR>
 
-""" Alt+[J|K] - Next/Prev Change (diff)
+" Alt+[J|K] - Next/Prev Change (diff)
 nnoremap <A-j>      ]c
 inoremap <A-j> <Esc>]c
 nnoremap <A-k>      [c
 inoremap <A-k> <Esc>[c
 
-""" Ctrl+S - Save File
+" Ctrl+S - Save File
 nnoremap <C-s>      :w<CR>
 inoremap <C-s> <Esc>:w<CR>
 
 """ Speed Mappings
-""" Find/replace
+" Leader+r -  Find/replace
 nnoremap <Leader>r :s/
-""" Replace all from buffer with (Requires value in register *)
+" Leader+R - Replace all from buffer with (Requires value in register *)
 nnoremap <Leader>R :%s/*//g<Left><Left>
-""" Count all from buffer with (Requires value in register *)
+" Leader+c - Count all from buffer with (Requires value in register *)
 nnoremap <Leader>c :%s/*//gn<Left><Left><Left>
 
-""" gVim-only Mappings
-if has("gui_running")
-    """ Ctrl+F2 - Change Background Theme
-    nnoremap <C-F2> :call ChangeBackgroundTheme()<CR>
-
-    """ Ctrl+F3 - Update Font Size
-    nnoremap <C-F3> :call UpdateFontSize()<CR>
-endif
-
-""" Apply Theme (gVim only)
-if has("gui_running")
-    let &background=g:nx_theme_background
-    let cmd_colorscheme="colorscheme " . g:nx_theme
-    execute cmd_colorscheme
-    let g:airline_theme=g:nx_theme
-else
-    set background=dark
-endif
-
 """ Custom functions
-function! NERDTreeToggle()
+function! NX_ApplyTheme()
+    " Apply color schemes (gVim only)
+    if has("gui_running")
+        let &background=g:nx_theme_background
+        let cmd_colorscheme="colorscheme " . g:nx_theme
+        execute cmd_colorscheme
+        let g:airline_theme=g:nx_theme
+    else
+        set background=dark
+    endif
+endfunction
+
+function! NX_SetTempDirectory()
+    " Set swap file directory
+    let temp_dir=NX_CreateTempDir("temp")
+    let &directory=temp_dir
+endfunction
+
+function! NX_EnablePersistentUndo()
+    " Persist undo forever
+    let undo_dir=NX_CreateTempDir("undo")
+    let &undodir=undo_dir
+    set undofile
+endfunction
+
+function! NX_NERDTreeToggle()
     " Check if NERDTree window is visible in the current tabpage
     if exists('t:NERDTreeBufName') && bufwinnr(t:NERDTreeBufName) != -1
-        :NERDTreeClose
+        call NERDTreeClose()
     else
-        :NERDTreeCWD
-        :NERDTreeFocus
+        call NERDTreeCWD()
     endif
+endfunction
+
+function! NX_CreateTempDir(directory)
+    " Create temp directory and return its path
+    let temp_dir="/.vim/tmp/" . a:directory
+    if has("unix")
+        let temp_dir=expand("~") . temp_dir
+        call system("mkdir -p " . temp_dir)
+    elseif has("win32")
+        let temp_dir=expand("~") . substitute(temp_dir, "/", "\\", "g")
+        call system("mkdir " . temp_dir)
+    endif
+    return temp_dir
 endfunction
 
 """ gVim-only Functions
 if has("gui_running")
-    function! ChangeBackgroundTheme()
+    function! NX_ChangeBackgroundTheme()
+        " Apply color schemes
         if &background == "light"
             set background=dark
         else
@@ -187,34 +223,34 @@ if has("gui_running")
         endif
     endfunction
 
-    function! UpdateFontSize()
+    function! NX_UpdateFontSize()
+        " Update font size based on settings
         if g:nx_font_size == "small"
-            let g:nx_szmod = -2
-            let g:nx_font_size = "normal"
+            let g:nx_szmod=-2
+            let g:nx_font_size="normal"
         elseif g:nx_font_size == "normal"
-            let g:nx_szmod = 0
-            let g:nx_font_size = "large"
+            let g:nx_szmod=0
+            let g:nx_font_size="large"
         elseif g:nx_font_size == "large"
-            let g:nx_szmod = 2
-            let g:nx_font_size = "xlarge"
+            let g:nx_szmod=2
+            let g:nx_font_size="xlarge"
         elseif g:nx_font_size == "xlarge"
-            let g:nx_szmod = 4
-            let g:nx_font_size = "small"
+            let g:nx_szmod=4
+            let g:nx_font_size="small"
         endif
 
         if has("gui_gtk")
-            let &guifont = g:nx_font_unix . " " .
+            let &guifont=g:nx_font_unix . " " .
                 \ (g:nx_font_size_unix + g:nx_szmod)
         elseif has("gui_win32")
-            let &guifont = g:nx_font_dos . ":h" .
+            let &guifont=g:nx_font_dos . ":h" .
                 \ (g:nx_font_size_dos + g:nx_szmod)
         elseif has("gui_macvim")
-            let &guifont = g:nx_font_mac . ":h" .
+            let &guifont=g:nx_font_mac . ":h" .
                 \ (g:nx_font_size_mac + g:nx_szmod)
         endif
     endfunction
-
-    """ Apply font size
-    call UpdateFontSize()
 endif
+
+call NX_PimpMyVim()
 
