@@ -22,7 +22,8 @@ call plug#begin("~/.vim/plugged")
     Plug 'scrooloose/nerdtree'              " File system explorer
     Plug 'kien/ctrlp.vim'                   " Fuzzy file search, mru, etc
     Plug 'tpope/vim-fugitive'               " Git integration
-    Plug 'airblade/vim-gitgutter'           " Git diff signs
+    "Plug 'airblade/vim-gitgutter'           " Git diff signs
+    Plug 'mhinz/vim-signify'                " Diff signs
     Plug 'tpope/vim-surround'               " Surround text w/ braces, etc
     Plug 'scrooloose/nerdcommenter'         " Comment functions
     Plug 'scrooloose/syntastic'             " Syntax-checking
@@ -82,6 +83,7 @@ let g:NERDCustomDelimiters={
 let g:NERDCommentEmptyLines=1       " Include empty lines when commenting
 let g:NERDTrimTrailingWhitespace=1  " Uncommenting removes trailing spaces
 
+""" VIM Settings
 set backspace=indent,eol,start  " Make <BS> more useful
 set clipboard=unnamed           " Use gui-clipboard instead
 
@@ -157,12 +159,12 @@ nnoremap <C-s>      :w<CR>
 inoremap <C-s> <Esc>:w<CR>
 
 """ Speed Mappings
-" Leader+r -  Find/replace
-nnoremap <Leader>r :s/
-" Leader+R - Replace all from buffer with (Requires value in register *)
-nnoremap <Leader>R :%s/*//g<Left><Left>
+" Leader+r - Find and replace all with confirm
+nnoremap <Leader>r lbye:%s/*//gc<Left><Left><Left>
+" Leader+R - Find and replace all
+nnoremap <Leader>R lbye:%s/*//g<Left><Left>
 " Leader+c - Count all from buffer with (Requires value in register *)
-nnoremap <Leader>c :%s/*//gn<Left><Left><Left>
+nnoremap <Leader>R lbye:%s/*//gc<CR>
 
 """ Custom functions
 function! NX_ApplyTheme()
