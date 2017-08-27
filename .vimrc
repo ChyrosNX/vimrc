@@ -71,7 +71,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_always_populate_loc_list=1  " Fill loc-list with errors
 let g:syntastic_auto_loc_list=1             " Open loc-list on errors
-let g:syntastic_check_on_open=1             " Run syntax checks on open
+let g:syntastic_check_on_open=0             " Run syntax checks on open
 let g:syntastic_check_on_wq=0               " Skips check on close
 " NERDCommenter...
 let g:NERDSpaceDelims=1             " Space after comment delimiter
@@ -164,7 +164,7 @@ nnoremap <Leader>r lbye:%s/*//gc<Left><Left><Left>
 " Leader+R - Find and replace all
 nnoremap <Leader>R lbye:%s/*//g<Left><Left>
 " Leader+c - Count all from buffer with (Requires value in register *)
-nnoremap <Leader>R lbye:%s/*//gc<CR>
+nnoremap <Leader>c lbye:%s/*//gc<CR>
 
 """ Custom functions
 function! NX_ApplyTheme()
