@@ -113,10 +113,22 @@ let mapleader="\\"
 let g:pymode_rope_goto_definition_bind="<A-g>"  " Alt+G -> Goto-definition
 
 """ Unmap Arrow Keys
-noremap <up>    <nop>
-noremap <down>  <nop>
-noremap <left>  <nop>
-noremap <right> <nop>
+noremap <up>    :echo "One does not simply 'go up' with Arrow Keys."<CR>
+noremap <down>  :echo "One does not simply 'go down' with Arrow Keys."<CR>
+noremap <left>  :echo "One does not simply 'go left' with Arrow Keys."<CR>
+noremap <right> :echo "One does not simply 'go right' with Arrow Keys."<CR>
+
+""" Emulate ADM-3A Keyboard ESC key location 
+nnoremap <Tab> <Esc>
+inoremap <Tab> <Esc>
+vnoremap <Tab> <Esc>
+onoremap <Tab> <Esc>
+
+""" Map Ctrl+H/J/K/L for navigating other buffers such as CtrlP
+nnoremap <C-j> <Up>
+nnoremap <C-k> <Down>
+nnoremap <C-h> <Left>
+nnoremap <C-l> <Right>
 
 " Alt+1 Custom NERDTree Toggle
 nnoremap <A-1>      :call NX_NERDTreeToggle()<CR>
@@ -160,11 +172,11 @@ inoremap <C-s> <Esc>:w<CR>
 
 """ Speed Mappings
 " Leader+r - Find and replace all with confirm
-nnoremap <Leader>r lbye:%s/*//gc<Left><Left><Left>
+nnoremap <Leader>r yiw:%s/*//gc<Left><Left><Left>
 " Leader+R - Find and replace all
-nnoremap <Leader>R lbye:%s/*//g<Left><Left>
+nnoremap <Leader>R yiw:%s/*//g<Left><Left>
 " Leader+c - Count all from buffer with (Requires value in register *)
-nnoremap <Leader>c lbye:%s/*//gc<CR>
+nnoremap <Leader>c yiw:%s/*//gc<CR>
 
 """ Custom functions
 function! NX_ApplyTheme()
@@ -195,9 +207,9 @@ endfunction
 function! NX_NERDTreeToggle()
     " Check if NERDTree window is visible in the current tabpage
     if exists('t:NERDTreeBufName') && bufwinnr(t:NERDTreeBufName) != -1
-        call NERDTreeClose()
+        :NERDTreeClose
     else
-        call NERDTreeCWD()
+        :NERDTreeCWD
     endif
 endfunction
 
