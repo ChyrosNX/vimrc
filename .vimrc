@@ -77,13 +77,14 @@ let g:syntastic_check_on_wq=0               " Skips check on close
 let g:NERDSpaceDelims=1             " Space after comment delimiter
 let g:NERDDefaultAlign="left"       " Align when inserting a comment
 let g:NERDCustomDelimiters={
-    \    "c"     : { "left": "/**","right": "*/" }
-    \    , "java": { "left": "/**","right": "*/" }
-    \}
+    \     "c"     : { "left": "/**","right": "*/" }
+    \     , "java": { "left": "/**","right": "*/" }
+    \ }
 let g:NERDCommentEmptyLines=1       " Include empty lines when commenting
 let g:NERDTrimTrailingWhitespace=1  " Uncommenting removes trailing spaces
 
 """ VIM Settings
+set autoread                    " Auto reload file changes, if any
 set backspace=indent,eol,start  " Make <BS> more useful
 set clipboard=unnamed           " Use gui-clipboard instead
 
@@ -112,23 +113,30 @@ let mapleader="\\"
 """ python-mode Mappings
 let g:pymode_rope_goto_definition_bind="<A-g>"  " Alt+G -> Goto-definition
 
-""" Unmap Arrow Keys
-noremap <up>    :echo "One does not simply 'go up' with Arrow Keys."<CR>
-noremap <down>  :echo "One does not simply 'go down' with Arrow Keys."<CR>
-noremap <left>  :echo "One does not simply 'go left' with Arrow Keys."<CR>
-noremap <right> :echo "One does not simply 'go right' with Arrow Keys."<CR>
+""" Unmap some navigation keys
+noremap <Up>    :echo "One does not simply 'go up' with Arrow Keys."<CR>
+noremap <Down>  :echo "One does not simply 'go down' with Arrow Keys."<CR>
+noremap <Left>  :echo "One does not simply 'go left' with Arrow Keys."<CR>
+noremap <Right> :echo "One does not simply 'go right' with Arrow Keys."<CR>
+noremap <BS>    <nop>
+noremap <Space> <nop>
 
-""" Emulate ADM-3A Keyboard ESC key location 
-nnoremap <Tab> <Esc>
-inoremap <Tab> <Esc>
-vnoremap <Tab> <Esc>
-onoremap <Tab> <Esc>
-
-""" Map Ctrl+H/J/K/L for navigating other buffers such as CtrlP
+""" Map Ctrl+H/J/K/L for navigating other buffers used by some plugins
 nnoremap <C-j> <Up>
 nnoremap <C-k> <Down>
 nnoremap <C-h> <Left>
 nnoremap <C-l> <Right>
+
+""" Map Ctrl+ArrowKeys for changing window size
+nnoremap <C-Up>    :res +5<CR>
+nnoremap <C-Down>  :res -5<CR>
+nnoremap <C-Left>  :vert res -5<CR>
+nnoremap <C-Right> :vert res +5<CR>
+
+nnoremap <C-S-Up>    :res +1<CR>
+nnoremap <C-S-Down>  :res -1<CR>
+nnoremap <C-S-Left>  :vert res -1<CR>
+nnoremap <C-S-Right> :vert res +1<CR>
 
 " Alt+1 Custom NERDTree Toggle
 nnoremap <A-1>      :call NX_NERDTreeToggle()<CR>
@@ -172,11 +180,11 @@ inoremap <C-s> <Esc>:w<CR>
 
 """ Speed Mappings
 " Leader+r - Find and replace all with confirm
-nnoremap <Leader>r yiw:%s/*//gc<Left><Left><Left>
+nnoremap <Leader>r yiw:%s/*//g<Left><Left>
 " Leader+R - Find and replace all
-nnoremap <Leader>R yiw:%s/*//g<Left><Left>
+nnoremap <Leader>R yiw:%s/*//gc<Left><Left><Left>
 " Leader+c - Count all from buffer with (Requires value in register *)
-nnoremap <Leader>c yiw:%s/*//gc<CR>
+nnoremap <Leader>c yiw:%s/*//gn<CR>
 
 """ Custom functions
 function! NX_ApplyTheme()
