@@ -1,17 +1,27 @@
-set nocompatible    " Take advantage of Vim features
-set encoding=utf-8
-filetype plugin on  " Handle filetype-specific files when opened
-
-
-""" README (for first time users)
+"""
+"
+" Author: ChyrosNX
+" Version: 0.0.1-Alpha
+"
+" README (for first time users)
 "
 " - This .vimrc uses vim-plug. To auto-install vim-plug:
+"
 "       1) download 'plug.vim' from https://github.com/junegunn/vim-plug
 "       2) put downloaded file to your ~/.vim/ directory
-"       3) start/restart your Vim.
+"       3) start/restart your Vim using this .vimrc file
 "
 """
 
+set nocompatible    " Take advantage of Vim features
+set encoding=utf-8
+filetype plugin on  " Enable plugin for specific filetypes
+
+" Disable annoying beeps
+set noeb novb t_vb=
+if has('autocmd')
+    autocmd GUIEnter * set visualbell t_vb =
+endif
 
 """ gVim Font & Theme Settings
 " User Theme Settings
