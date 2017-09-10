@@ -72,7 +72,7 @@ function! NX_parse_path(path)
         " unix-to-win32 path format
         return expand(substitute(a:path, "/", "\\", "g"))
     endif
-    return expand(path)
+    return expand(a:path)
 endfunction
 
 

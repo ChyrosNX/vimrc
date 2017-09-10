@@ -38,7 +38,7 @@ set lines=40                        " Set window height by lines
 
 set listchars=eol:┐,tab:»\ ,trail:· " Editor guides symbols
 
-source .nephvimrc
+source ~/.nephvimrc
 
 "
 " Auto-install vim-plug
@@ -227,13 +227,13 @@ inoremap <A-1> <Esc>:call NX_NERDTreeToggle()<CR>
 nnoremap <A-2>      :TagbarToggle<CR>
 inoremap <A-2> <Esc>:TagbarToggle<CR>
 
-" F9 Show/hide editor guides
-nnoremap <F9>      :call NX_ShowEditorGuides(0)<CR>
-inoremap <F9> <Esc>:call NX_ShowEditorGuides(0)<CR>
+" F8 Show/hide editor guides
+nnoremap <F8>      :call NX_ShowEditorGuides(0)<CR>
+inoremap <F8> <Esc>:call NX_ShowEditorGuides(0)<CR>
 
-" F11 Change FileFormat DOS <-> UNIX
-nnoremap <F11>      :call NX_ChangeFileFormat()<CR>
-inoremap <F11> <Esc>:call NX_ChangeFileFormat()<CR>
+" F9 Change FileFormat DOS <-> UNIX
+nnoremap <F9>      :call NX_ChangeFileFormat()<CR>
+inoremap <F9> <Esc>:call NX_ChangeFileFormat()<CR>
 
 " Alt+[X|Z] Next/Prev Tab
 nnoremap <A-x>      :tabn<CR>

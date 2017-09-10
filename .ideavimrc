@@ -11,7 +11,7 @@
 
 set nocompatible                    " Use VIM to its full potential
 set encoding=utf-8
-filetype plugin on                  " Enable plugin for specific file types
+set surround
 
 " Custom settings
 let s:editor_width = (80+4+2+2)*2+1 " Width(text + line-no + sign + rt-margin)
