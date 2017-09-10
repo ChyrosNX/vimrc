@@ -1,0 +1,114 @@
+"""
+"
+" VimRC Settings for IntelliJ IDEA's Vim Plugin
+"
+" Author  : ChyrosNX
+" Version : 0.0.1-Alpha
+"
+" Desc    : ChyrosNX's settings for IntelliJ IDEA's Vim Plugin.
+"
+"""
+
+set nocompatible                    " Use VIM to its full potential
+set encoding=utf-8
+filetype plugin on                  " Enable plugin for specific file types
+
+" Custom settings
+let s:editor_width = (80+4+2+2)*2+1 " Width(text + line-no + sign + rt-margin)
+let g:show_editor_guides = 1
+let s:undo_dir = "~/.vim/temp/undo"
+let s:temp_dir = "~/.vim/temp/temp"
+
+set visualbell t_vb=                " Disable beeps
+
+let &columns=s:editor_width         " Set window width by column size
+set lines=40                        " Set window height by lines
+
+set listchars=eol:┐,tab:»\ ,trail:· " Editor guides symbols
+
+source .nephvimrc
+
+""" VIM Settings
+set autoread                    " Auto reload file changes, if any
+set backspace=indent,eol,start  " Make <BS> more useful
+set clipboard=unnamed           " Use gui-clipboard instead
+
+" Tabstops and Indentions
+set tabstop=4                   " Number of spaces for <Tab>
+set shiftwidth=4                " Number of spaces for << and >>
+set expandtab                   " Use spaces instead of a tab
+set autoindent                  " Copy indent to the next line
+set smartindent                 " Language-specific auto-indentation
+
+set autochdir                   " Auto change dir based on the open file
+set number                      " Show line numbers
+syntax on                       " Enable syntax highlighting
+
+set ignorecase                  " Ignore-case searching
+set hlsearch                    " Enable search highlighting
+set incsearch                   " Enable incremental search
+
+""" Mappings
+let mapleader = "\\"
+
+""" Unmap navigation keys
+noremap <Up>      :echo "One does not simply 
+    \ 'go up' with Arrow Keys."<CR>
+noremap <Down>    :echo "One does not simply
+    \ 'go down' with Arrow Keys."<CR>
+noremap <Left>    :echo "One does not simply
+    \ 'go left' with Arrow Keys."<CR>
+noremap <Right>   :echo "One does not simply
+    \ 'go right' with Arrow Keys."<CR>
+nnoremap <Space>   <nop>
+nnoremap <S-Space> <nop>
+nnoremap <C-Space> <nop>
+noremap <BS>   <nop>
+noremap <S-BS> <nop>
+noremap <C-BS> <nop>
+
+""" Map Ctrl+H/J/K/L for navigating other buffers used by some plugins
+nnoremap <C-j> <Up>
+nnoremap <C-k> <Down>
+nnoremap <C-h> <Left>
+nnoremap <C-l> <Right>
+
+" F9 Show/hide editor guides
+nnoremap <F9>      :call NX_ShowEditorGuides(0)<CR>
+inoremap <F9> <Esc>:call NX_ShowEditorGuides(0)<CR>
+
+" F11 Change FileFormat DOS <-> UNIX
+nnoremap <F11>      :call NX_ChangeFileFormat()<CR>
+inoremap <F11> <Esc>:call NX_ChangeFileFormat()<CR>
+
+" Alt+[J|K] - Move lines up/down
+nnoremap <A-j>      :m . +1<CR>
+inoremap <A-j> <Esc>:m . +1<CR>
+nnoremap <A-k>      :m . -2<CR>
+inoremap <A-k> <Esc>:m . -2<CR>
+
+" Ctrl+S - Save File
+nnoremap <C-s>      :w<CR>
+inoremap <C-s> <Esc>:w<CR>
+
+""" Speed Mappings
+" Leader+r - Find and replace all with confirm
+nnoremap <Leader>r yiw:%s/*//g<Left><Left>
+" Leader+R - Find and replace all
+nnoremap <Leader>R yiw:%s/*//gc<Left><Left><Left>
+" Leader+c - Count all from buffer with (Requires value in register *)
+nnoremap <Leader>c yiw:%s/*//gn<CR>
+
+
+function! NX_ChangeFileFormat()
+    if &fileformats == "unix,dos"
+        set fileformats=dos,unix
+        set fileformat=dos
+        echo "FileFormat set to DOS."
+    else
+        set fileformats=unix,dos
+        set fileformat=unix
+        echo "FileFormat set to UNIX."
+    endif
+endfunction
+

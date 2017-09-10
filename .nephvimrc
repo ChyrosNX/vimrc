@@ -1,0 +1,78 @@
+"""
+"
+" VimRC Neph Library
+"
+" Author  : ChyrosNX
+" Version : 0.0.1-Alpha
+"
+" Desc    : Neph library used by ChyrosNX's .vimrc file.
+"
+"""
+
+" Show Editor Guides
+function! NX_ShowEditorGuides(global)
+    if g:nx__editorGuidesHidden
+        if a:global
+            set list colorcolumn=80
+        else
+            setlocal list colorcolumn=80
+        endif
+    else
+        if a:global
+            set nolist colorcolumn=
+        else
+            setlocal nolist colorcolumn=
+        endif
+    endif
+    let g:nx__editorGuidesHidden = !g:nx__editorGuidesHidden
+endfunction
+let g:nx__editorGuidesHidden = g:show_editor_guides
+unlet g:show_editor_guides
+call NX_ShowEditorGuides(1)
+
+" Plugin
+function! NX_has_plugin(name)
+    for plugin in g:nx_enabled_plugins
+        let plugin_name = strpart(
+            \     plugin
+            \     , strridx(plugin, '/', strlen(plugin)) + 1
+            \     , strlen(plugin)
+            \ )
+        if plugin_name == a:name
+            let plugin_dir = g:nx_plugin_dir . "/" . plugin_name
+            return exists(glob(plugin_dir))
+        endif
+    endfor
+endfunction
+
+" OS-dependent Utilities
+function! NX__create_dir(dir)
+    let dir = NX_parse_path(a:dir)
+    if empty(glob(dir))
+        if has("unix")
+            call system("mkdir -p " . dir)
+        elseif has("win32")
+            call system("mkdir " . dir)
+        endif
+    endif
+endfunction
+
+function! NX__copy_file(src, dest)
+    """ Copy file
+    if has("unix")
+        call system("cp " . a:src . " " . a:dest)
+    elseif has("win32")
+        call system("copy /Y " . NX_parse_path(a:src) . " " .
+            \ NX_parse_path(a:dest))
+    endif
+endfunction
+
+function! NX_parse_path(path)
+    if has("win32")
+        " unix-to-win32 path format
+        return expand(substitute(a:path, "/", "\\", "g"))
+    endif
+    return expand(path)
+endfunction
+
+

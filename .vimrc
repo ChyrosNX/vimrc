@@ -1,7 +1,11 @@
 """
 "
-" Author: ChyrosNX
-" Version: 0.0.1-Alpha
+" VimRC Settings
+"
+" Author  : ChyrosNX
+" Version : 0.0.1-Alpha
+"
+" Desc    : ChyrosNX's settings for VIM.
 "
 " README (for first time users)
 "
@@ -11,72 +15,32 @@
 "       2) put downloaded file to your ~/.vim/ directory
 "       3) start/restart your Vim using this .vimrc file
 "
+" TODO:
+"   1) Delete trailing whitespaces on save
+"   2) Shift-Space remaps Space
+"
 """
 
-set nocompatible    " Take advantage of Vim features
+set nocompatible                    " Use VIM to its full potential
 set encoding=utf-8
-filetype plugin on  " Enable plugin for specific filetypes
+filetype plugin on                  " Enable plugin for specific file types
 
-" Disable annoying beeps
-set noeb novb t_vb=
-if has('autocmd')
-    autocmd GUIEnter * set visualbell t_vb =
-endif
+" Custom settings
+let s:editor_width = (80+4+2+2)*2+1 " Width(text + line-no + sign + rt-margin)
+let g:show_editor_guides = 1
+let s:undo_dir = "~/.vim/temp/undo"
+let s:temp_dir = "~/.vim/temp/temp"
 
-""" gVim Font & Theme Settings
-" User Theme Settings
-let g:nx_font_size = "normal"       " small | normal | large | xlarge
-let g:nx_theme_background = "dark"  " light | dark
-let g:nx_theme = "solarized"
-" Font Name
-let g:nx_font_unix = "Monospace Regular"
-let g:nx_font_dos = "Consolas"
-let g:nx_font_mac = "Monaco"
-" Base Font Size
-let g:nx_font_size_unix = 10
-let g:nx_font_size_dos = 11
-let g:nx_font_size_mac = 12
+set visualbell t_vb=                " Disable beeps
 
+let &columns=s:editor_width         " Set window width by column size
+set lines=40                        " Set window height by lines
 
-""" Misc
-function! NX_mkdir(dir)
-    """ Create directory
-    if has("unix")
-        call system("mkdir -p " . a:dir)
-    elseif has("win32")
-        call system("mkdir " . NX_to_win32_dir(a:dir))
-    endif
-endfunction
+set listchars=eol:┐,tab:»\ ,trail:· " Editor guides symbols
 
-function! NX_cp(src, dest)
-    """ Copy file
-    if has("unix")
-        call system("cp " . a:src . " " . a:dest)
-    elseif has("win32")
-        call system("copy /Y " . NX_to_win32_dir(a:src) . " " .
-            \ NX_to_win32_dir(a:dest))
-    endif
-endfunction
+source .nephvimrc
 
-function! NX_to_win32_dir(unix_dir)
-    """ Convert unix directory to win32 directory
-    return expand(substitute(a:unix_dir, "/", "\\", "g"))
-endfunction
-
-function! NX_has_plugin(name)
-    for plugin in g:nx_enabled_plugins
-        let plugin_name = strpart(
-            \     plugin
-            \     , strridx(plugin, '/', strlen(plugin)) + 1
-            \     , strlen(plugin)
-            \ )
-        if plugin_name == a:name
-            let plugin_dir = g:nx_plugin_dir . "/" . plugin_name
-            return exists(glob(plugin_dir))
-        endif
-    endfor
-endfunction
-
+"
 " Auto-install vim-plug
 let g:nx_install_plugins = 0
 if has("unix")
@@ -89,15 +53,19 @@ endif
 
 if empty(glob(g:nx_autoload_dir . "plug.vim"))
     if (!empty(glob("~/.vim/plug.vim")))
-        call NX_mkdir(g:nx_autoload_dir)
-        call NX_cp("~/.vim/plug.vim", g:nx_autoload_dir . "plug.vim")
+        call NX__create_dir(g:nx_autoload_dir)
+        call NX__copy_file("~/.vim/plug.vim", g:nx_autoload_dir . "plug.vim")
     endif
 endif
+
 
 """ Plugin List
 " Comment/uncomment to enable/disable plugins
 let g:nx_enabled_plugins = []
+call add(g:nx_enabled_plugins, 'sjl/badwolf')
+call add(g:nx_enabled_plugins, 'chriskempson/base16-vim')
 call add(g:nx_enabled_plugins, 'altercation/vim-colors-solarized')
+call add(g:nx_enabled_plugins, 'morhetz/gruvbox')
 " status and tab line
 call add(g:nx_enabled_plugins, 'vim-airline/vim-airline')
 " vim-airline theme
@@ -124,10 +92,11 @@ call add(g:nx_enabled_plugins, 'majutsushi/tagbar')
 call add(g:nx_enabled_plugins, 'klen/python-mode')
 
 
-let g:nx_plugin_dir    = "~/.vim/plugged"
+let g:nx_plugin_dir = "~/.vim/plugged"
 
-let nx_has_vim_plug    = !empty(glob(g:nx_autoload_dir . "plug.vim"))
-let nx_has_ctags_bin   = !empty(glob(g:nx_plugin_dir . "/ctags/ctags.exe"))
+let nx_has_vim_plug = !empty(glob(g:nx_autoload_dir . "plug.vim"))
+let nx_has_ctags_bin = !empty(glob(g:nx_plugin_dir . "/ctags/ctags.exe"))
+
 
 """ Plugins
 if nx_has_vim_plug
@@ -138,22 +107,6 @@ if nx_has_vim_plug
     call plug#end()
 endif
 
-function! NX_PimpMyVim()
-    """ Enhance VIM experience
-    if has("gui_running")
-        call NX_UpdateFontSize()    " Update font size
-
-        " Ctrl+F2 - Change Background Theme
-        nnoremap <C-F2> :call NX_ChangeBackgroundTheme()<CR>
-
-        " Ctrl+F3 - Update Font Size
-        nnoremap <C-F3> :call NX_UpdateFontSize()<CR>
-    endif
-
-    call NX_ApplyTheme()            " Apply color schemes
-    call NX_SetTempDirectory()      " Set swap file directory
-    call NX_EnablePersistentUndo()  " Persist undo forever
-endfunction
 
 """ Plugin Settings
 if NX_has_plugin('vim-airline')
@@ -249,9 +202,6 @@ noremap <BS>   <nop>
 noremap <S-BS> <nop>
 noremap <C-BS> <nop>
 
-""" Map jk to exit insert mode
-inoremap jk <Esc>
-
 """ Map Ctrl+H/J/K/L for navigating other buffers used by some plugins
 nnoremap <C-j> <Up>
 nnoremap <C-k> <Down>
@@ -277,9 +227,13 @@ inoremap <A-1> <Esc>:call NX_NERDTreeToggle()<CR>
 nnoremap <A-2>      :TagbarToggle<CR>
 inoremap <A-2> <Esc>:TagbarToggle<CR>
 
-" F9 Change FileFormat DOS <-> UNIX
-nnoremap <F9>      :call NX_ChangeFileFormat()<CR>
-inoremap <F9> <Esc>:call NX_ChangeFileFormat()<CR>
+" F9 Show/hide editor guides
+nnoremap <F9>      :call NX_ShowEditorGuides(0)<CR>
+inoremap <F9> <Esc>:call NX_ShowEditorGuides(0)<CR>
+
+" F11 Change FileFormat DOS <-> UNIX
+nnoremap <F11>      :call NX_ChangeFileFormat()<CR>
+inoremap <F11> <Esc>:call NX_ChangeFileFormat()<CR>
 
 " Alt+[X|Z] Next/Prev Tab
 nnoremap <A-x>      :tabn<CR>
@@ -321,32 +275,19 @@ nnoremap <Leader>R yiw:%s/*//gc<Left><Left><Left>
 " Leader+c - Count all from buffer with (Requires value in register *)
 nnoremap <Leader>c yiw:%s/*//gn<CR>
 
-""" Custom functions
-function! NX_ApplyTheme()
-    " Apply color schemes (gVim only)
-    if has("gui_running")
-        if  !empty(glob("~/.vim/plugged/vim-colors-solarized"))
-            let cmd_colorscheme = "colorscheme " . g:nx_theme
-            execute cmd_colorscheme
-            let g:airline_theme = g:nx_theme
-            let &background = g:nx_theme_background
-        else
-            set background=light
-        endif
-    else
-        set background=dark
-    endif
-endfunction
 
+""" Custom functions
 function! NX_SetTempDirectory()
     " Set swap file directory
-    let temp_dir = NX_CreateTempDir("temp")
+    let temp_dir = NX_parse_path(s:temp_dir)
+    call NX__create_dir(temp_dir)
     let &directory = temp_dir
 endfunction
 
 function! NX_EnablePersistentUndo()
     " Persist undo forever
-    let undo_dir = NX_CreateTempDir("undo")
+    let undo_dir = NX_parse_path(s:undo_dir)
+    call NX__create_dir(undo_dir)
     let &undodir = undo_dir
     set undofile
 endfunction
@@ -364,10 +305,14 @@ function! NX_CreateTempDir(directory)
     " Create temp directory and return its path
     let temp_dir = "/.vim/tmp/" . a:directory
     if has("unix")
-        call system("mkdir -p " . temp_dir)
+        if !exists(glob(temp_dir))
+            call system("mkdir -p " . temp_dir)
+        endif
     elseif has("win32")
         let temp_dir = expand("~") . substitute(temp_dir, "/", "\\", "g")
-        call system("mkdir " . temp_dir)
+        if !exists(glob(temp_dir))
+            call system("mkdir " . temp_dir)
+        endif
     endif
     return temp_dir
 endfunction
@@ -384,45 +329,9 @@ function! NX_ChangeFileFormat()
     endif
 endfunction
 
-""" gVim-only Functions
-if has("gui_running")
-    function! NX_ChangeBackgroundTheme()
-        " Apply color schemes
-        if &background == "light"
-            set background=dark
-        else
-            set background=light
-        endif
-    endfunction
 
-    function! NX_UpdateFontSize()
-        " Update font size based on settings
-        if g:nx_font_size == "small"
-            let g:nx_szmod = -2
-            let g:nx_font_size = "normal"
-        elseif g:nx_font_size == "normal"
-            let g:nx_szmod = 0
-            let g:nx_font_size = "large"
-        elseif g:nx_font_size == "large"
-            let g:nx_szmod = 2
-            let g:nx_font_size = "xlarge"
-        elseif g:nx_font_size == "xlarge"
-            let g:nx_szmod = 4
-            let g:nx_font_size = "small"
-        endif
-
-        if has("gui_gtk")
-            let &guifont = g:nx_font_unix . " " .
-                \ (g:nx_font_size_unix + g:nx_szmod)
-        elseif has("gui_win32")
-            let &guifont = g:nx_font_dos . ":h" .
-                \ (g:nx_font_size_dos + g:nx_szmod)
-        elseif has("gui_macvim")
-            let &guifont = g:nx_font_mac . ":h" .
-                \ (g:nx_font_size_mac + g:nx_szmod)
-        endif
-    endfunction
-endif
-
-call NX_PimpMyVim()
+"let &columns=s:editor_width         " Set window width by column size
+"set lines=40                        " Set window height by lines
+call NX_SetTempDirectory()      " Set swap file directory
+call NX_EnablePersistentUndo()  " Persist undo forever
 
