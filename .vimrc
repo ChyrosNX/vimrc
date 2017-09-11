@@ -167,9 +167,10 @@ set expandtab                   " Use spaces instead of a tab
 set autoindent                  " Copy indent to the next line
 set smartindent                 " Language-specific auto-indentation
 
-set autochdir                   " Auto change dir based on the open file
+"set autochdir                   " Auto change dir based on the open file
 set number                      " Show line numbers
 syntax on                       " Enable syntax highlighting
+set nowrap
 
 set ignorecase                  " Ignore-case searching
 set hlsearch                    " Enable search highlighting
@@ -187,20 +188,18 @@ let mapleader = "\\"
 let g:pymode_rope_goto_definition_bind = "<A-g>"  " Alt+G -> Goto-definition
 
 """ Unmap navigation keys
-noremap <Up>      :echo "One does not simply 
-    \ 'go up' with Arrow Keys."<CR>
-noremap <Down>    :echo "One does not simply
-    \ 'go down' with Arrow Keys."<CR>
-noremap <Left>    :echo "One does not simply
-    \ 'go left' with Arrow Keys."<CR>
-noremap <Right>   :echo "One does not simply
-    \ 'go right' with Arrow Keys."<CR>
-nnoremap <Space>   <nop>
-nnoremap <S-Space> <nop>
-nnoremap <C-Space> <nop>
-noremap <BS>   <nop>
-noremap <S-BS> <nop>
-noremap <C-BS> <nop>
+noremap <Up>      :echo "One does not simply 'go up' with Arrow Keys."<CR>
+noremap <Down>    :echo "One does not simply 'go down' with Arrow Keys."<CR>
+noremap <Left>    :echo "One does not simply 'go left' with Arrow Keys."<CR>
+noremap <Right>   :echo "One does not simply 'go right' with Arrow Keys."<CR>
+noremap <Space>   <nop>
+noremap <C-Space> <nop>
+noremap <BS>      <nop>
+noremap <S-BS>    <nop>
+noremap <C-BS>    <nop>
+
+""" Map Space to different functionalities
+nnoremap <S-Space> :call NX_SpaceFunction()<CR>
 
 """ Map Ctrl+H/J/K/L for navigating other buffers used by some plugins
 nnoremap <C-j> <Up>

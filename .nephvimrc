@@ -30,6 +30,23 @@ let g:nx__editorGuidesHidden = g:show_editor_guides
 unlet g:show_editor_guides
 call NX_ShowEditorGuides(1)
 
+" Change Space Functionality
+function! NX_SpaceFunction()
+    if g:nx__spaceFunction == 0
+        nmap <Space> .
+        echo "<Space> now works as . command (repeat last change)"
+    elseif g:nx__spaceFunction == 1
+        nmap <Space> @@
+        echo "<Space> now works as @@ command (repeat last macro)"
+    elseif g:nx__spaceFunction == 2
+        nmap <Space> <nop>
+        echo "<Space> is now unbound"
+        let g:nx__spaceFunction = -1
+    endif
+    let g:nx__spaceFunction += 1
+endfunction
+let g:nx__spaceFunction = 0
+
 " Plugin
 function! NX_has_plugin(name)
     for plugin in g:nx_enabled_plugins
