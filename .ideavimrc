@@ -16,8 +16,8 @@ set surround
 " Custom settings
 let s:editor_width = (80+4+2+2)*2+1 " Width(text + line-no + sign + rt-margin)
 let g:show_editor_guides = 1
-let s:undo_dir = "~/.vim/temp/undo"
-let s:temp_dir = "~/.vim/temp/temp"
+let s:undo_dir = "~/.vim/temp/undo-ideavimrc"
+let s:temp_dir = "~/.vim/temp/temp-ideavimrc"
 
 set visualbell t_vb=                " Disable beeps
 
