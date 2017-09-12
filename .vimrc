@@ -226,13 +226,13 @@ inoremap <A-1> <Esc>:call NX_NERDTreeToggle()<CR>
 nnoremap <A-2>      :TagbarToggle<CR>
 inoremap <A-2> <Esc>:TagbarToggle<CR>
 
-" F8 Show/hide editor guides
-nnoremap <F8>      :call NX_ShowEditorGuides(0)<CR>
-inoremap <F8> <Esc>:call NX_ShowEditorGuides(0)<CR>
+" F5 Show/hide editor guides
+nnoremap <F5>      :call NX_ShowEditorGuides(0)<CR>
+inoremap <F5> <Esc>:call NX_ShowEditorGuides(0)<CR>
 
-" F9 Change FileFormat DOS <-> UNIX
-nnoremap <F9>      :call NX_ChangeFileFormat()<CR>
-inoremap <F9> <Esc>:call NX_ChangeFileFormat()<CR>
+" F6 Change FileFormat DOS <-> UNIX
+nnoremap <F6>      :call NX_ChangeFileFormat()<CR>
+inoremap <F6> <Esc>:call NX_ChangeFileFormat()<CR>
 
 " Alt+[X|Z] Next/Prev Tab
 nnoremap <A-x>      :tabn<CR>
