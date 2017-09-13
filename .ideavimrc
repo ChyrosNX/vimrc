@@ -26,7 +26,7 @@ set lines=40                        " Set window height by lines
 
 set listchars=eol:┐,tab:»\ ,trail:· " Editor guides symbols
 
-source .nephvimrc
+source ~/.nephvimrc
 
 """ VIM Settings
 set autoread                    " Auto reload file changes, if any
@@ -43,6 +43,7 @@ set smartindent                 " Language-specific auto-indentation
 set autochdir                   " Auto change dir based on the open file
 set number                      " Show line numbers
 syntax on                       " Enable syntax highlighting
+set scrolloff=1
 
 set ignorecase                  " Ignore-case searching
 set hlsearch                    " Enable search highlighting
@@ -52,20 +53,12 @@ set incsearch                   " Enable incremental search
 let mapleader = "\\"
 
 """ Unmap navigation keys
-noremap <Up>      :echo "One does not simply 
-    \ 'go up' with Arrow Keys."<CR>
-noremap <Down>    :echo "One does not simply
-    \ 'go down' with Arrow Keys."<CR>
-noremap <Left>    :echo "One does not simply
-    \ 'go left' with Arrow Keys."<CR>
-noremap <Right>   :echo "One does not simply
-    \ 'go right' with Arrow Keys."<CR>
 nnoremap <Space>   <nop>
 nnoremap <S-Space> <nop>
 nnoremap <C-Space> <nop>
-noremap <BS>   <nop>
-noremap <S-BS> <nop>
-noremap <C-BS> <nop>
+nnoremap <BS>      <nop>
+nnoremap <S-BS>    <nop>
+nnoremap <C-BS>    <nop>
 
 """ Map Ctrl+H/J/K/L for navigating other buffers used by some plugins
 nnoremap <C-j> <Up>

@@ -170,7 +170,8 @@ set smartindent                 " Language-specific auto-indentation
 "set autochdir                   " Auto change dir based on the open file
 set number                      " Show line numbers
 syntax on                       " Enable syntax highlighting
-set nowrap
+set nowrap                      " Don't wrap text by default
+set scrolloff=1                 " Use scroll offset of 1
 
 set ignorecase                  " Ignore-case searching
 set hlsearch                    " Enable search highlighting
