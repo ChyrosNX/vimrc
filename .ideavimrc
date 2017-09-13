@@ -60,12 +60,6 @@ nnoremap <BS>      <nop>
 nnoremap <S-BS>    <nop>
 nnoremap <C-BS>    <nop>
 
-""" Map Ctrl+H/J/K/L for navigating other buffers used by some plugins
-nnoremap <C-j> <Up>
-nnoremap <C-k> <Down>
-nnoremap <C-h> <Left>
-nnoremap <C-l> <Right>
-
 " FF5 Show/hide editor guides
 nnoremap <F5>      :call NX_ShowEditorGuides(0)<CR>
 inoremap <F5> <Esc>:call NX_ShowEditorGuides(0)<CR>
