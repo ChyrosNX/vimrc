@@ -53,6 +53,10 @@ set incsearch                   " Enable incremental search
 let mapleader = "\\"
 
 """ Unmap navigation keys
+nnoremap <Up>      <nop>
+nnoremap <Down>    <nop>
+nnoremap <Left>    <nop>
+nnoremap <Right>   <nop>
 nnoremap <Space>   <nop>
 nnoremap <S-Space> <nop>
 nnoremap <C-Space> <nop>
