@@ -16,12 +16,14 @@ function! NX_ShowEditorGuides(global)
             set list colorcolumn=80
         else
             setlocal list colorcolumn=80
+            echo "Editor guides enabled."
         endif
     else
         if a:global
             set nolist colorcolumn=
         else
             setlocal nolist colorcolumn=
+            echo "Editor guides disabled."
         endif
     endif
     let g:nx__editorGuidesHidden = !g:nx__editorGuidesHidden
