@@ -9,8 +9,11 @@
 "
 """
 
-" Show Editor Guides
+
+""" Extra features
 function! NX_ShowEditorGuides(global)
+    " Show/hide editing guides such as spacing and linebreak symbols, and
+    " 80-column line
     if g:nx__editorGuidesHidden
         if a:global
             set list colorcolumn=80
@@ -32,8 +35,8 @@ let g:nx__editorGuidesHidden = g:show_editor_guides
 unlet g:show_editor_guides
 call NX_ShowEditorGuides(1)
 
-" Change Space Functionality
 function! NX_SpaceFunction()
+    " Re-map <Space> to some frequently used commands
     if g:nx__spaceFunction == 0
         nmap <Space> .
         echo "<Space> now works as . command (repeat last change)"
@@ -49,7 +52,38 @@ function! NX_SpaceFunction()
 endfunction
 let g:nx__spaceFunction = 0
 
-" Plugin
+function! NX_ChangeFileFormat()
+    " Change linespace from UNIX to DOS and vice-versa
+    if &fileformats == "unix,dos"
+        set fileformats=dos,unix
+        set fileformat=dos
+        echo "FileFormat set to DOS."
+    else
+        set fileformats=unix,dos
+        set fileformat=unix
+        echo "FileFormat set to UNIX."
+    endif
+endfunction
+
+
+""" Special VIM behaviors
+function! NX_SetTempDirectory(temp_dir)
+    " Set swap file directory
+    let temp_dir = NX_parse_path(a:temp_dir)
+    call NX__create_dir(temp_dir)
+    let &directory = temp_dir
+endfunction
+
+function! NX_EnablePersistentUndo(undo_dir)
+    " Persist undo forever
+    let undo_dir = NX_parse_path(a:undo_dir)
+    call NX__create_dir(undo_dir)
+    let &undodir = undo_dir
+    set undofile
+endfunction
+
+
+""" Plugin-related
 function! NX_has_plugin(name)
     for plugin in g:nx_enabled_plugins
         let plugin_name = strpart(
@@ -59,12 +93,22 @@ function! NX_has_plugin(name)
             \ )
         if plugin_name == a:name
             let plugin_dir = g:nx_plugin_dir . "/" . plugin_name
-            return exists(glob(plugin_dir))
+            return !empty(glob(plugin_dir))
         endif
     endfor
 endfunction
 
-" OS-dependent Utilities
+function! NX_NERDTreeToggle()
+    " Check if NERDTree window is visible in the current tabpage
+    if exists('t:NERDTreeBufName') && bufwinnr(t:NERDTreeBufName) != -1
+        :NERDTreeClose
+    else
+        :NERDTreeCWD
+    endif
+endfunction
+
+
+""" OS-dependent Utilities
 function! NX__create_dir(dir)
     let dir = NX_parse_path(a:dir)
     if empty(glob(dir))
@@ -77,7 +121,6 @@ function! NX__create_dir(dir)
 endfunction
 
 function! NX__copy_file(src, dest)
-    """ Copy file
     if has("unix")
         call system("cp " . a:src . " " . a:dest)
     elseif has("win32")
@@ -87,11 +130,11 @@ function! NX__copy_file(src, dest)
 endfunction
 
 function! NX_parse_path(path)
+    " Parse UNIX-like path into DOS format
     if has("win32")
         " unix-to-win32 path format
         return expand(substitute(a:path, "/", "\\", "g"))
     endif
     return expand(a:path)
 endfunction
-
 
