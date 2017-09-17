@@ -147,6 +147,7 @@ endif
 set autoread                    " Auto reload file changes, if any
 set backspace=indent,eol,start  " Make <BS> more useful
 set clipboard=unnamed           " Use gui-clipboard instead
+set history=1000                " Max command-line history to persist
 
 " Tabstops and Indentions
 set tabstop=4                   " Number of spaces for <Tab>
