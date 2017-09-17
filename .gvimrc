@@ -33,30 +33,19 @@ let g:nx_font_size_mac = 12
 
 """ Mappings
 
-" Ctrl+F2 - Change Background Theme
-nnoremap <C-F2> :call NX_ChangeBackgroundTheme()<CR>
-
-" Ctrl+F3 - Update Font Size
-nnoremap <C-F3> :call NX_UpdateFontSize()<CR>
+" F4 - Update Font Size
+nnoremap <F4> :call NX_UpdateFontSize()<CR>
 
 
 """ Custom functions
 function! NX_ApplyTheme()
     " Apply color schemes
-    if  !empty(glob("~/.vim/plugged/gruvbox"))
+    if index(g:nx__colorschemes, g:nx_theme) >= 0
+        let g:nx__colorscheme_idx = index(g:nx__colorschemes, g:nx_theme)
         let cmd_colorscheme = "colorscheme " . g:nx_theme
         execute cmd_colorscheme
         let g:airline_theme = g:nx_theme
         let &background = g:nx_theme_background
-    else
-        set background=light
-    endif
-endfunction
-
-function! NX_ChangeBackgroundTheme()
-    " Apply color schemes
-    if &background == "light"
-        set background=dark
     else
         set background=light
     endif
@@ -90,6 +79,9 @@ function! NX_UpdateFontSize()
     endif
 endfunction
 
+
+""" Init and Clean-up
 call NX_UpdateFontSize()    " Update font size
-call NX_ApplyTheme()            " Apply color schemes
+call NX_ApplyTheme()        " Apply color schemes
+delfunction NX_ApplyTheme
 

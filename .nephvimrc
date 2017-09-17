@@ -10,10 +10,38 @@
 """
 
 
-""" Extra features
+""" Init and Clean-up
+function! NX_Init(temp_dir, undo_dir, plugin_dir, show_editor_guides)
+    let s:plugin_dir = a:plugin_dir
+    let g:nx__editorGuidesHidden = a:show_editor_guides
+
+    let g:nx__spaceFunction = 0
+    let g:nx__colorschemes = NX_GetColorSchemes()
+    let g:nx__colorscheme_idx = index(g:nx__colorschemes
+                \ , NX_GetCurrentColorScheme())
+
+    call NX_SetTempDirectory(a:temp_dir)        " Set swap file directory
+    call NX_EnablePersistentUndo(a:undo_dir)    " Persist undo forever
+    call NX_ShowEditorGuides(1)                 " Show editing symbols
+endfunction
+
+function! NX_CleanUp()
+    delfunction NX_Init
+    delfunction NX_GetCurrentColorScheme
+    delfunction NX_GetColorSchemes
+    delfunction NX_SetTempDirectory
+    delfunction NX_EnablePersistentUndo
+    delfunction NX_AutoInstallVimPlug
+    delfunction NX_HasPlugin
+    delfunction NX_CreateDirectory
+    delfunction NX_CopyFile
+    delfunction NX_ParsePath
+endfunction
+
+
+""" Neph Lib Functions
 function! NX_ShowEditorGuides(global)
-    " Show/hide editing guides such as spacing and linebreak symbols, and
-    " 80-column line
+    " Show/hide editing guides (spacing and linebreak symbols, 80-col line)
     if g:nx__editorGuidesHidden
         if a:global
             set list colorcolumn=80
@@ -31,9 +59,6 @@ function! NX_ShowEditorGuides(global)
     endif
     let g:nx__editorGuidesHidden = !g:nx__editorGuidesHidden
 endfunction
-let g:nx__editorGuidesHidden = g:show_editor_guides
-unlet g:show_editor_guides
-call NX_ShowEditorGuides(1)
 
 function! NX_SpaceFunction()
     " Re-map <Space> to some frequently used commands
@@ -50,7 +75,6 @@ function! NX_SpaceFunction()
     endif
     let g:nx__spaceFunction += 1
 endfunction
-let g:nx__spaceFunction = 0
 
 function! NX_ChangeFileFormat()
     " Change linespace from UNIX to DOS and vice-versa
@@ -65,52 +89,140 @@ function! NX_ChangeFileFormat()
     endif
 endfunction
 
-
-""" Special VIM behaviors
-function! NX_SetTempDirectory(temp_dir)
-    " Set swap file directory
-    let temp_dir = NX_parse_path(a:temp_dir)
-    call NX__create_dir(temp_dir)
-    let &directory = temp_dir
-endfunction
-
-function! NX_EnablePersistentUndo(undo_dir)
-    " Persist undo forever
-    let undo_dir = NX_parse_path(a:undo_dir)
-    call NX__create_dir(undo_dir)
-    let &undodir = undo_dir
-    set undofile
-endfunction
-
-
-""" Plugin-related
-function! NX_has_plugin(name)
-    for plugin in g:nx_enabled_plugins
-        let plugin_name = strpart(
-            \     plugin
-            \     , strridx(plugin, '/', strlen(plugin)) + 1
-            \     , strlen(plugin)
-            \ )
-        if plugin_name == a:name
-            let plugin_dir = g:nx_plugin_dir . "/" . plugin_name
-            return !empty(glob(plugin_dir))
-        endif
-    endfor
-endfunction
-
 function! NX_NERDTreeToggle()
-    " Check if NERDTree window is visible in the current tabpage
-    if exists('t:NERDTreeBufName') && bufwinnr(t:NERDTreeBufName) != -1
+    " Toggle NERDTree window
+    if exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1
+        " NERDTree window is visible in the current tabpage
         :NERDTreeClose
     else
         :NERDTreeCWD
     endif
 endfunction
 
+function! NX_ChangeColorScheme(choose_next)
+    " Change colorscheme
+    if a:choose_next
+        let g:nx__colorscheme_idx += 1
+        if g:nx__colorscheme_idx >= len(g:nx__colorschemes)
+            let g:nx__colorscheme_idx = 0
+        endif
+    elseif !a:choose_next
+        let g:nx__colorscheme_idx -= 1
+        if g:nx__colorscheme_idx < 0
+            let g:nx__colorscheme_idx = len(g:nx__colorschemes) - 1
+        endif
+    else
+        let g:nx__colorscheme_idx = index(g:nx__colorschemes, a:choose_next)
+        echo "A"
+    endif
 
-""" OS-dependent Utilities
-function! NX__create_dir(dir)
-    let dir = NX_parse_path(a:dir)
+    let colorscheme_name = g:nx__colorschemes[g:nx__colorscheme_idx]
+    let cmd_colorscheme = "colorscheme " . colorscheme_name
+    silent execute cmd_colorscheme
+    execute "colorscheme"
+endfunction
+
+function! NX_ToggleBackground()
+    " Toggle background
+    if &background == "light"
+        set background=dark
+    else
+        set background=light
+    endif
+endfunction
+
+function! NX_GetCurrentColorScheme()
+    " Return current colorscheme
+    if !exists("g:colors_name")
+        return "default"
+    endif
+    return g:colors_name
+endfunction
+
+function! NX_GetColorSchemes()
+    " Search and return colorscheme names
+    let colorschemes = ["default"]
+
+    let path_delim = "/"
+    if has("win32")
+        let path_delim = "\\"
+    endif
+
+    let plugin_paths = split(glob(s:plugin_dir . "/*"), "\n")
+    for path in plugin_paths
+        let cs_path = path . "/colors"
+        if isdirectory(cs_path)
+            let cs_files = split(glob(cs_path . "/*.vim"), "\n")
+            for cs_file in cs_files
+                let cs_name = strpart(
+                    \     cs_file
+                    \     , strridx(cs_file, path_delim, strlen(cs_file)) + 1
+                    \     , strlen(cs_file)
+                    \ )[:-5]
+                call add(colorschemes, cs_name)
+            endfor
+        endif
+    endfor
+
+    return colorschemes
+endfunction
+
+
+""" Special VIM behaviors
+function! NX_SetTempDirectory(temp_dir)
+    " Set swap file directory
+    let temp_dir = NX_ParsePath(a:temp_dir)
+    call NX_CreateDirectory(temp_dir)
+    let &directory = temp_dir
+endfunction
+
+function! NX_EnablePersistentUndo(undo_dir)
+    " Persist undo forever
+    let undo_dir = NX_ParsePath(a:undo_dir)
+    call NX_CreateDirectory(undo_dir)
+    let &undodir = undo_dir
+    set undofile
+endfunction
+
+
+""" Plugins
+function! NX_AutoInstallVimPlug()
+    """ Auto-install vim-plug. Requires 'plug.vim' in autoload directory
+    if has("unix")
+        let g:nx_autoload_dir = "~/.vim/autoload/"
+    elseif has("win32")
+        let g:nx_autoload_dir = "~/vimfiles/autoload/"
+    endif
+
+    if empty(glob(g:nx_autoload_dir . "plug.vim"))
+        if (!empty(glob("~/.vim/plug.vim")))
+            call NX_CreateDirectory(g:nx_autoload_dir)
+            call NX_CopyFile("~/.vim/plug.vim", g:nx_autoload_dir . "plug.vim")
+        endif
+    endif
+endfunction
+
+function! NX_HasPlugin(plugins, name)
+    " Check if plugin is in the list and is installed
+    for plugin in a:plugins
+        let plugin_name = strpart(
+            \     plugin
+            \     , strridx(plugin, "/", strlen(plugin)) + 1
+            \     , strlen(plugin)
+            \ )
+        if plugin_name == a:name
+            let plugin_dir = s:plugin_dir . "/" . plugin_name
+            return !empty(glob(plugin_dir))
+        endif
+    endfor
+endfunction
+
+
+
+""" Utilities
+function! NX_CreateDirectory(dir)
+    " Create non-existent directory
+    let dir = NX_ParsePath(a:dir)
     if empty(glob(dir))
         if has("unix")
             call system("mkdir -p " . dir)
@@ -120,21 +232,25 @@ function! NX__create_dir(dir)
     endif
 endfunction
 
-function! NX__copy_file(src, dest)
+function! NX_CopyFile(src, dest)
+    " Copy src file to dest file
     if has("unix")
         call system("cp " . a:src . " " . a:dest)
     elseif has("win32")
-        call system("copy /Y " . NX_parse_path(a:src) . " " .
-            \ NX_parse_path(a:dest))
+        call system("copy /Y " . NX_ParsePath(a:src) . " "
+                    \ . NX_ParsePath(a:dest))
     endif
 endfunction
 
-function! NX_parse_path(path)
-    " Parse UNIX-like path into DOS format
+function! NX_ParsePath(path)
+    " Parse UNIX path into DOS path format then expand it
     if has("win32")
-        " unix-to-win32 path format
         return expand(substitute(a:path, "/", "\\", "g"))
     endif
     return expand(a:path)
 endfunction
+
+
+""" Pre-Init
+call NX_AutoInstallVimPlug()
 

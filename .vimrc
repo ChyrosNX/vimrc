@@ -17,10 +17,12 @@
 "
 " TODO:
 "   1) Delete trailing whitespaces on save
-"   2) Colorscheme switching
+"   2) Increase history size
 "
 """
 
+
+source ~/.nephvimrc                 " Load Neph Library
 
 set nocompatible                    " Use VIM to its full potential
 set encoding=utf-8
@@ -29,75 +31,58 @@ filetype plugin on                  " Enable plugin for specific file types
 
 """ Custom settings
 let s:editor_width = (80+4+2+2)*2+1 " Width(text + line-no + sign + rt-margin)
-let g:show_editor_guides = 1
-let s:undo_dir = "~/.vim/temp/undo"
+let s:show_editor_guides = 1
 let s:temp_dir = "~/.vim/temp/temp"
+let s:undo_dir = "~/.vim/temp/undo"
+let s:plugin_dir = "~/.vim/plugged"
+
+let nx_has_vim_plug = !empty(glob(g:nx_autoload_dir . "plug.vim"))
+let nx_has_ctags_bin = !empty(glob(s:plugin_dir . "/ctags/ctags.exe"))
 
 set visualbell t_vb=                " Disable beeps
-
 let &columns=s:editor_width         " Set window width by column size
 set lines=40                        " Set window height by lines
-
 set listchars=eol:┐,tab:»\ ,trail:· " Editor guides symbols
 
-source ~/.nephvimrc
 
-
-""" Auto-install vim-plug
-let g:nx_install_plugins = 0
-if has("unix")
-    let g:nx_autoload_dir = "~/.vim/autoload/"
-    let g:nx_install_plugins = 1
-elseif has("win32")
-    let g:nx_autoload_dir = "~/vimfiles/autoload/"
-    let g:nx_install_plugins = 1
-endif
-
-if empty(glob(g:nx_autoload_dir . "plug.vim"))
-    if (!empty(glob("~/.vim/plug.vim")))
-        call NX__create_dir(g:nx_autoload_dir)
-        call NX__copy_file("~/.vim/plug.vim", g:nx_autoload_dir . "plug.vim")
-    endif
-endif
+""" Initialize Neph Library
+call NX_Init(s:temp_dir, s:undo_dir, s:plugin_dir, s:show_editor_guides)
 
 
 """ Plugins
 let g:nx_enabled_plugins = []
-call add(g:nx_enabled_plugins, 'morhetz/gruvbox')
-call add(g:nx_enabled_plugins, 'chriskempson/base16-vim')
-call add(g:nx_enabled_plugins, 'altercation/vim-colors-solarized')
-call add(g:nx_enabled_plugins, 'sjl/badwolf')
+" themes
+call add(g:nx_enabled_plugins, "morhetz/gruvbox")
+call add(g:nx_enabled_plugins, "chriskempson/base16-vim")
+call add(g:nx_enabled_plugins, "altercation/vim-colors-solarized")
+call add(g:nx_enabled_plugins, "sjl/badwolf")
 " status and tab line
-call add(g:nx_enabled_plugins, 'vim-airline/vim-airline')
+call add(g:nx_enabled_plugins, "vim-airline/vim-airline")
 " vim-airline theme
-call add(g:nx_enabled_plugins, 'vim-airline/vim-airline-themes')
+call add(g:nx_enabled_plugins, "vim-airline/vim-airline-themes")
 " file system explorer
-call add(g:nx_enabled_plugins, 'scrooloose/nerdtree')
+call add(g:nx_enabled_plugins, "scrooloose/nerdtree")
 " fuzzy file search, mru, etc
-call add(g:nx_enabled_plugins, 'kien/ctrlp.vim')
+call add(g:nx_enabled_plugins, "kien/ctrlp.vim")
 " git integration
-call add(g:nx_enabled_plugins, 'tpope/vim-fugitive')
+call add(g:nx_enabled_plugins, "tpope/vim-fugitive")
 " git diff signs
-call add(g:nx_enabled_plugins, 'airblade/vim-gitgutter')
+call add(g:nx_enabled_plugins, "airblade/vim-gitgutter")
 " vcs diff signs
-call add(g:nx_enabled_plugins, 'mhinz/vim-signify')
+call add(g:nx_enabled_plugins, "mhinz/vim-signify")
 " surround text w/ braces, etc
-call add(g:nx_enabled_plugins, 'tpope/vim-surround')
+call add(g:nx_enabled_plugins, "tpope/vim-surround")
 " comment functions
-call add(g:nx_enabled_plugins, 'scrooloose/nerdcommenter')
+call add(g:nx_enabled_plugins, "scrooloose/nerdcommenter")
 " syntax-checking
-call add(g:nx_enabled_plugins, 'scrooloose/syntastic')
+call add(g:nx_enabled_plugins, "scrooloose/syntastic")
 " class outline viewer
-call add(g:nx_enabled_plugins, 'majutsushi/tagbar')
+call add(g:nx_enabled_plugins, "majutsushi/tagbar")
 " python plug-in
-call add(g:nx_enabled_plugins, 'klen/python-mode')
-
-let g:nx_plugin_dir = "~/.vim/plugged"
-let nx_has_vim_plug = !empty(glob(g:nx_autoload_dir . "plug.vim"))
-let nx_has_ctags_bin = !empty(glob(g:nx_plugin_dir . "/ctags/ctags.exe"))
+call add(g:nx_enabled_plugins, "klen/python-mode")
 
 if nx_has_vim_plug
-    call plug#begin(g:nx_plugin_dir)
+    call plug#begin(s:plugin_dir)
     for plugin in nx_enabled_plugins
         Plug plugin
     endfor
@@ -106,19 +91,19 @@ endif
 
 
 """ Plugin Settings
-if NX_has_plugin('vim-airline')
+if NX_HasPlugin(g:nx_enabled_plugins, "vim-airline")
     " Show window tabs on top
     let g:airline#extensions#tabline#enabled = 1
 endif
-if NX_has_plugin('nerdtree')
+if NX_HasPlugin(g:nx_enabled_plugins, "nerdtree")
     " Show hidden files in NERDTree
     let NERDTreeShowHidden = 1
 endif
-if NX_has_plugin('ctrlp.vim')
+if NX_HasPlugin(g:nx_enabled_plugins, "ctrlp.vim")
     " Show hidden files in Ctrlp
     let g:ctrlp_show_hidden = 1
 endif
-if NX_has_plugin('tagbar')
+if NX_HasPlugin(g:nx_enabled_plugins, "tagbar")
     if has("unix")
         " NOTE: install ctags using OS software package
     elseif has("win32") && nx_has_ctags_bin
@@ -127,11 +112,11 @@ if NX_has_plugin('tagbar')
         let g:tagbar_ctags_bin = "~/.vim/plugged/ctags/ctags.exe"
     endif
 endif
-if NX_has_plugin('python-mode')
+if NX_HasPlugin(g:nx_enabled_plugins, "python-mode")
     let g:pymode_rope = 0               " Disabled due to slow-caching issue
-    "let g:pymode_python = "python3"    " python2 | python3
+    let g:pymode_python = "python3"     " python2 | python3
 endif
-if NX_has_plugin('syntastic')
+if NX_HasPlugin(g:nx_enabled_plugins, "syntastic")
     """ Syntastic...
     " Last given warning message
     set statusline+=%#warningmsg#
@@ -142,7 +127,7 @@ if NX_has_plugin('syntastic')
     let g:syntastic_check_on_open = 0               " Run syntax checks on open
     let g:syntastic_check_on_wq = 0                 " Skips check on close
 endif
-if NX_has_plugin('nerdcommenter')
+if NX_HasPlugin(g:nx_enabled_plugins, "nerdcommenter")
     " Space after comment delimiter
     let g:NERDSpaceDelims = 1
     " Align when inserting a comment
@@ -232,6 +217,11 @@ inoremap <silent> <A-1> <Esc>:call NX_NERDTreeToggle()<CR>
 nnoremap <silent> <A-2>      :TagbarToggle<CR>
 inoremap <silent> <A-2> <Esc>:TagbarToggle<CR>
 
+" F2 - Change Theme Settings
+nnoremap <silent> <F2>   :call NX_ChangeColorScheme(1)<CR>
+nnoremap <silent> <S-F2> :call NX_ChangeColorScheme(0)<CR>
+nnoremap <silent> <F3>   :call NX_ToggleBackground()<CR>
+
 " F5 Show/hide editor guides
 nnoremap <silent> <F5>      :call NX_ShowEditorGuides(0)<CR>
 inoremap <silent> <F5> <Esc>:call NX_ShowEditorGuides(0)<CR>
@@ -281,6 +271,8 @@ nnoremap <Leader>R yiw:%s/*//gc<Left><Left><Left>
 " Leader+c - Count all from buffer with (Requires value in register *)
 nnoremap <Leader>c yiw:%s/*//gn<CR>
 
-call NX_SetTempDirectory(s:temp_dir)        " Set swap file directory
-call NX_EnablePersistentUndo(s:undo_dir)    " Persist undo forever
+
+""" Clean up
+call NX_CleanUp()
+delfunction NX_CleanUp
 
