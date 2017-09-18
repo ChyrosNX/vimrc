@@ -17,7 +17,9 @@
 "
 " TODO:
 "   1) Delete trailing whitespaces on save
-"   2) Increase history size
+"   2) Ctrl+F2 resets to default colorscheme
+"   3) Shift+F3 previous font size
+"   4) Font size display
 "
 """
 
@@ -219,9 +221,9 @@ nnoremap <silent> <A-2>      :TagbarToggle<CR>
 inoremap <silent> <A-2> <Esc>:TagbarToggle<CR>
 
 " F2 - Change Theme Settings
-nnoremap <silent> <F2>   :call NX_ChangeColorScheme(1)<CR>
-nnoremap <silent> <S-F2> :call NX_ChangeColorScheme(0)<CR>
-nnoremap <silent> <F3>   :call NX_ToggleBackground()<CR>
+nnoremap <silent> <F2>   :call NX_ChangeColorScheme(1)<CR>:call NX_SaveSettings()<CR>:call NX_ColorSchemeInfo()<CR>
+nnoremap <silent> <S-F2> :call NX_ChangeColorScheme(0)<CR>:call NX_SaveSettings()<CR>:call NX_ColorSchemeInfo()<CR>
+nnoremap <silent> <F3>   :call NX_ToggleBackground()<CR>:call NX_SaveSettings()<CR>:call NX_ColorSchemeInfo()<CR>
 
 " F5 Show/hide editor guides
 nnoremap <silent> <F5>      :call NX_ShowEditorGuides(0)<CR>
@@ -273,7 +275,8 @@ nnoremap <Leader>R yiw:%s/*//gc<Left><Left><Left>
 nnoremap <Leader>c yiw:%s/*//gn<CR>
 
 
-""" Clean up
+""" Post-init
+call NX_LoadSettings()
 call NX_CleanUp()
 delfunction NX_CleanUp
 

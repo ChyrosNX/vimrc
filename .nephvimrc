@@ -15,10 +15,11 @@ function! NX_Init(temp_dir, undo_dir, plugin_dir, show_editor_guides)
     let s:plugin_dir = a:plugin_dir
     let g:nx__editorGuidesHidden = a:show_editor_guides
 
+    let g:nx__configFile = "~/.neph_config"
     let g:nx__spaceFunction = 0
     let g:nx__colorschemes = NX_GetColorSchemes()
-    let g:nx__colorscheme_idx = index(g:nx__colorschemes
-                \ , NX_GetCurrentColorScheme())
+
+    let g:colors_name = "default"
 
     call NX_SetTempDirectory(a:temp_dir)        " Set swap file directory
     call NX_EnablePersistentUndo(a:undo_dir)    " Persist undo forever
@@ -27,7 +28,7 @@ endfunction
 
 function! NX_CleanUp()
     delfunction NX_Init
-    delfunction NX_GetCurrentColorScheme
+    delfunction NX_LoadSettings
     delfunction NX_GetColorSchemes
     delfunction NX_SetTempDirectory
     delfunction NX_EnablePersistentUndo
@@ -40,6 +41,28 @@ endfunction
 
 
 """ Neph Lib Functions
+function! NX_LoadSettings()
+    " Load config file if it exists
+    if !has("gui") && !empty(glob(g:nx__configFile))
+        let settings = readfile(glob(g:nx__configFile))
+        if len(settings) > 0
+            call NX_ApplyColorScheme(settings[0])
+        endif
+        if len(settings) > 1
+            call NX_ApplyBackground(settings[1])
+        endif
+        return 1
+    endif
+    return 0
+endfunction
+
+function! NX_SaveSettings()
+    let settings = []
+    call add(settings, g:colors_name)
+    call add(settings, &background)
+    call writefile(settings, expand(g:nx__configFile), "b")
+endfunction
+
 function! NX_ShowEditorGuides(global)
     " Show/hide editing guides (spacing and linebreak symbols, 80-col line)
     if g:nx__editorGuidesHidden
@@ -101,6 +124,16 @@ endfunction
 
 function! NX_ChangeColorScheme(choose_next)
     " Change colorscheme
+    if !exists("g:nx__colorscheme_idx")
+        let curr_colorscheme = NX_GetCurrentColorScheme()
+        if index(g:nx__colorschemes, curr_colorscheme) == -1
+            let g:nx__colorscheme_idx = 0
+            call add(g:nx__colorschemes, curr_colorscheme)
+        endif
+        let g:nx__colorscheme_idx = index(g:nx__colorschemes, curr_colorscheme)
+        delfunction NX_GetCurrentColorScheme
+    endif
+
     if a:choose_next
         let g:nx__colorscheme_idx += 1
         if g:nx__colorscheme_idx >= len(g:nx__colorschemes)
@@ -117,18 +150,33 @@ function! NX_ChangeColorScheme(choose_next)
     endif
 
     let colorscheme_name = g:nx__colorschemes[g:nx__colorscheme_idx]
-    let cmd_colorscheme = "colorscheme " . colorscheme_name
-    silent execute cmd_colorscheme
-    execute "colorscheme"
+    call NX_ApplyColorScheme(colorscheme_name)
+endfunction
+
+function! NX_ApplyColorScheme(colorscheme)
+    " Apply colorscheme
+    let cmd_colorscheme = "colorscheme " . a:colorscheme
+    execute cmd_colorscheme
 endfunction
 
 function! NX_ToggleBackground()
     " Toggle background
     if &background == "light"
-        set background=dark
+        call NX_ApplyBackground("dark")
     else
-        set background=light
+        call NX_ApplyBackground("light")
     endif
+endfunction
+
+function! NX_ApplyBackground(background)
+    " Apply background
+    let colors_name = g:colors_name
+    let &background = a:background
+    let g:colors_name = colors_name
+endfunction
+
+function! NX_ColorSchemeInfo()
+    echo "Colorscheme: " . g:colors_name . " (" . &background . ")"
 endfunction
 
 function! NX_GetCurrentColorScheme()
@@ -141,7 +189,7 @@ endfunction
 
 function! NX_GetColorSchemes()
     " Search and return colorscheme names
-    let colorschemes = ["default"]
+    let colorschemes = []
 
     let path_delim = "/"
     if has("win32")
@@ -216,7 +264,6 @@ function! NX_HasPlugin(plugins, name)
         endif
     endfor
 endfunction
-
 
 
 """ Utilities
