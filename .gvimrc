@@ -22,13 +22,13 @@ let g:nxg__font_size = "normal"         " small | normal | large | xlarge
 let g:nxg__theme_background = "dark"    " light | dark
 let g:nxg__theme = "gruvbox"
 " Font Name
-let g:nxg__font_unix = "Monospace Regular"
 let g:nxg__font_dos = "Consolas"
 let g:nxg__font_mac = "Monaco"
+let g:nxg__font_unix = "Monospace Regular"
 " Base Font Size
-let g:nxg__font_size_unix = 10
 let g:nxg__font_size_dos = 11
 let g:nxg__font_size_mac = 12
+let g:nxg__font_size_unix = 10
 
 
 """ Mappings
@@ -123,15 +123,15 @@ function! NXG_ApplyFontSize()
     elseif g:nxg__font_size == "xlarge"
         let g:nxg__szmod = 4
     endif
-    if has("gtk")
-        let &guifont = g:nxg__font_unix . " " .
-            \ (g:nxg__font_size_unix + g:nxg__szmod)
-    elseif has("win32")
+    if has("win32")
         let &guifont = g:nxg__font_dos . ":h" .
             \ (g:nxg__font_size_dos + g:nxg__szmod)
     elseif has("macvim")
         let &guifont = g:nxg__font_mac . ":h" .
             \ (g:nxg__font_size_mac + g:nxg__szmod)
+    elseif has("unix")
+        let &guifont = g:nxg__font_unix . " " .
+            \ (g:nxg__font_size_unix + g:nxg__szmod)
     endif
 endfunction
 
