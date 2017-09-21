@@ -17,9 +17,9 @@
 let g:nxg_theme = {
     \   'fontSize'      : 'normal'
     \   , 'background'  : 'dark'
-    \   , 'colorscheme' : 'gruvbox'
+    \   , 'colorScheme' : 'gruvbox'
     \ }
-" Font
+" Font:
 let g:nxg_font = {
     \   'win32' : { 'name': 'Consolas'         , 'size': 11 }
     \   , 'mac' : { 'name': 'Monaco'           , 'size': 12 }
@@ -87,16 +87,16 @@ endfunction
 function! NXG_SetupThemes()
     if !NX_LoadSettings()
         " No settings file found, apply default themes
-        if index(g:nx__colorschemes, g:nxg_theme['colorscheme']) >= 0
-            " Apply user colorscheme and background
-            let g:nx__colorscheme_idx = index(g:nx__colorschemes
-                \ , g:nxg_theme['colorscheme'])
-            let cmd_colorscheme = 'colorscheme ' . g:nxg_theme['colorscheme']
+        if index(g:nx__colorSchemes, g:nxg_theme['colorScheme']) >= 0
+            " Apply user color scheme and background
+            let g:nx__colorscheme_idx = index(g:nx__colorSchemes
+                \ , g:nxg_theme['colorScheme'])
+            let cmd_colorscheme = 'colorscheme ' . g:nxg_theme['colorScheme']
             execute cmd_colorscheme
-            let g:airline_theme = g:nxg_theme['colorscheme']
+            let g:airline_theme = g:nxg_theme['colorScheme']
             let &background = g:nxg_theme['background']
         else
-            " User colorscheme is not available, apply default
+            " User color scheme is not available, apply default
             colorscheme default
             set background=light
         endif
@@ -127,17 +127,17 @@ endfunction
 function! NXG_ApplyFontSize()
     " Apply font size
     let step = 2
-    let size_mod = index(g:nxg__fontSizes, g:nxg_theme['fontSize'])
+    let sizeModifier = index(g:nxg__fontSizes, g:nxg_theme['fontSize'])
         \ * step - step
     if has('win32')
         let &guifont = g:nxg_font['win32']['name'] . ':h' .
-            \ (g:nxg_font['win32']['size'] + size_mod)
+            \ (g:nxg_font['win32']['size'] + sizeModifier)
     elseif has('mac') || has('osx')
         let &guifont = g:nxg_font['mac']['name'] . ':h' .
-            \ (g:nxg_font['mac']['size'] + size_mod)
+            \ (g:nxg_font['mac']['size'] + sizeModifier)
     elseif has('unix')
         let &guifont = g:nxg_font['unix']['name'] . ' ' .
-            \ (g:nxg_font['unix']['size'] + size_mod)
+            \ (g:nxg_font['unix']['size'] + sizeModifier)
     endif
 endfunction
 

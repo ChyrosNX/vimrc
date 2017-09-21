@@ -17,75 +17,74 @@
 "
 " TODO:
 "   1) Delete trailing whitespaces on save
-"   2) Ctrl+F2 resets to default colorscheme
-"   3) Shift+F3 previous font size
-"   4) Font size display
+"   2) Ctrl+F2 resets to default color scheme
 "
 """
 
 
-source ~/.nephvimrc                 " Load Neph Library
+source ~/.nephvimrc " Load Neph Library
 
-set nocompatible                    " Use VIM to its full potential
+set nocompatible    " Use VIM to its full potential
 set encoding=utf-8
-filetype plugin on                  " Enable plugin for specific file types
+filetype plugin on  " Enable plugin for specific file types
 
 
-""" Custom settings
-let s:editor_width = (80+4+2+2)*2+1 " Width(text + line-no + sign + rt-margin)
-let s:show_editor_guides = 1
-let s:temp_dir = "~/.vim/temp/temp"
-let s:undo_dir = "~/.vim/temp/undo"
-let s:plugin_dir = "~/.vim/plugged"
+""" User settings
+"   editorWidth = text-width + line-num-width + sign-width + rt-margin-width
+let s:editorWidth       = (80+4+2+2)*2+1  
+let s:showEditorGuides  = 1
+let s:tempDir           = '~/.vim/temp/temp'
+let s:undoDir           = '~/.vim/temp/undo'
+let s:pluginDir         = '~/.vim/plugged'
 
-let nx_has_vim_plug = !empty(glob(g:nx_autoload_dir . "plug.vim"))
-let nx_has_ctags_bin = !empty(glob(s:plugin_dir . "/ctags/ctags.exe"))
+let s:hasVimPlug = !empty(glob(g:nx__autoloadDir . 'plug.vim'))
+let s:hasCtagsBin = !empty(glob(s:pluginDir . '/ctags/ctags.exe'))
 
 set visualbell t_vb=                " Disable beeps
-let &columns=s:editor_width         " Set window width by column size
+let &columns = s:editorWidth        " Set window width by column size
 set lines=40                        " Set window height by lines
 set listchars=eol:┐,tab:»\ ,trail:· " Editor guides symbols
 
 
 """ Initialize Neph Library
-call NX_Init(s:temp_dir, s:undo_dir, s:plugin_dir, s:show_editor_guides)
+call NX_Init(s:tempDir, s:undoDir, s:pluginDir, s:showEditorGuides)
 
 
 """ Plugins
-let g:nx_enabled_plugins = []
+let s:enabledPlugins = []
 " themes
-call add(g:nx_enabled_plugins, "morhetz/gruvbox")
-call add(g:nx_enabled_plugins, "chriskempson/base16-vim")
-call add(g:nx_enabled_plugins, "altercation/vim-colors-solarized")
-call add(g:nx_enabled_plugins, "sjl/badwolf")
+call add(s:enabledPlugins, 'morhetz/gruvbox')
+call add(s:enabledPlugins, 'chriskempson/base16-vim')
+call add(s:enabledPlugins, 'altercation/vim-colors-solarized')
+call add(s:enabledPlugins, 'sjl/badwolf')
 " status and tab line
-call add(g:nx_enabled_plugins, "vim-airline/vim-airline")
+call add(s:enabledPlugins, 'vim-airline/vim-airline')
 " vim-airline theme
-call add(g:nx_enabled_plugins, "vim-airline/vim-airline-themes")
+call add(s:enabledPlugins, 'vim-airline/vim-airline-themes')
 " file system explorer
-call add(g:nx_enabled_plugins, "scrooloose/nerdtree")
+call add(s:enabledPlugins, 'scrooloose/nerdtree')
 " fuzzy file search, mru, etc
-call add(g:nx_enabled_plugins, "kien/ctrlp.vim")
+call add(s:enabledPlugins, 'kien/ctrlp.vim')
 " git integration
-call add(g:nx_enabled_plugins, "tpope/vim-fugitive")
+call add(s:enabledPlugins, 'tpope/vim-fugitive')
 " git diff signs
-call add(g:nx_enabled_plugins, "airblade/vim-gitgutter")
+call add(s:enabledPlugins, 'airblade/vim-gitgutter')
 " vcs diff signs
-call add(g:nx_enabled_plugins, "mhinz/vim-signify")
+call add(s:enabledPlugins, 'mhinz/vim-signify')
 " surround text w/ braces, etc
-call add(g:nx_enabled_plugins, "tpope/vim-surround")
+call add(s:enabledPlugins, 'tpope/vim-surround')
 " comment functions
-call add(g:nx_enabled_plugins, "scrooloose/nerdcommenter")
+call add(s:enabledPlugins, 'scrooloose/nerdcommenter')
 " syntax-checking
-call add(g:nx_enabled_plugins, "scrooloose/syntastic")
+call add(s:enabledPlugins, 'scrooloose/syntastic')
 " class outline viewer
-call add(g:nx_enabled_plugins, "majutsushi/tagbar")
+call add(s:enabledPlugins, 'majutsushi/tagbar')
 " python plug-in
-call add(g:nx_enabled_plugins, "klen/python-mode")
+call add(s:enabledPlugins, 'klen/python-mode')
 
-if nx_has_vim_plug
-    call plug#begin(s:plugin_dir)
-    for plugin in nx_enabled_plugins
+if s:hasVimPlug
+    call plug#begin(s:pluginDir)
+    for plugin in s:enabledPlugins
         Plug plugin
     endfor
     call plug#end()
@@ -93,32 +92,32 @@ endif
 
 
 """ Plugin Settings
-if NX_HasPlugin(g:nx_enabled_plugins, "vim-airline")
+if NX_HasPlugin(s:enabledPlugins, 'vim-airline')
     " Show window tabs on top
     let g:airline#extensions#tabline#enabled = 1
 endif
-if NX_HasPlugin(g:nx_enabled_plugins, "nerdtree")
+if NX_HasPlugin(s:enabledPlugins, 'nerdtree')
     " Show hidden files in NERDTree
     let NERDTreeShowHidden = 1
 endif
-if NX_HasPlugin(g:nx_enabled_plugins, "ctrlp.vim")
+if NX_HasPlugin(s:enabledPlugins, 'ctrlp.vim')
     " Show hidden files in Ctrlp
     let g:ctrlp_show_hidden = 1
 endif
-if NX_HasPlugin(g:nx_enabled_plugins, "tagbar")
-    if has("unix")
+if NX_HasPlugin(s:enabledPlugins, 'tagbar')
+    if has('unix')
         " NOTE: install ctags using OS software package
-    elseif has("win32") && nx_has_ctags_bin
+    elseif has('win32') && s:hasCtagsBin
         " NOTE: download binary from: http://ctags.sourceforge.net/
         " and put the contents at ~/.vim/plugged/ctags
-        let g:tagbar_ctags_bin = "~/.vim/plugged/ctags/ctags.exe"
+        let g:tagbar_ctags_bin = '~/.vim/plugged/ctags/ctags.exe'
     endif
 endif
-if NX_HasPlugin(g:nx_enabled_plugins, "python-mode")
+if NX_HasPlugin(s:enabledPlugins, 'python-mode')
     let g:pymode_rope = 0               " Disabled due to slow-caching issue
-    let g:pymode_python = "python3"     " python2 | python3
+    let g:pymode_python = 'python3'     " python2 | python3
 endif
-if NX_HasPlugin(g:nx_enabled_plugins, "syntastic")
+if NX_HasPlugin(s:enabledPlugins, 'syntastic')
     """ Syntastic...
     " Last given warning message
     set statusline+=%#warningmsg#
@@ -129,14 +128,14 @@ if NX_HasPlugin(g:nx_enabled_plugins, "syntastic")
     let g:syntastic_check_on_open = 0               " Run syntax checks on open
     let g:syntastic_check_on_wq = 0                 " Skips check on close
 endif
-if NX_HasPlugin(g:nx_enabled_plugins, "nerdcommenter")
+if NX_HasPlugin(s:enabledPlugins, 'nerdcommenter')
     " Space after comment delimiter
     let g:NERDSpaceDelims = 1
     " Align when inserting a comment
-    let g:NERDDefaultAlign = "left"
+    let g:NERDDefaultAlign = 'left'
     let g:NERDCustomDelimiters = {
-        \     "c"     : { "left": "/**","right": "*/" }
-        \     , "java": { "left": "/**","right": "*/" }
+        \     'c'     : { 'left': '/**','right': '*/' }
+        \     , 'java': { 'left': '/**','right': '*/' }
         \ }
     " Include empty lines when commenting
     let g:NERDCommentEmptyLines = 1
@@ -170,22 +169,22 @@ set incsearch                   " Enable incremental search
 
 
 """ Platform-specific Settings
-if has("unix")
+if has('unix')
     set shell=bash\ -i          " Source .bashrc environment
 endif
 
 
 """ Mappings
-let mapleader = "\\"
+let mapleader = '\'
 
 " python-mode Mappings
-let g:pymode_rope_goto_definition_bind = "<A-g>"  " Alt+G -> Goto-definition
+let g:pymode_rope_goto_definition_bind = '<A-g>'  " Alt+G -> Goto-definition
 
 " Unmap navigation keys
-noremap <Up>      :echo "One does not simply 'go up' with Arrow Keys."<CR>
-noremap <Down>    :echo "One does not simply 'go down' with Arrow Keys."<CR>
-noremap <Left>    :echo "One does not simply 'go left' with Arrow Keys."<CR>
-noremap <Right>   :echo "One does not simply 'go right' with Arrow Keys."<CR>
+noremap <Up>      :echo 'One does not simply 'go up' with Arrow Keys.'<CR>
+noremap <Down>    :echo 'One does not simply 'go down' with Arrow Keys.'<CR>
+noremap <Left>    :echo 'One does not simply 'go left' with Arrow Keys.'<CR>
+noremap <Right>   :echo 'One does not simply 'go right' with Arrow Keys.'<CR>
 noremap <Space>   <nop>
 noremap <C-Space> <nop>
 noremap <BS>      <nop>
@@ -221,9 +220,10 @@ nnoremap <silent> <A-2>      :TagbarToggle<CR>
 inoremap <silent> <A-2> <Esc>:TagbarToggle<CR>
 
 " F2 - Change Theme Settings
-nnoremap <silent> <F2>   :call NX_ChangeColorScheme(1)<CR>:call NX_SaveSettings()<CR>:call NX_ColorSchemeInfo()<CR>
-nnoremap <silent> <S-F2> :call NX_ChangeColorScheme(0)<CR>:call NX_SaveSettings()<CR>:call NX_ColorSchemeInfo()<CR>
-nnoremap <silent> <F3>   :call NX_ToggleBackground()<CR>:call NX_SaveSettings()<CR>:call NX_ColorSchemeInfo()<CR>
+nnoremap <silent> <F2>   :call NX_ChangeColorScheme(0)<CR>
+nnoremap <silent> <S-F2> :call NX_ChangeColorScheme(1)<CR>
+nnoremap <silent> <F3>   :call NX_ToggleBackground()<CR>
+nnoremap <silent> <S-F3> :call NX_ToggleBackground()<CR>
 
 " F5 Show/hide editor guides
 nnoremap <silent> <F5>      :call NX_ShowEditorGuides(0)<CR>
@@ -268,8 +268,8 @@ inoremap <silent> <C-s> <Esc>:w<CR>
 " Leader+r - Find and replace all with confirm
 nnoremap <Leader>r yiw:%s/*//g<Left><Left>
 
-" Leader+R - Find and replace all
-nnoremap <Leader>R yiw:%s/*//gc<Left><Left><Left>
+" Leader+R - Find and replace all (whole word)
+nnoremap <Leader>R yiw:%s/\<*\>//g<Left><Left>
 
 " Leader+c - Count all from buffer with (Requires value in register *)
 nnoremap <Leader>c yiw:%s/*//gn<CR>

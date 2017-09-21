@@ -11,19 +11,19 @@
 
 
 """ Init and Clean-up
-function! NX_Init(temp_dir, undo_dir, plugin_dir, show_editor_guides)
-    let s:plugin_dir = a:plugin_dir
-    let g:nx__editorGuidesHidden = a:show_editor_guides
+function! NX_Init(tempDir, undoDir, pluginDir, showEditorGuides)
+    let s:pluginDir = a:pluginDir
+    let g:nx__editorGuidesHidden = a:showEditorGuides
 
-    let g:nx__configFile = "~/.neph_config"
+    let g:nx__configFile = '~/.neph_config'
     let g:nx__spaceFunction = 0
-    let g:nx__colorschemes = NX_GetColorSchemes()
+    let g:nx__colorSchemes = NX_GetColorSchemes()
 
-    let g:colors_name = "default"
+    let g:colors_name = 'default'
 
-    call NX_SetTempDirectory(a:temp_dir)        " Set swap file directory
-    call NX_EnablePersistentUndo(a:undo_dir)    " Persist undo forever
-    call NX_ShowEditorGuides(1)                 " Show editing symbols
+    call NX_SetTempDirectory(a:tempDir)     " Set swap file directory
+    call NX_EnablePersistentUndo(a:undoDir) " Persist undo forever
+    call NX_ShowEditorGuides(1)             " Show editing symbols
 endfunction
 
 function! NX_CleanUp()
@@ -43,7 +43,7 @@ endfunction
 """ Neph Lib Functions
 function! NX_LoadSettings()
     " Load config file if it exists
-    if !has("gui") && !empty(glob(g:nx__configFile))
+    if !has('gui_running') && !empty(glob(g:nx__configFile))
         let settings = readfile(glob(g:nx__configFile))
         if len(settings) > 0
             call NX_ApplyColorScheme(settings[0])
@@ -60,7 +60,7 @@ function! NX_SaveSettings()
     let settings = []
     call add(settings, g:colors_name)
     call add(settings, &background)
-    call writefile(settings, expand(g:nx__configFile), "b")
+    call writefile(settings, expand(g:nx__configFile), 'b')
 endfunction
 
 function! NX_ShowEditorGuides(global)
@@ -70,14 +70,14 @@ function! NX_ShowEditorGuides(global)
             set list colorcolumn=80
         else
             setlocal list colorcolumn=80
-            echo "Editor guides enabled."
+            echo 'Editor guides enabled.'
         endif
     else
         if a:global
             set nolist colorcolumn=
         else
             setlocal nolist colorcolumn=
-            echo "Editor guides disabled."
+            echo 'Editor guides disabled.'
         endif
     endif
     let g:nx__editorGuidesHidden = !g:nx__editorGuidesHidden
@@ -87,13 +87,13 @@ function! NX_SpaceFunction()
     " Re-map <Space> to some frequently used commands
     if g:nx__spaceFunction == 0
         nmap <Space> .
-        echo "<Space> now works as . command (repeat last change)"
+        echo '<Space> now works as . command (repeat last change)'
     elseif g:nx__spaceFunction == 1
         nmap <Space> @@
-        echo "<Space> now works as @@ command (repeat last macro)"
+        echo '<Space> now works as @@ command (repeat last macro)'
     elseif g:nx__spaceFunction == 2
         nmap <Space> <nop>
-        echo "<Space> is now unbound"
+        echo '<Space> is now unbound'
         let g:nx__spaceFunction = -1
     endif
     let g:nx__spaceFunction += 1
@@ -101,20 +101,20 @@ endfunction
 
 function! NX_ChangeFileFormat()
     " Change linespace from UNIX to DOS and vice-versa
-    if &fileformats == "unix,dos"
+    if &fileformats == 'unix,dos'
         set fileformats=dos,unix
         set fileformat=dos
-        echo "FileFormat set to DOS."
+        echo 'FileFormat set to DOS.'
     else
         set fileformats=unix,dos
         set fileformat=unix
-        echo "FileFormat set to UNIX."
+        echo 'FileFormat set to UNIX.'
     endif
 endfunction
 
 function! NX_NERDTreeToggle()
     " Toggle NERDTree window
-    if exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1
+    if exists('t:NERDTreeBufName') && bufwinnr(t:NERDTreeBufName) != -1
         " NERDTree window is visible in the current tabpage
         :NERDTreeClose
     else
@@ -122,130 +122,124 @@ function! NX_NERDTreeToggle()
     endif
 endfunction
 
-function! NX_ChangeColorScheme(choose_next)
-    " Change colorscheme
-    if !exists("g:nx__colorscheme_idx")
-        let curr_colorscheme = NX_GetCurrentColorScheme()
-        if index(g:nx__colorschemes, curr_colorscheme) == -1
-            let g:nx__colorscheme_idx = 0
-            call add(g:nx__colorschemes, curr_colorscheme)
+function! NX_ChangeColorScheme(prevStep)
+    " Change color scheme
+    if !exists('g:nx__colorSchemeIdx')
+        let currColorScheme = NX_GetCurrentColorScheme()
+        if index(g:nx__colorSchemes, currColorScheme) == -1
+            let g:nx__colorSchemeIdx = 0
+            call add(g:nx__colorSchemes, currColorScheme)
         endif
-        let g:nx__colorscheme_idx = index(g:nx__colorschemes, curr_colorscheme)
+        let g:nx__colorSchemeIdx = index(g:nx__colorSchemes, currColorScheme)
         delfunction NX_GetCurrentColorScheme
     endif
-
-    if a:choose_next
-        let g:nx__colorscheme_idx += 1
-        if g:nx__colorscheme_idx >= len(g:nx__colorschemes)
-            let g:nx__colorscheme_idx = 0
+    if a:prevStep
+        let g:nx__colorSchemeIdx -= 1
+        if g:nx__colorSchemeIdx < 0
+            let g:nx__colorSchemeIdx = len(g:nx__colorSchemes) - 1
         endif
-    elseif !a:choose_next
-        let g:nx__colorscheme_idx -= 1
-        if g:nx__colorscheme_idx < 0
-            let g:nx__colorscheme_idx = len(g:nx__colorschemes) - 1
+    elseif !a:prevStep
+        let g:nx__colorSchemeIdx += 1
+        if g:nx__colorSchemeIdx >= len(g:nx__colorSchemes)
+            let g:nx__colorSchemeIdx = 0
         endif
-    else
-        let g:nx__colorscheme_idx = index(g:nx__colorschemes, a:choose_next)
-        echo "A"
     endif
-
-    let colorscheme_name = g:nx__colorschemes[g:nx__colorscheme_idx]
-    call NX_ApplyColorScheme(colorscheme_name)
+    let colorSchemeName = g:nx__colorSchemes[g:nx__colorSchemeIdx]
+    call NX_ApplyColorScheme(colorSchemeName)
+    call NX_SaveSettings()
+    redraw
+    echo 'Color Scheme: ' . g:colors_name . ' (' . &background . ')'
 endfunction
 
-function! NX_ApplyColorScheme(colorscheme)
-    " Apply colorscheme
-    let cmd_colorscheme = "colorscheme " . a:colorscheme
-    execute cmd_colorscheme
+function! NX_ApplyColorScheme(colorScheme)
+    " Apply color scheme
+    let cmdColorScheme = 'colorscheme ' . a:colorScheme
+    execute cmdColorScheme
 endfunction
 
 function! NX_ToggleBackground()
     " Toggle background
-    if &background == "light"
-        call NX_ApplyBackground("dark")
+    if &background == 'light'
+        call NX_ApplyBackground('dark')
     else
-        call NX_ApplyBackground("light")
+        call NX_ApplyBackground('light')
     endif
+    call NX_SaveSettings()
+    redraw
+    echo 'Color Scheme: ' . g:colors_name . ' (' . &background . ')'
 endfunction
 
 function! NX_ApplyBackground(background)
     " Apply background
-    let colors_name = g:colors_name
+    let colorsName = g:colors_name
     let &background = a:background
-    let g:colors_name = colors_name
-endfunction
-
-function! NX_ColorSchemeInfo()
-    echo "Colorscheme: " . g:colors_name . " (" . &background . ")"
+    let g:colors_name = colorsName
 endfunction
 
 function! NX_GetCurrentColorScheme()
-    " Return current colorscheme
-    if !exists("g:colors_name")
-        return "default"
+    " Return current color scheme
+    if !exists('g:colors_name')
+        return 'default'
     endif
     return g:colors_name
 endfunction
 
 function! NX_GetColorSchemes()
-    " Search and return colorscheme names
-    let colorschemes = []
-
-    let path_delim = "/"
-    if has("win32")
-        let path_delim = "\\"
+    " Search and return color scheme names
+    let colorSchemes = []
+    let pathDelim = '/'
+    if has('win32')
+        let pathDelim = '\'
     endif
-
-    let plugin_paths = split(glob(s:plugin_dir . "/*"), "\n")
-    for path in plugin_paths
-        let cs_path = path . "/colors"
-        if isdirectory(cs_path)
-            let cs_files = split(glob(cs_path . "/*.vim"), "\n")
-            for cs_file in cs_files
-                let cs_name = strpart(
-                    \     cs_file
-                    \     , strridx(cs_file, path_delim, strlen(cs_file)) + 1
-                    \     , strlen(cs_file)
+    let pluginPaths = split(glob(s:pluginDir . '/*'), '\n')
+    for path in pluginPaths
+        let csPath = path . '/colors'
+        if isdirectory(csPath)
+            let csFiles = split(glob(csPath . '/*.vim'), '\n')
+            for csFile in csFiles
+                let csName = strpart(
+                    \     csFile
+                    \     , strridx(csFile, pathDelim, strlen(csFile)) + 1
+                    \     , strlen(csFile)
                     \ )[:-5]
-                call add(colorschemes, cs_name)
+                call add(colorSchemes, csName)
             endfor
         endif
     endfor
-
-    return colorschemes
+    return colorSchemes
 endfunction
 
 
 """ Special VIM behaviors
-function! NX_SetTempDirectory(temp_dir)
+function! NX_SetTempDirectory(tempDir)
     " Set swap file directory
-    let temp_dir = NX_ParsePath(a:temp_dir)
-    call NX_CreateDirectory(temp_dir)
-    let &directory = temp_dir
+    let tempDir = NX_ParsePath(a:tempDir)
+    call NX_CreateDirectory(tempDir)
+    let &directory = tempDir
 endfunction
 
-function! NX_EnablePersistentUndo(undo_dir)
+function! NX_EnablePersistentUndo(undoDir)
     " Persist undo forever
-    let undo_dir = NX_ParsePath(a:undo_dir)
-    call NX_CreateDirectory(undo_dir)
-    let &undodir = undo_dir
+    let undoDir = NX_ParsePath(a:undoDir)
+    call NX_CreateDirectory(undoDir)
+    let &undodir = undoDir
     set undofile
 endfunction
 
 
 """ Plugins
 function! NX_AutoInstallVimPlug()
-    """ Auto-install vim-plug. Requires 'plug.vim' in autoload directory
-    if has("unix")
-        let g:nx_autoload_dir = "~/.vim/autoload/"
-    elseif has("win32")
-        let g:nx_autoload_dir = "~/vimfiles/autoload/"
+    " Auto-install vim-plug. Requires 'plug.vim' in autoload directory
+    if has('unix')
+        let g:nx__autoloadDir = '~/.vim/autoload/'
+    elseif has('win32')
+        let g:nx__autoloadDir = '~/vimfiles/autoload/'
     endif
 
-    if empty(glob(g:nx_autoload_dir . "plug.vim"))
-        if (!empty(glob("~/.vim/plug.vim")))
-            call NX_CreateDirectory(g:nx_autoload_dir)
-            call NX_CopyFile("~/.vim/plug.vim", g:nx_autoload_dir . "plug.vim")
+    if empty(glob(g:nx__autoloadDir . 'plug.vim'))
+        if (!empty(glob('~/.vim/plug.vim')))
+            call NX_CreateDirectory(g:nx__autoloadDir)
+            call NX_CopyFile('~/.vim/plug.vim', g:nx__autoloadDir . 'plug.vim')
         endif
     endif
 endfunction
@@ -253,14 +247,14 @@ endfunction
 function! NX_HasPlugin(plugins, name)
     " Check if plugin is in the list and is installed
     for plugin in a:plugins
-        let plugin_name = strpart(
+        let pluginName = strpart(
             \     plugin
-            \     , strridx(plugin, "/", strlen(plugin)) + 1
+            \     , strridx(plugin, '/', strlen(plugin)) + 1
             \     , strlen(plugin)
             \ )
-        if plugin_name == a:name
-            let plugin_dir = s:plugin_dir . "/" . plugin_name
-            return !empty(glob(plugin_dir))
+        if pluginName == a:name
+            let pluginDir = s:pluginDir . '/' . pluginName
+            return !empty(glob(pluginDir))
         endif
     endfor
 endfunction
@@ -271,28 +265,28 @@ function! NX_CreateDirectory(dir)
     " Create non-existent directory
     let dir = NX_ParsePath(a:dir)
     if empty(glob(dir))
-        if has("unix")
-            call system("mkdir -p " . dir)
-        elseif has("win32")
-            call system("mkdir " . dir)
+        if has('unix')
+            call system('mkdir -p ' . dir)
+        elseif has('win32')
+            call system('mkdir ' . dir)
         endif
     endif
 endfunction
 
 function! NX_CopyFile(src, dest)
     " Copy src file to dest file
-    if has("unix")
-        call system("cp " . a:src . " " . a:dest)
-    elseif has("win32")
-        call system("copy /Y " . NX_ParsePath(a:src) . " "
-                    \ . NX_ParsePath(a:dest))
+    if has('unix')
+        call system('cp ' . a:src . ' ' . a:dest)
+    elseif has('win32')
+        call system('copy /Y ' . NX_ParsePath(a:src) . ' '
+            \ . NX_ParsePath(a:dest))
     endif
 endfunction
 
 function! NX_ParsePath(path)
     " Parse UNIX path into DOS path format then expand it
-    if has("win32")
-        return expand(substitute(a:path, "/", "\\", "g"))
+    if has('win32')
+        return expand(substitute(a:path, '/', '\', 'g'))
     endif
     return expand(a:path)
 endfunction
