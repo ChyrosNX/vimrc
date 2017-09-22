@@ -27,7 +27,7 @@ filetype plugin on  " Enable plugin for specific file types
 
 """ User settings
 "   editorWidth = text-width + line-num-width + sign-width + rt-margin-width
-let s:editorWidth       = (80+4+2+2)*2+1  
+let s:editorWidth       = (80+4+2+2)*2+1
 let s:showEditorGuides  = 1
 let s:tempDir           = '~/.vim/temp/temp'
 let s:undoDir           = '~/.vim/temp/undo'
@@ -173,7 +173,7 @@ endif
 "" Autocmd Conveniences
 if has("autocmd")
     " Auto change working directory to the newly opened file
-    autocmd BufEnter * silent lcd %:p:h
+    autocmd BufEnter * try | silent lcd %:p:h | catch /.*/ | endtry
 endif
 
 
@@ -228,6 +228,9 @@ nnoremap <silent> <S-F2> :call NX_ChangeColorScheme(1)<CR>
 nnoremap <silent> <F3>   :call NX_ToggleBackground()<CR>
 nnoremap <silent> <S-F3> :call NX_ToggleBackground()<CR>
 
+" Ctrl-F2 - Reset Theme
+nnoremap <silent> <C-F2> :call NX_ResetTheme()<CR>
+
 " F5 Show/hide editor guides
 nnoremap <silent> <F5>      :call NX_ShowEditorGuides(0)<CR>
 inoremap <silent> <F5> <Esc>:call NX_ShowEditorGuides(0)<CR>
@@ -265,8 +268,8 @@ nnoremap <silent> <A-k>      :m . -2<CR>
 inoremap <silent> <A-k> <Esc>:m . -2<CR>
 
 " Ctrl+S - Save File
-nnoremap <silent> <C-s>      :%s/\s\+\n/\r/g<CR>:w<CR>
-inoremap <silent> <C-s> <Esc>:%s/\s\+\n/\r/g<CR>:w<CR>
+nnoremap <silent> <C-s>      :call NX_SaveCurrentFile()<CR>
+inoremap <silent> <C-s> <Esc>:call NX_SaveCurrentFile()<CR>
 
 " Leader+r - Find and replace all (whole word)
 nnoremap <Leader>r yiw:%s/\<*\>//g<Left><Left>
@@ -277,6 +280,8 @@ nnoremap <Leader>R yiw:%s/*//g<Left><Left>
 " Leader+c - Count all from buffer with (Requires value in register *)
 nnoremap <Leader>c yiw:%s/*//gn<CR>
 
+" Ctrl-F2 - Reset User Themes
+nnoremap <silent> <C-F2> :call NXG_ApplyUserThemes(1)<CR>
 
 """ Post-init
 call NX_LoadSettings()

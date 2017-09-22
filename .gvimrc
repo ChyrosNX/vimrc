@@ -35,8 +35,8 @@ set guioptions-=L   " hide left scroll bar
 
 
 """ Mappings
-" Ctrl-F2 - Reset User Themes
-nnoremap <silent> <C-F2> :call NXG_ApplyUserThemes(1)<CR>
+" Ctrl-F2 - Reset Theme
+nnoremap <silent> <C-F2> :call NX_ResetTheme(1)<CR>
 
 " F4 - Update Font Size
 nnoremap <silent> <F4>   :call NXG_ChangeFontSize(0)<CR>
@@ -60,7 +60,7 @@ function! NXG_Init()
     let g:nxg__userThemes = {}
     if !NX_LoadSettings()
         " No settings file found, apply default themes
-        call NXG_ApplyUserThemes(0)
+        call NX_ResetTheme(0)
     endif
 endfunction
 
@@ -98,9 +98,7 @@ function! NX_SaveSettings()
     call writefile(settings, expand(g:nxg__configFile), 'b')
 endfunction
 
-
-""" Neph GVimRC functions
-function! NXG_ApplyUserThemes(showInfo)
+function! NX_ResetTheme(invokedByUser)
     let g:nxg__userThemes = {
         \   'fontSize'      : g:nxg_font_size
         \   , 'background'  : g:nxg_background
@@ -120,12 +118,15 @@ function! NXG_ApplyUserThemes(showInfo)
         set background=light
     endif
     call NXG_ApplyFontSize()
-    if a:showInfo
+    if a:invokedByUser
+        call NX_SaveSettings()
         redraw
-        echo "Reverted user themes."
+        echo "Theme has been reset to defaults."
     endif
 endfunction
 
+
+""" Neph GVimRC functions
 function! NXG_ChangeFontSize(prevStep)
     " Switch font size
     if a:prevStep

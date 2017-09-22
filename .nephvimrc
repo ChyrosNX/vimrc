@@ -63,6 +63,23 @@ function! NX_SaveSettings()
     call writefile(settings, expand(g:nx__configFile), 'b')
 endfunction
 
+function! NX_SaveCurrentFile()
+    let cmdRemoveTrailingSpace = 'silent! %s/\s\+\n/\r/g'
+    let cmdSaveCurrentFile = ':write'
+
+    let currentView = winsaveview()
+    execute cmdRemoveTrailingSpace
+    call winrestview(currentView)
+
+    try
+        execute cmdSaveCurrentFile
+    catch /.*/
+        echohl ErrorMsg
+        echo v:exception[stridx(v:exception, ':E') + 1:]
+        echohl None
+    endtry
+endfunction
+
 function! NX_ShowEditorGuides(global)
     " Show/hide editing guides (spacing and linebreak symbols, 80-col line)
     if g:nx__editorGuidesHidden
@@ -120,6 +137,15 @@ function! NX_NERDTreeToggle()
     else
         :NERDTreeCWD
     endif
+endfunction
+
+function! NX_ResetTheme()
+    let g:colors_name = 'default'
+    set background=dark
+    colorscheme default
+    call NX_SaveSettings()
+    redraw
+    echo "Theme has been reset to defaults."
 endfunction
 
 function! NX_ChangeColorScheme(prevStep)
