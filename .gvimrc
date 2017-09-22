@@ -26,7 +26,17 @@ let g:nxg_font = {
     \   , 'unix': { 'name': 'Monospace Regular', 'size': 10 }
     \ }
 
-let g:nxg__fontSizes = ['small', 'normal', 'large', 'xlarge']
+let g:nxg__fontSizes = [
+    \   'xxxsmall'
+    \   , 'xxsmall'
+    \   , 'xsmall'
+    \   , 'small'
+    \   , 'normal'
+    \   , 'large'
+    \   , 'xlarge'
+    \   , 'xxlarge'
+    \   , 'xxxlarge'
+    \ ]
 
 """ Improve GUI experience
 set t_vb=           " Disable annoying beeps
@@ -126,9 +136,9 @@ endfunction
 
 function! NXG_ApplyFontSize()
     " Apply font size
-    let step = 2
+    let step = 1
     let sizeModifier = index(g:nxg__fontSizes, g:nxg_theme['fontSize'])
-        \ * step - step
+        \ * step - (len(g:nxg__fontSizes) / 2)
     if has('win32')
         let &guifont = g:nxg_font['win32']['name'] . ':h' .
             \ (g:nxg_font['win32']['size'] + sizeModifier)

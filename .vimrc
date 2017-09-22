@@ -265,11 +265,11 @@ inoremap <silent> <A-k> <Esc>:m . -2<CR>
 nnoremap <silent> <C-s>      :w<CR>
 inoremap <silent> <C-s> <Esc>:w<CR>
 
-" Leader+r - Find and replace all with confirm
-nnoremap <Leader>r yiw:%s/*//g<Left><Left>
+" Leader+r - Find and replace all (whole word)
+nnoremap <Leader>r yiw:%s/\<*\>//g<Left><Left>
 
-" Leader+R - Find and replace all (whole word)
-nnoremap <Leader>R yiw:%s/\<*\>//g<Left><Left>
+" Leader+R - Find and replace all
+nnoremap <Leader>R yiw:%s/*//g<Left><Left>
 
 " Leader+c - Count all from buffer with (Requires value in register *)
 nnoremap <Leader>c yiw:%s/*//gn<CR>
