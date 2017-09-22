@@ -15,10 +15,6 @@
 "       2) put downloaded file to your ~/.vim/ directory
 "       3) start/restart your Vim using this .vimrc file
 "
-" TODO:
-"   1) Delete trailing whitespaces on save
-"   2) Ctrl+F2 resets to default color scheme
-"
 """
 
 
@@ -174,6 +170,13 @@ if has('unix')
 endif
 
 
+"" Autocmd Conveniences
+if has("autocmd")
+    " Auto change working directory to the newly opened file
+    autocmd BufEnter * silent lcd %:p:h
+endif
+
+
 """ Mappings
 let mapleader = '\'
 
@@ -181,10 +184,10 @@ let mapleader = '\'
 let g:pymode_rope_goto_definition_bind = '<A-g>'  " Alt+G -> Goto-definition
 
 " Unmap navigation keys
-noremap <Up>      :echo 'One does not simply 'go up' with Arrow Keys.'<CR>
-noremap <Down>    :echo 'One does not simply 'go down' with Arrow Keys.'<CR>
-noremap <Left>    :echo 'One does not simply 'go left' with Arrow Keys.'<CR>
-noremap <Right>   :echo 'One does not simply 'go right' with Arrow Keys.'<CR>
+noremap <Up>      :echo 'One does not simply ''go up'' with Arrow Keys.'<CR>
+noremap <Down>    :echo 'One does not simply ''go down'' with Arrow Keys.'<CR>
+noremap <Left>    :echo 'One does not simply ''go left'' with Arrow Keys.'<CR>
+noremap <Right>   :echo 'One does not simply ''go right'' with Arrow Keys.'<CR>
 noremap <Space>   <nop>
 noremap <C-Space> <nop>
 noremap <BS>      <nop>
@@ -262,8 +265,8 @@ nnoremap <silent> <A-k>      :m . -2<CR>
 inoremap <silent> <A-k> <Esc>:m . -2<CR>
 
 " Ctrl+S - Save File
-nnoremap <silent> <C-s>      :w<CR>
-inoremap <silent> <C-s> <Esc>:w<CR>
+nnoremap <silent> <C-s>      :%s/\s\+\n/\r/g<CR>:w<CR>
+inoremap <silent> <C-s> <Esc>:%s/\s\+\n/\r/g<CR>:w<CR>
 
 " Leader+r - Find and replace all (whole word)
 nnoremap <Leader>r yiw:%s/\<*\>//g<Left><Left>
