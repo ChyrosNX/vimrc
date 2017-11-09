@@ -31,7 +31,8 @@ set t_vb=           " Disable annoying beeps
 set guioptions-=m   " Hide menu bar
 set guioptions-=T   " Hide toolbar
 set guioptions-=r   " Hide right scroll bar
-set guioptions-=L   " hide left scroll bar
+set guioptions-=L   " Hide left scroll bar
+set guioptions-=c   " Use console dialogs
 
 
 """ Mappings
