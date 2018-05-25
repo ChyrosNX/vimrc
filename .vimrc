@@ -37,9 +37,13 @@ let s:hasVimPlug = !empty(glob(g:nx__autoloadDir . 'plug.vim'))
 let s:hasCtagsBin = !empty(glob(s:pluginDir . '/ctags/ctags.exe'))
 
 set visualbell t_vb=                " Disable beeps
-let &columns = s:editorWidth        " Set window width by column size
-set lines=40                        " Set window height by lines
 set listchars=eol:┐,tab:»\ ,trail:· " Editor guides symbols
+
+if has('win32')
+    " Set window width/height for gVim
+    let &columns = s:editorWidth    " Set window width by column size
+    set lines=40                    " Set window height by lines
+endif
 
 
 """ Initialize Neph Library
@@ -77,6 +81,8 @@ call add(s:enabledPlugins, 'scrooloose/syntastic')
 call add(s:enabledPlugins, 'majutsushi/tagbar')
 " python plug-in
 call add(s:enabledPlugins, 'klen/python-mode')
+" perl/ruby style regexp notation for Vim
+call add(s:enabledPlugins, 'othree/eregex.vim')
 
 if s:hasVimPlug
     call plug#begin(s:pluginDir)
