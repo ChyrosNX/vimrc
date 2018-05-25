@@ -258,6 +258,11 @@ function! NX_AutoInstallVimPlug()
     " Auto-install vim-plug. Requires 'plug.vim' in autoload directory
     if has('unix')
         let g:nx__autoloadDir = '~/.vim/autoload/'
+        if empty(glob('~/.vim/autoload/plug.vim'))
+            silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+            autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+        endif
     elseif has('win32')
         let g:nx__autoloadDir = '~/vimfiles/autoload/'
     endif
@@ -266,6 +271,7 @@ function! NX_AutoInstallVimPlug()
         if (!empty(glob('~/.vim/plug.vim')))
             call NX_CreateDirectory(g:nx__autoloadDir)
             call NX_CopyFile('~/.vim/plug.vim', g:nx__autoloadDir . 'plug.vim')
+            autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
         endif
     endif
 endfunction
