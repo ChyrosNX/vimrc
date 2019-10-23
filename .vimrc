@@ -28,7 +28,7 @@ filetype plugin on  " Enable plugin for specific file types
 """ User settings
 "   editorWidth = text-width + line-num-width + sign-width + rt-margin-width
 let s:editorWidth       = (80+4+2+2)*2+1
-let s:showEditorGuides  = 1
+let s:showEditorGuides  = 0
 let s:tempDir           = '~/.vim/temp/temp'
 let s:undoDir           = '~/.vim/temp/undo'
 let s:pluginDir         = '~/.vim/plugged'
@@ -51,6 +51,7 @@ call NX_Init(s:tempDir, s:undoDir, s:pluginDir, s:showEditorGuides)
 
 
 """ Plugins
+"""   Uses vim-plug. Type ":PlugInstall" to install new plugins
 let s:enabledPlugins = []
 " themes
 call add(s:enabledPlugins, 'morhetz/gruvbox')
@@ -79,10 +80,12 @@ call add(s:enabledPlugins, 'scrooloose/nerdcommenter')
 call add(s:enabledPlugins, 'scrooloose/syntastic')
 " class outline viewer
 call add(s:enabledPlugins, 'majutsushi/tagbar')
+" case-preserving find/replace text
+call add(s:enabledPlugins, 'tpope/vim-abolish')
 " python plug-in
-call add(s:enabledPlugins, 'klen/python-mode')
+"call add(s:enabledPlugins, 'klen/python-mode')
 " perl/ruby style regexp notation for Vim
-call add(s:enabledPlugins, 'othree/eregex.vim')
+"call add(s:enabledPlugins, 'othree/eregex.vim')
 
 if s:hasVimPlug
     call plug#begin(s:pluginDir)
@@ -147,27 +150,29 @@ endif
 
 
 """ VIM Settings
-set autoread                    " Auto reload file changes, if any
-set backspace=indent,eol,start  " Make <BS> more useful
-set clipboard=unnamed           " Use gui-clipboard instead
-set history=1000                " Max command-line history to persist
+set autoread                        " Auto reload file changes, if any
+set backspace=indent,eol,start      " Make <BS> more useful
+set clipboard=unnamed               " Use gui-clipboard instead
+set history=1000                    " Max command-line history to persist
 
 " Tabstops and Indentions
-set tabstop=4                   " Number of spaces for <Tab>
-set shiftwidth=4                " Number of spaces for << and >>
-set expandtab                   " Use spaces instead of a tab
-set autoindent                  " Copy indent to the next line
-set smartindent                 " Language-specific auto-indentation
+set tabstop=4                       " Number of spaces for <Tab>
+set shiftwidth=4                    " Number of spaces for << and >>
+set expandtab                       " Use spaces instead of a tab
+set autoindent                      " Copy indent to the next line
+set smartindent                     " Language-specific auto-indentation
+set cindent                         " Allow indentation of comment line
+set cinkeys=0{,0},0),:,!^F,o,O,e    " Allow indentation of comment line
 
-"set autochdir                  " Auto change dir based on the open file
-set number                      " Show line numbers
-syntax on                       " Enable syntax highlighting
-set nowrap                      " Don't wrap text by default
-set scrolloff=1                 " Use scroll offset of 1
+"set autochdir                      " Auto change dir based on the open file
+set number                          " Show line numbers
+syntax on                           " Enable syntax highlighting
+set nowrap                          " Don't wrap text by default
+set scrolloff=1                     " Use scroll offset of 1
 
-set ignorecase                  " Ignore-case searching
-set hlsearch                    " Enable search highlighting
-set incsearch                   " Enable incremental search
+set ignorecase                      " Ignore-case searching
+set hlsearch                        " Enable search highlighting
+set incsearch                       " Enable incremental search
 
 
 """ Platform-specific Settings
@@ -250,6 +255,10 @@ nnoremap <silent> <A-x>      :tabn<CR>
 inoremap <silent> <A-x> <Esc>:tabn<CR>
 nnoremap <silent> <A-z>      :tabp<CR>
 inoremap <silent> <A-z> <Esc>:tabp<CR>
+nnoremap <silent> <A-[>      :tabn<CR>
+inoremap <silent> <A-[> <Esc>:tabn<CR>
+nnoremap <silent> <A-]>      :tabp<CR>
+inoremap <silent> <A-]> <Esc>:tabp<CR>
 
 " Ctrl+N New Tab
 nnoremap <silent> <C-n>      :tabnew<CR>
