@@ -9,53 +9,202 @@
          <Version>16.0.0.0</Version>
          <KeyboardShortcuts>
             <ScopeDefinitions>
-               <Scope Name="Team Explorer" ID="{7AA20502-9463-47B7-BF43-341BAF51157C}" />
-               <Scope Name="VC Dialog Editor" ID="{543E0C02-8C85-4E43-933A-5EF320E3431F}" />
-               <Scope Name="Find All References Tool Window" ID="{1FA1FD06-3592-4D1D-AC75-0B953320140C}" />
-               <Scope Name="Test Explorer Playlist Tab" ID="{D2F6510A-150A-4F3F-9D7C-8E38622D26F7}" />
-               <Scope Name="XML (Text) Editor" ID="{FA3CD31E-987B-443A-9B81-186104E8DAC1}" />
-               <Scope Name="Text Editor" ID="{8B382828-6202-11D1-8870-0000F87579D2}" />
-               <Scope Name="Work Item Results View" ID="{7026002D-01F6-44E7-95CF-A896C00DA3F8}" />
-               <Scope Name="Solution Explorer" ID="{3AE79031-E1BC-11D0-8F78-00A0C9110057}" />
+               <Scope Name="Autos Window" ID="{F2E84780-2AF1-11D1-A7FA-00A0C9110051}" />
                <Scope Name="C# Editor with Encoding" ID="{08467B34-B90F-4D91-BDCA-EB8C8CF3033A}" />
+               <Scope Name="C# Editor" ID="{A6C744A8-0E4A-4FC6-886A-064283054674}" />
+               <Scope Name="Difference Viewer" ID="{79D52DDF-52BC-43F1-9663-B3E85CDCA912}" />
+               <Scope Name="Find All References Tool Window" ID="{1FA1FD06-3592-4D1D-AC75-0B953320140C}" />
+               <Scope Name="Global" ID="{5EFC7975-14BC-11CF-9B2B-00AA00573819}" />
+               <Scope Name="Graphics Designers" ID="{58961B49-13E0-48C0-9258-13CBC4D40279}" />
+               <Scope Name="Live Unit Testing Tab" ID="{AA9A73A5-B2BF-400B-B57C-58F166FF1C56}" />
+               <Scope Name="Locals Window" ID="{4A18F9D0-B838-11D0-93EB-00A0C90F2734}" />
+               <Scope Name="Managed Resources Editor" ID="{FEA4DCC9-3645-44CD-92E7-84B55A16465C}" />
+               <Scope Name="Merge Editor Window" ID="{9A9A8AAA-ACD2-4DB6-BD81-8D64176C52B6}" />
+               <Scope Name="Settings Designer" ID="{515231AD-C9DC-4AA3-808F-E1B65E72081C}" />
+               <Scope Name="Solution Explorer" ID="{3AE79031-E1BC-11D0-8F78-00A0C9110057}" />
+               <Scope Name="Team Explorer" ID="{7AA20502-9463-47B7-BF43-341BAF51157C}" />
+               <Scope Name="Team Foundation Build Detail Editor" ID="{86306A97-84F2-4F5A-889B-1318501AEB5F}" />
+               <Scope Name="Test Explorer Playlist Tab" ID="{D2F6510A-150A-4F3F-9D7C-8E38622D26F7}" />
+               <Scope Name="Test Explorer" ID="{E1B7D1F8-9B3C-49B1-8F4F-BFC63A88835D}" />
+               <Scope Name="Text Editor" ID="{8B382828-6202-11D1-8870-0000F87579D2}" />
+               <Scope Name="VC Accelerator Editor" ID="{EB56D0B5-BEE7-4D0C-8BE6-88A8ED256695}" />
+               <Scope Name="VC Dialog Editor" ID="{543E0C02-8C85-4E43-933A-5EF320E3431F}" />
+               <Scope Name="VC Image Editor" ID="{C0BA70ED-069E-412B-9C06-7442E28A11B9}" />
+               <Scope Name="VC String Editor" ID="{58442DA9-10DA-4AA9-A2AF-96E4D481379B}" />
+               <Scope Name="Visual Basic Editor with Encoding" ID="{6C33E1AA-1401-4536-AB67-0E21E6E569DA}" />
+               <Scope Name="Visual Basic Editor" ID="{2C015C70-C72C-11D0-88C3-00A0C9110049}" />
                <Scope Name="Watch Windows" ID="{90243340-BD7A-11D0-93EF-00A0C90F2734}" />
                <Scope Name="WebBrowser" ID="{E8B06F41-6D01-11D2-AA7D-00C04F990343}" />
-               <Scope Name="Graphics Designers" ID="{58961B49-13E0-48C0-9258-13CBC4D40279}" />
-               <Scope Name="Visual Basic Editor" ID="{2C015C70-C72C-11D0-88C3-00A0C9110049}" />
-               <Scope Name="Global" ID="{5EFC7975-14BC-11CF-9B2B-00AA00573819}" />
-               <Scope Name="Autos Window" ID="{F2E84780-2AF1-11D1-A7FA-00A0C9110051}" />
-               <Scope Name="Work Item Query View" ID="{B6303490-B828-410C-9216-AE727D0E282D}" />
-               <Scope Name="Team Foundation Build Detail Editor" ID="{86306A97-84F2-4F5A-889B-1318501AEB5F}" />
-               <Scope Name="Work Item Editor" ID="{40A91D9D-8076-4D28-87C5-5AF9F0ACFE0F}" />
-               <Scope Name="Live Unit Testing Tab" ID="{AA9A73A5-B2BF-400B-B57C-58F166FF1C56}" />
-               <Scope Name="C# Editor" ID="{A6C744A8-0E4A-4FC6-886A-064283054674}" />
-               <Scope Name="VC String Editor" ID="{58442DA9-10DA-4AA9-A2AF-96E4D481379B}" />
-               <Scope Name="Merge Editor Window" ID="{9A9A8AAA-ACD2-4DB6-BD81-8D64176C52B6}" />
-               <Scope Name="Visual Basic Editor with Encoding" ID="{6C33E1AA-1401-4536-AB67-0E21E6E569DA}" />
-               <Scope Name="Settings Designer" ID="{515231AD-C9DC-4AA3-808F-E1B65E72081C}" />
                <Scope Name="Windows Forms Designer" ID="{BA09E2AF-9DF2-4068-B2F0-4C7E5CC19E2F}" />
-               <Scope Name="VC Accelerator Editor" ID="{EB56D0B5-BEE7-4D0C-8BE6-88A8ED256695}" />
-               <Scope Name="Managed Resources Editor" ID="{FEA4DCC9-3645-44CD-92E7-84B55A16465C}" />
-               <Scope Name="Locals Window" ID="{4A18F9D0-B838-11D0-93EB-00A0C90F2734}" />
-               <Scope Name="Difference Viewer" ID="{79D52DDF-52BC-43F1-9663-B3E85CDCA912}" />
-               <Scope Name="VC Image Editor" ID="{C0BA70ED-069E-412B-9C06-7442E28A11B9}" />
-               <Scope Name="Test Explorer" ID="{E1B7D1F8-9B3C-49B1-8F4F-BFC63A88835D}" />
+               <Scope Name="Work Item Editor" ID="{40A91D9D-8076-4D28-87C5-5AF9F0ACFE0F}" />
+               <Scope Name="Work Item Query View" ID="{B6303490-B828-410C-9216-AE727D0E282D}" />
+               <Scope Name="Work Item Results View" ID="{7026002D-01F6-44E7-95CF-A896C00DA3F8}" />
+               <Scope Name="XML (Text) Editor" ID="{FA3CD31E-987B-443A-9B81-186104E8DAC1}" />
                <Scope Name="XML Schema Designer" ID="{DEE6CEF9-3BCA-449A-82A6-FC757D6956FB}" />
             </ScopeDefinitions>
             <DefaultShortcuts />
             <ShortcutsScheme>Visual C++ 6</ShortcutsScheme>
             <UserShortcuts>
+               <RemoveShortcut Command="Build.BuildSelection" Scope="Global">Ctrl+B</RemoveShortcut>
+               <RemoveShortcut Command="Build.BuildSolution" Scope="Global">F7</RemoveShortcut>
+               <RemoveShortcut Command="Debug.Autos.Search" Scope="Autos Window">Ctrl+E</RemoveShortcut>
+               <RemoveShortcut Command="Debug.Breakpoints" Scope="Global">Alt+F9</RemoveShortcut>
+               <RemoveShortcut Command="Debug.Breakpoints" Scope="Global">Ctrl+Alt+B</RemoveShortcut>
+               <RemoveShortcut Command="Debug.CallStack" Scope="Global">Alt+7</RemoveShortcut>
+               <RemoveShortcut Command="Debug.CallStack" Scope="Global">Ctrl+Alt+C</RemoveShortcut>
+               <RemoveShortcut Command="Debug.Disassembly" Scope="Global">Alt+8</RemoveShortcut>
+               <RemoveShortcut Command="Debug.FunctionBreakpoint" Scope="Global">Ctrl+K, B</RemoveShortcut>
+               <RemoveShortcut Command="Debug.Locals" Scope="Global">Ctrl+Alt+V, L</RemoveShortcut>
+               <RemoveShortcut Command="Debug.Locals.Search" Scope="Locals Window">Ctrl+E</RemoveShortcut>
+               <RemoveShortcut Command="Debug.Memory1" Scope="Global">Alt+6</RemoveShortcut>
+               <RemoveShortcut Command="Debug.Memory1" Scope="Global">Ctrl+Alt+M, 1</RemoveShortcut>
+               <RemoveShortcut Command="Debug.Memory2" Scope="Global">Ctrl+Alt+M, 2</RemoveShortcut>
+               <RemoveShortcut Command="Debug.Memory3" Scope="Global">Ctrl+Alt+M, 3</RemoveShortcut>
+               <RemoveShortcut Command="Debug.Memory4" Scope="Global">Ctrl+Alt+M, 4</RemoveShortcut>
+               <RemoveShortcut Command="Debug.Registers" Scope="Global">Alt+5</RemoveShortcut>
+               <RemoveShortcut Command="Debug.Registers" Scope="Global">Ctrl+Alt+G</RemoveShortcut>
+               <RemoveShortcut Command="Debug.ReverseContinue" Scope="Global">Ctrl+R, F5</RemoveShortcut>
+               <RemoveShortcut Command="Debug.StepBackInto" Scope="Global">Ctrl+R, F11</RemoveShortcut>
+               <RemoveShortcut Command="Debug.StepBackOut" Scope="Global">Ctrl+R, Shift+F11</RemoveShortcut>
+               <RemoveShortcut Command="Debug.StepBackOver" Scope="Global">Ctrl+R, F10</RemoveShortcut>
+               <RemoveShortcut Command="Debug.Watch.Search" Scope="Watch Windows">Ctrl+E</RemoveShortcut>
+               <RemoveShortcut Command="Diff.IgnoreTrimWhitespace" Scope="Text Editor">Ctrl+\, Ctrl+Space</RemoveShortcut>
+               <RemoveShortcut Command="Diff.InlineView" Scope="Text Editor">Ctrl+\, Ctrl+1</RemoveShortcut>
+               <RemoveShortcut Command="Diff.LeftOnlyView" Scope="Text Editor">Ctrl+\, Ctrl+3</RemoveShortcut>
+               <RemoveShortcut Command="Diff.NextDifference" Scope="Difference Viewer">F8</RemoveShortcut>
+               <RemoveShortcut Command="Diff.PreviousDifference" Scope="Difference Viewer">Shift+F8</RemoveShortcut>
+               <RemoveShortcut Command="Diff.PreviousDifference" Scope="Text Editor">Ctrl+Shift+F8</RemoveShortcut>
+               <RemoveShortcut Command="Diff.RightOnlyView" Scope="Text Editor">Ctrl+\, Ctrl+4</RemoveShortcut>
+               <RemoveShortcut Command="Diff.SideBySideView" Scope="Text Editor">Ctrl+\, Ctrl+2</RemoveShortcut>
+               <RemoveShortcut Command="Diff.SwitchBetweenLeftAndRight" Scope="Text Editor">Ctrl+\, Ctrl+Tab</RemoveShortcut>
+               <RemoveShortcut Command="Diff.SynchronizeViewToggle" Scope="Text Editor">Ctrl+\, Ctrl+Down Arrow</RemoveShortcut>
+               <RemoveShortcut Command="Edit.ClearBookmarks" Scope="Global">Ctrl+Shift+F2</RemoveShortcut>
+               <RemoveShortcut Command="Edit.ClearBookmarks" Scope="Text Editor">Ctrl+K, Ctrl+L</RemoveShortcut>
+               <RemoveShortcut Command="Edit.CollapseAllOutlining" Scope="Text Editor">Ctrl+M, Ctrl+A</RemoveShortcut>
+               <RemoveShortcut Command="Edit.CollapseCurrentRegion" Scope="Text Editor">Ctrl+M, Ctrl+S</RemoveShortcut>
+               <RemoveShortcut Command="Edit.CollapsetoDefinitions" Scope="Text Editor">Ctrl+M, Ctrl+O</RemoveShortcut>
+               <RemoveShortcut Command="Edit.CommentSelection" Scope="Text Editor">Ctrl+K, Ctrl+C</RemoveShortcut>
                <RemoveShortcut Command="Edit.CompleteWord" Scope="Text Editor">Alt+Right Arrow</RemoveShortcut>
-               <RemoveShortcut Command="Edit.MoveSelectedLinesDown" Scope="Text Editor">Alt+Down Arrow</RemoveShortcut>
-               <RemoveShortcut Command="Edit.MoveSelectedLinesUp" Scope="Text Editor">Alt+Up Arrow</RemoveShortcut>
-               <RemoveShortcut Command="Edit.ExpandSelectiontoContainingBlock" Scope="Text Editor">Shift+Alt+]</RemoveShortcut>
-               <RemoveShortcut Command="EditorContextMenus.Navigate.GoToContainingBlock" Scope="Text Editor">Shift+Alt+[</RemoveShortcut>
-               <RemoveShortcut Command="Edit.SelectCurrentWord" Scope="Text Editor">Ctrl+W</RemoveShortcut>
-               <RemoveShortcut Command="Edit.CreateCopyofWorkItem" Scope="Work Item Results View">Shift+Alt+C</RemoveShortcut>
+               <RemoveShortcut Command="Edit.Copy" Scope="Global">Ctrl+C</RemoveShortcut>
                <RemoveShortcut Command="Edit.CreateCopyofWorkItem" Scope="Work Item Editor">Shift+Alt+C</RemoveShortcut>
                <RemoveShortcut Command="Edit.CreateCopyofWorkItem" Scope="Work Item Query View">Shift+Alt+C</RemoveShortcut>
-               <RemoveShortcut Command="VisualAssist.RefactorCreateFromUsage" Scope="Text Editor">Shift+Alt+C</RemoveShortcut>
-               <RemoveShortcut Command="TeamFoundationContextMenus.MyWorkPageInProgress.TfsContextMyWorkPageCreateCopyWI" Scope="Team Explorer">Shift+Alt+C</RemoveShortcut>
+               <RemoveShortcut Command="Edit.CreateCopyofWorkItem" Scope="Work Item Results View">Shift+Alt+C</RemoveShortcut>
+               <RemoveShortcut Command="Edit.Cut" Scope="Global">Ctrl+X</RemoveShortcut>
+               <RemoveShortcut Command="Edit.Cut" Scope="Global">Shift+Del</RemoveShortcut>
+               <RemoveShortcut Command="Edit.DeleteHorizontalWhiteSpace" Scope="Text Editor">Ctrl+K, Ctrl+\</RemoveShortcut>
+               <RemoveShortcut Command="Edit.Duplicate" Scope="Text Editor">Ctrl+D</RemoveShortcut>
+               <RemoveShortcut Command="Edit.Duplicate" Scope="Text Editor">Ctrl+E, Ctrl+V</RemoveShortcut>
+               <RemoveShortcut Command="Edit.Duplicate" Scope="Text Editor">Ctrl+E, V</RemoveShortcut>
+               <RemoveShortcut Command="Edit.ExpandAllOutlining" Scope="Text Editor">Ctrl+M, Ctrl+X</RemoveShortcut>
+               <RemoveShortcut Command="Edit.ExpandCurrentRegion" Scope="Text Editor">Ctrl+M, Ctrl+E</RemoveShortcut>
+               <RemoveShortcut Command="Edit.ExpandSelection" Scope="Text Editor">Shift+Alt+=</RemoveShortcut>
+               <RemoveShortcut Command="Edit.ExpandSelectiontoContainingBlock" Scope="Text Editor">Shift+Alt+]</RemoveShortcut>
+               <RemoveShortcut Command="Edit.Find" Scope="Global">Ctrl+F</RemoveShortcut>
+               <RemoveShortcut Command="Edit.FormatDocument" Scope="Text Editor">Ctrl+K, Ctrl+D</RemoveShortcut>
+               <RemoveShortcut Command="Edit.FormatSelection" Scope="Global">Alt+F8</RemoveShortcut>
+               <RemoveShortcut Command="Edit.FormatSelection" Scope="Text Editor">Ctrl+K, Ctrl+F</RemoveShortcut>
+               <RemoveShortcut Command="Edit.GoTo" Scope="Global">Ctrl+G</RemoveShortcut>
+               <RemoveShortcut Command="Edit.GoToFindCombo" Scope="Global">Ctrl+D</RemoveShortcut>
+               <RemoveShortcut Command="Edit.GoToTypeDefinition" Scope="Global">Ctrl+K, Ctrl+Shift+T</RemoveShortcut>
+               <RemoveShortcut Command="Edit.HideSelection" Scope="Text Editor">Ctrl+M, Ctrl+H</RemoveShortcut>
+               <RemoveShortcut Command="Edit.IncrementalSearch" Scope="Text Editor">Ctrl+I</RemoveShortcut>
+               <RemoveShortcut Command="Edit.InsertSnippet" Scope="Global">Ctrl+K, Ctrl+X</RemoveShortcut>
+               <RemoveShortcut Command="Edit.LineCut" Scope="Global">Shift+Alt+L</RemoveShortcut>
+               <RemoveShortcut Command="Edit.LineCut" Scope="Text Editor">Ctrl+L</RemoveShortcut>
+               <RemoveShortcut Command="Edit.LineDelete" Scope="Text Editor">Ctrl+Shift+L</RemoveShortcut>
+               <RemoveShortcut Command="Edit.ListMembers" Scope="Text Editor">Ctrl+J</RemoveShortcut>
+               <RemoveShortcut Command="Edit.MakeLowercase" Scope="Text Editor">Ctrl+U</RemoveShortcut>
+               <RemoveShortcut Command="Edit.MakeUppercase" Scope="Text Editor">Ctrl+Shift+U</RemoveShortcut>
+               <RemoveShortcut Command="Edit.MoveSelectedLinesDown" Scope="Text Editor">Alt+Down Arrow</RemoveShortcut>
+               <RemoveShortcut Command="Edit.MoveSelectedLinesUp" Scope="Text Editor">Alt+Up Arrow</RemoveShortcut>
+               <RemoveShortcut Command="Edit.NavigateTo" Scope="Global">Ctrl+T</RemoveShortcut>
+               <RemoveShortcut Command="Edit.NextBookmark" Scope="Global">Ctrl+K, Ctrl+N</RemoveShortcut>
+               <RemoveShortcut Command="Edit.NextBookmark" Scope="Text Editor">F2</RemoveShortcut>
+               <RemoveShortcut Command="Edit.NextKeyTyped" Scope="VC Accelerator Editor">Ctrl+W</RemoveShortcut>
+               <RemoveShortcut Command="Edit.Paste" Scope="Global">Ctrl+V</RemoveShortcut>
+               <RemoveShortcut Command="Edit.PreviousBookmark" Scope="Global">Ctrl+K, Ctrl+P</RemoveShortcut>
+               <RemoveShortcut Command="Edit.PreviousBookmark" Scope="Global">Shift+F2</RemoveShortcut>
+               <RemoveShortcut Command="Edit.QuickInfo" Scope="Find All References Tool Window">Ctrl+K, Ctrl+I</RemoveShortcut>
+               <RemoveShortcut Command="Edit.QuickInfo" Scope="Text Editor">Ctrl+K, Ctrl+I</RemoveShortcut>
+               <RemoveShortcut Command="Edit.Redo" Scope="Global">Ctrl+Y</RemoveShortcut>
+               <RemoveShortcut Command="Edit.Redo" Scope="Global">Shift+Alt+Bkspce</RemoveShortcut>
+               <RemoveShortcut Command="Edit.Replace" Scope="Global">Ctrl+H</RemoveShortcut>
+               <RemoveShortcut Command="Edit.SelectAll" Scope="Global">Ctrl+A</RemoveShortcut>
+               <RemoveShortcut Command="Edit.SelectCurrentWord" Scope="Text Editor">Ctrl+W</RemoveShortcut>
+               <RemoveShortcut Command="Edit.ShowCodeLensMenu" Scope="Text Editor">Ctrl+K, Ctrl+`</RemoveShortcut>
+               <RemoveShortcut Command="Edit.ShowCodeLensMenu" Scope="Text Editor">Ctrl+K, `</RemoveShortcut>
+               <RemoveShortcut Command="Edit.StopHidingCurrent" Scope="Text Editor">Ctrl+M, Ctrl+U</RemoveShortcut>
+               <RemoveShortcut Command="Edit.StopOutlining" Scope="Text Editor">Ctrl+M, Ctrl+P</RemoveShortcut>
+               <RemoveShortcut Command="Edit.StopSearch" Scope="Global">Alt+F3, S</RemoveShortcut>
+               <RemoveShortcut Command="Edit.SurroundWith" Scope="Global">Ctrl+K, Ctrl+S</RemoveShortcut>
+               <RemoveShortcut Command="Edit.SwapAnchor" Scope="Text Editor">Ctrl+K, Ctrl+A</RemoveShortcut>
+               <RemoveShortcut Command="Edit.ToggleAllOutlining" Scope="Text Editor">Ctrl+M, Ctrl+L</RemoveShortcut>
+               <RemoveShortcut Command="Edit.ToggleBookmark" Scope="Global">Ctrl+F2</RemoveShortcut>
+               <RemoveShortcut Command="Edit.ToggleBookmark" Scope="Text Editor">Ctrl+K, Ctrl+K</RemoveShortcut>
+               <RemoveShortcut Command="Edit.ToggleLineComment" Scope="Text Editor">Ctrl+K, Ctrl+/</RemoveShortcut>
+               <RemoveShortcut Command="Edit.ToggleOutliningExpansion" Scope="Text Editor">Ctrl+M, Ctrl+M</RemoveShortcut>
+               <RemoveShortcut Command="Edit.ToggleTaskListShortcut" Scope="Text Editor">Ctrl+K, Ctrl+H</RemoveShortcut>
+               <RemoveShortcut Command="Edit.ToggleWordWrap" Scope="Text Editor">Alt+Z</RemoveShortcut>
+               <RemoveShortcut Command="Edit.ToggleWordWrap" Scope="Text Editor">Ctrl+E, Ctrl+W</RemoveShortcut>
+               <RemoveShortcut Command="Edit.UncommentSelection" Scope="Text Editor">Ctrl+K, Ctrl+U</RemoveShortcut>
+               <RemoveShortcut Command="Edit.Undo" Scope="Global">Ctrl+Z</RemoveShortcut>
+               <RemoveShortcut Command="Edit.ViewWhiteSpace" Scope="Global">Ctrl+Shift+8</RemoveShortcut>
+               <RemoveShortcut Command="Edit.ViewWhiteSpace" Scope="Text Editor">Ctrl+R, Ctrl+W</RemoveShortcut>
+               <RemoveShortcut Command="EditorContextMenus.CodeWindow.Annotation.MoveToNextAnnotation" Scope="Global">Ctrl+K, Ctrl+Right Arrow</RemoveShortcut>
+               <RemoveShortcut Command="EditorContextMenus.CodeWindow.Annotation.MoveToPreviousAnnotation" Scope="Global">Ctrl+K, Ctrl+Left Arrow</RemoveShortcut>
+               <RemoveShortcut Command="EditorContextMenus.CodeWindow.Annotation.ShowLineAnnotations" Scope="Global">Ctrl+K, Ctrl+M</RemoveShortcut>
+               <RemoveShortcut Command="EditorContextMenus.CodeWindow.Annotation.ShowStructure" Scope="Global">Ctrl+K, Ctrl+G</RemoveShortcut>
+               <RemoveShortcut Command="EditorContextMenus.CodeWindow.PeekHeaderCodeFile" Scope="Global">Ctrl+K, Ctrl+J</RemoveShortcut>
+               <RemoveShortcut Command="EditorContextMenus.CodeWindow.RemoveAndSort" Scope="Global">Ctrl+R, Ctrl+G</RemoveShortcut>
+               <RemoveShortcut Command="EditorContextMenus.CodeWindow.RemoveAndSort" Scope="Global">Ctrl+R, G</RemoveShortcut>
+               <RemoveShortcut Command="EditorContextMenus.CodeWindow.ToggleHeaderCodeFile" Scope="Global">Ctrl+K, Ctrl+O</RemoveShortcut>
+               <RemoveShortcut Command="EditorContextMenus.CodeWindow.ViewCallHierarchy" Scope="Global">Ctrl+K, Ctrl+T</RemoveShortcut>
+               <RemoveShortcut Command="EditorContextMenus.CodeWindow.ViewCallHierarchy" Scope="Global">Ctrl+K, T</RemoveShortcut>
+               <RemoveShortcut Command="EditorContextMenus.FileHealthIndicator.RunDefaultCodeCleanup" Scope="Text Editor">Ctrl+K, Ctrl+E</RemoveShortcut>
+               <RemoveShortcut Command="EditorContextMenus.Navigate.GoToContainingBlock" Scope="Text Editor">Shift+Alt+[</RemoveShortcut>
+               <RemoveShortcut Command="File.Close" Scope="Text Editor">Alt+C</RemoveShortcut>
+               <RemoveShortcut Command="File.CloseAllButThis" Scope="Text Editor">Shift+Alt+C</RemoveShortcut>
+               <RemoveShortcut Command="File.OpenFile" Scope="Global">Ctrl+O</RemoveShortcut>
+               <RemoveShortcut Command="File.Print" Scope="Global">Ctrl+P</RemoveShortcut>
+               <RemoveShortcut Command="Format.ButtonBottom" Scope="VC Dialog Editor">Ctrl+B</RemoveShortcut>
+               <RemoveShortcut Command="Format.ButtonRight" Scope="VC Dialog Editor">Ctrl+R</RemoveShortcut>
+               <RemoveShortcut Command="Format.CheckMnemonics" Scope="VC Dialog Editor">Ctrl+M</RemoveShortcut>
+               <RemoveShortcut Command="Format.SpaceAcross" Scope="VC Dialog Editor">Alt+Left Arrow</RemoveShortcut>
+               <RemoveShortcut Command="Format.SpaceAcross" Scope="VC Dialog Editor">Alt+Right Arrow</RemoveShortcut>
+               <RemoveShortcut Command="Format.SpaceDown" Scope="VC Dialog Editor">Alt+Down Arrow</RemoveShortcut>
+               <RemoveShortcut Command="Format.SpaceDown" Scope="VC Dialog Editor">Alt+Up Arrow</RemoveShortcut>
+               <RemoveShortcut Command="Format.TabOrder" Scope="VC Dialog Editor">Ctrl+D</RemoveShortcut>
+               <RemoveShortcut Command="Format.TestDialog" Scope="VC Dialog Editor">Ctrl+T</RemoveShortcut>
+               <RemoveShortcut Command="Format.ToggleGuides" Scope="VC Dialog Editor">Ctrl+G</RemoveShortcut>
+               <RemoveShortcut Command="GraphView.BottomtoTop" Scope="XML Schema Designer">Alt+Up Arrow</RemoveShortcut>
+               <RemoveShortcut Command="GraphView.LefttoRight" Scope="XML Schema Designer">Alt+Right Arrow</RemoveShortcut>
+               <RemoveShortcut Command="GraphView.RighttoLeft" Scope="XML Schema Designer">Alt+Left Arrow</RemoveShortcut>
+               <RemoveShortcut Command="GraphView.ToptoBottom" Scope="XML Schema Designer">Alt+Down Arrow</RemoveShortcut>
+               <RemoveShortcut Command="Image.AirbrushTool" Scope="VC Image Editor">Ctrl+A</RemoveShortcut>
+               <RemoveShortcut Command="Image.BrushTool" Scope="VC Image Editor">Ctrl+B</RemoveShortcut>
+               <RemoveShortcut Command="Image.DrawOpaque" Scope="VC Image Editor">Ctrl+J</RemoveShortcut>
+               <RemoveShortcut Command="Image.FillTool" Scope="VC Image Editor">Ctrl+F</RemoveShortcut>
+               <RemoveShortcut Command="Image.FlipHorizontal" Scope="VC Image Editor">Ctrl+H</RemoveShortcut>
+               <RemoveShortcut Command="Image.LineTool" Scope="VC Image Editor">Ctrl+L</RemoveShortcut>
+               <RemoveShortcut Command="Image.MagnificationTool" Scope="VC Image Editor">Ctrl+M</RemoveShortcut>
+               <RemoveShortcut Command="Image.PencilTool" Scope="VC Image Editor">Ctrl+I</RemoveShortcut>
+               <RemoveShortcut Command="Image.PreviousColor" Scope="VC Image Editor">Ctrl+Left Arrow</RemoveShortcut>
+               <RemoveShortcut Command="Image.PreviousColor" Scope="VC Image Editor">Ctrl+[</RemoveShortcut>
+               <RemoveShortcut Command="Image.TextTool" Scope="VC Image Editor">Ctrl+T</RemoveShortcut>
+               <RemoveShortcut Command="Image.UseSelectionasBrush" Scope="VC Image Editor">Ctrl+U</RemoveShortcut>
+               <RemoveShortcut Command="Refactor.EncapsulateField" Scope="Global">Ctrl+R, Ctrl+E</RemoveShortcut>
+               <RemoveShortcut Command="Refactor.ExtractInterface" Scope="Global">Ctrl+R, Ctrl+I</RemoveShortcut>
+               <RemoveShortcut Command="Refactor.ExtractMethod" Scope="Global">Ctrl+R, Ctrl+M</RemoveShortcut>
+               <RemoveShortcut Command="Refactor.RemoveParameters" Scope="Global">Ctrl+R, Ctrl+V</RemoveShortcut>
+               <RemoveShortcut Command="Refactor.Rename" Scope="Global">Ctrl+R, Ctrl+R</RemoveShortcut>
+               <RemoveShortcut Command="Refactor.ReorderParameters" Scope="Global">Ctrl+R, Ctrl+O</RemoveShortcut>
+               <RemoveShortcut Command="SolutionExplorer.OpenFilesFilter" Scope="Global">Ctrl+[, Ctrl+O</RemoveShortcut>
+               <RemoveShortcut Command="SolutionExplorer.OpenFilesFilter" Scope="Global">Ctrl+[, O</RemoveShortcut>
+               <RemoveShortcut Command="SolutionExplorer.PendingChangesFilter" Scope="Global">Ctrl+[, Ctrl+P</RemoveShortcut>
+               <RemoveShortcut Command="SolutionExplorer.PendingChangesFilter" Scope="Global">Ctrl+[, P</RemoveShortcut>
+               <RemoveShortcut Command="SolutionExplorer.SyncWithActiveDocument" Scope="Global">Ctrl+[, Ctrl+S</RemoveShortcut>
+               <RemoveShortcut Command="SolutionExplorer.SyncWithActiveDocument" Scope="Global">Ctrl+[, S</RemoveShortcut>
+               <RemoveShortcut Command="TeamFoundationContextMenus.Commands.GoToTeamExplorerNavigation" Scope="Team Explorer">Alt+Home</RemoveShortcut>
                <RemoveShortcut Command="TeamFoundationContextMenus.Commands.GoToTeamExplorerNextSectionContent" Scope="Team Explorer">Alt+Down Arrow</RemoveShortcut>
                <RemoveShortcut Command="TeamFoundationContextMenus.Commands.GoToTeamExplorerPageContent" Scope="Team Explorer">Alt+0</RemoveShortcut>
                <RemoveShortcut Command="TeamFoundationContextMenus.Commands.GoToTeamExplorerPreviousSectionContent" Scope="Team Explorer">Alt+Up Arrow</RemoveShortcut>
@@ -68,229 +217,80 @@
                <RemoveShortcut Command="TeamFoundationContextMenus.Commands.GoToTeamExplorerSection7Content" Scope="Team Explorer">Alt+7</RemoveShortcut>
                <RemoveShortcut Command="TeamFoundationContextMenus.Commands.GoToTeamExplorerSection8Content" Scope="Team Explorer">Alt+8</RemoveShortcut>
                <RemoveShortcut Command="TeamFoundationContextMenus.Commands.GoToTeamExplorerSection9Content" Scope="Team Explorer">Alt+9</RemoveShortcut>
-               <RemoveShortcut Command="TeamFoundationContextMenus.Commands.GoToTeamExplorerNavigation" Scope="Team Explorer">Alt+Home</RemoveShortcut>
+               <RemoveShortcut Command="TeamFoundationContextMenus.Commands.TeamExplorerNavigateBackward" Scope="Team Explorer">Alt+Left Arrow</RemoveShortcut>
+               <RemoveShortcut Command="TeamFoundationContextMenus.Commands.TeamExplorerNavigateForward" Scope="Team Explorer">Alt+Right Arrow</RemoveShortcut>
                <RemoveShortcut Command="TeamFoundationContextMenus.MergeContextMenu.SetFocusonLeftWindow" Scope="Merge Editor Window">Alt+1</RemoveShortcut>
                <RemoveShortcut Command="TeamFoundationContextMenus.MergeContextMenu.SetFocusonResultWindow" Scope="Merge Editor Window">Alt+2</RemoveShortcut>
                <RemoveShortcut Command="TeamFoundationContextMenus.MergeContextMenu.SetFocusonRightWindow" Scope="Merge Editor Window">Alt+3</RemoveShortcut>
-               <RemoveShortcut Command="View.SolutionExplorer" Scope="Global">Ctrl+Alt+L</RemoveShortcut>
-               <RemoveShortcut Command="SolutionExplorer.SyncWithActiveDocument" Scope="Global">Ctrl+[, Ctrl+S</RemoveShortcut>
-               <RemoveShortcut Command="SolutionExplorer.SyncWithActiveDocument" Scope="Global">Ctrl+[, S</RemoveShortcut>
-               <RemoveShortcut Command="View.Output" Scope="Global">Ctrl+Alt+O</RemoveShortcut>
-               <RemoveShortcut Command="Debug.Locals" Scope="Global">Ctrl+Alt+V, L</RemoveShortcut>
-               <RemoveShortcut Command="Debug.Locals.Search" Scope="Locals Window">Ctrl+E</RemoveShortcut>
-               <RemoveShortcut Command="View.FindSymbolResults" Scope="Global">Ctrl+Alt+Y</RemoveShortcut>
-               <RemoveShortcut Command="Debug.Disassembly" Scope="Global">Alt+8</RemoveShortcut>
-               <RemoveShortcut Command="Debug.CallStack" Scope="Global">Alt+7</RemoveShortcut>
-               <RemoveShortcut Command="Debug.CallStack" Scope="Global">Ctrl+Alt+C</RemoveShortcut>
-               <RemoveShortcut Command="Debug.Memory1" Scope="Global">Alt+6</RemoveShortcut>
-               <RemoveShortcut Command="Debug.Memory1" Scope="Global">Ctrl+Alt+M, 1</RemoveShortcut>
-               <RemoveShortcut Command="Debug.Memory2" Scope="Global">Ctrl+Alt+M, 2</RemoveShortcut>
-               <RemoveShortcut Command="Debug.Memory3" Scope="Global">Ctrl+Alt+M, 3</RemoveShortcut>
-               <RemoveShortcut Command="Debug.Memory4" Scope="Global">Ctrl+Alt+M, 4</RemoveShortcut>
-               <RemoveShortcut Command="Debug.Registers" Scope="Global">Alt+5</RemoveShortcut>
-               <RemoveShortcut Command="Debug.Registers" Scope="Global">Ctrl+Alt+G</RemoveShortcut>
-               <RemoveShortcut Command="Window.ActivateDocumentWindow" Scope="Global">Alt+0</RemoveShortcut>
-               <RemoveShortcut Command="Edit.LineCut" Scope="Global">Shift+Alt+L</RemoveShortcut>
-               <RemoveShortcut Command="Edit.LineCut" Scope="Text Editor">Ctrl+L</RemoveShortcut>
-               <RemoveShortcut Command="Image.LineTool" Scope="VC Image Editor">Ctrl+L</RemoveShortcut>
-               <RemoveShortcut Command="Diff.NextDifference" Scope="Difference Viewer">F8</RemoveShortcut>
-               <RemoveShortcut Command="Edit.LineDelete" Scope="Text Editor">Ctrl+Shift+L</RemoveShortcut>
-               <RemoveShortcut Command="Diff.PreviousDifference" Scope="Difference Viewer">Shift+F8</RemoveShortcut>
-               <RemoveShortcut Command="Diff.PreviousDifference" Scope="Text Editor">Ctrl+Shift+F8</RemoveShortcut>
-               <RemoveShortcut Command="File.Close" Scope="Text Editor">Alt+C</RemoveShortcut>
-               <RemoveShortcut Command="File.CloseAllButThis" Scope="Text Editor">Shift+Alt+C</RemoveShortcut>
-               <RemoveShortcut Command="Edit.Duplicate" Scope="Text Editor">Ctrl+E, V</RemoveShortcut>
-               <RemoveShortcut Command="Edit.Duplicate" Scope="Text Editor">Ctrl+E, Ctrl+V</RemoveShortcut>
-               <RemoveShortcut Command="Edit.Duplicate" Scope="Text Editor">Ctrl+D</RemoveShortcut>
-               <RemoveShortcut Command="Edit.GoToFindCombo" Scope="Global">Ctrl+D</RemoveShortcut>
-               <RemoveShortcut Command="Format.TabOrder" Scope="VC Dialog Editor">Ctrl+D</RemoveShortcut>
-               <RemoveShortcut Command="Build.BuildSelection" Scope="Global">Ctrl+B</RemoveShortcut>
-               <RemoveShortcut Command="Build.BuildSolution" Scope="Global">F7</RemoveShortcut>
-               <RemoveShortcut Command="Format.ButtonBottom" Scope="VC Dialog Editor">Ctrl+B</RemoveShortcut>
-               <RemoveShortcut Command="Format.ButtonRight" Scope="VC Dialog Editor">Ctrl+R</RemoveShortcut>
-               <RemoveShortcut Command="Image.BrushTool" Scope="VC Image Editor">Ctrl+B</RemoveShortcut>
-               <RemoveShortcut Command="Debug.Breakpoints" Scope="Global">Ctrl+Alt+B</RemoveShortcut>
-               <RemoveShortcut Command="Debug.Breakpoints" Scope="Global">Alt+F9</RemoveShortcut>
-               <RemoveShortcut Command="Image.PreviousColor" Scope="VC Image Editor">Ctrl+Left Arrow</RemoveShortcut>
-               <RemoveShortcut Command="Image.PreviousColor" Scope="VC Image Editor">Ctrl+[</RemoveShortcut>
-               <RemoveShortcut Command="SolutionExplorer.OpenFilesFilter" Scope="Global">Ctrl+[, Ctrl+O</RemoveShortcut>
-               <RemoveShortcut Command="SolutionExplorer.OpenFilesFilter" Scope="Global">Ctrl+[, O</RemoveShortcut>
-               <RemoveShortcut Command="SolutionExplorer.PendingChangesFilter" Scope="Global">Ctrl+[, Ctrl+P</RemoveShortcut>
-               <RemoveShortcut Command="SolutionExplorer.PendingChangesFilter" Scope="Global">Ctrl+[, P</RemoveShortcut>
-               <RemoveShortcut Command="Edit.Find" Scope="Global">Ctrl+F</RemoveShortcut>
-               <RemoveShortcut Command="Image.FillTool" Scope="VC Image Editor">Ctrl+F</RemoveShortcut>
-               <RemoveShortcut Command="Edit.MakeLowercase" Scope="Text Editor">Ctrl+U</RemoveShortcut>
-               <RemoveShortcut Command="Edit.MakeUppercase" Scope="Text Editor">Ctrl+Shift+U</RemoveShortcut>
-               <RemoveShortcut Command="Image.UseSelectionasBrush" Scope="VC Image Editor">Ctrl+U</RemoveShortcut>
-               <RemoveShortcut Command="Edit.SelectAll" Scope="Global">Ctrl+A</RemoveShortcut>
-               <RemoveShortcut Command="Image.AirbrushTool" Scope="VC Image Editor">Ctrl+A</RemoveShortcut>
-               <RemoveShortcut Command="Edit.Copy" Scope="Global">Ctrl+C</RemoveShortcut>
+               <RemoveShortcut Command="TeamFoundationContextMenus.MyWorkPageInProgress.TfsContextMyWorkPageCreateCopyWI" Scope="Team Explorer">Shift+Alt+C</RemoveShortcut>
                <RemoveShortcut Command="Test.CodeCoverageResults" Scope="Global">Ctrl+E, C</RemoveShortcut>
-               <RemoveShortcut Command="TestExplorer.ShowTestExplorer" Scope="Global">Ctrl+E, T</RemoveShortcut>
-               <RemoveShortcut Command="View.ShowTaskStatusCenter" Scope="Global">Ctrl+E, Ctrl+T</RemoveShortcut>
-               <RemoveShortcut Command="View.UnpublishedCommits" Scope="Global">Ctrl+E, Ctrl+C</RemoveShortcut>
-               <RemoveShortcut Command="Debug.Autos.Search" Scope="Autos Window">Ctrl+E</RemoveShortcut>
-               <RemoveShortcut Command="Debug.Watch.Search" Scope="Watch Windows">Ctrl+E</RemoveShortcut>
-               <RemoveShortcut Command="Edit.ToggleWordWrap" Scope="Text Editor">Ctrl+E, Ctrl+W</RemoveShortcut>
-               <RemoveShortcut Command="Edit.Cut" Scope="Global">Ctrl+X</RemoveShortcut>
-               <RemoveShortcut Command="Edit.Cut" Scope="Global">Shift+Del</RemoveShortcut>
-               <RemoveShortcut Command="Edit.GoTo" Scope="Global">Ctrl+G</RemoveShortcut>
-               <RemoveShortcut Command="Format.ToggleGuides" Scope="VC Dialog Editor">Ctrl+G</RemoveShortcut>
-               <RemoveShortcut Command="Edit.Replace" Scope="Global">Ctrl+H</RemoveShortcut>
-               <RemoveShortcut Command="Image.FlipHorizontal" Scope="VC Image Editor">Ctrl+H</RemoveShortcut>
-               <RemoveShortcut Command="Edit.IncrementalSearch" Scope="Text Editor">Ctrl+I</RemoveShortcut>
-               <RemoveShortcut Command="Image.PencilTool" Scope="VC Image Editor">Ctrl+I</RemoveShortcut>
-               <RemoveShortcut Command="Edit.ListMembers" Scope="Text Editor">Ctrl+J</RemoveShortcut>
-               <RemoveShortcut Command="Image.DrawOpaque" Scope="VC Image Editor">Ctrl+J</RemoveShortcut>
-               <RemoveShortcut Command="Debug.FunctionBreakpoint" Scope="Global">Ctrl+K, B</RemoveShortcut>
-               <RemoveShortcut Command="Edit.GoToTypeDefinition" Scope="Global">Ctrl+K, Ctrl+Shift+T</RemoveShortcut>
-               <RemoveShortcut Command="Edit.InsertSnippet" Scope="Global">Ctrl+K, Ctrl+X</RemoveShortcut>
-               <RemoveShortcut Command="Edit.NextBookmark" Scope="Text Editor">F2</RemoveShortcut>
-               <RemoveShortcut Command="Edit.NextBookmark" Scope="Global">Ctrl+K, Ctrl+N</RemoveShortcut>
-               <RemoveShortcut Command="Edit.PreviousBookmark" Scope="Global">Shift+F2</RemoveShortcut>
-               <RemoveShortcut Command="Edit.PreviousBookmark" Scope="Global">Ctrl+K, Ctrl+P</RemoveShortcut>
-               <RemoveShortcut Command="Edit.SurroundWith" Scope="Global">Ctrl+K, Ctrl+S</RemoveShortcut>
-               <RemoveShortcut Command="EditorContextMenus.CodeWindow.Annotation.MoveToNextAnnotation" Scope="Global">Ctrl+K, Ctrl+Right Arrow</RemoveShortcut>
-               <RemoveShortcut Command="EditorContextMenus.CodeWindow.Annotation.MoveToPreviousAnnotation" Scope="Global">Ctrl+K, Ctrl+Left Arrow</RemoveShortcut>
-               <RemoveShortcut Command="EditorContextMenus.CodeWindow.Annotation.ShowLineAnnotations" Scope="Global">Ctrl+K, Ctrl+M</RemoveShortcut>
-               <RemoveShortcut Command="EditorContextMenus.CodeWindow.Annotation.ShowStructure" Scope="Global">Ctrl+K, Ctrl+G</RemoveShortcut>
-               <RemoveShortcut Command="EditorContextMenus.CodeWindow.PeekHeaderCodeFile" Scope="Global">Ctrl+K, Ctrl+J</RemoveShortcut>
-               <RemoveShortcut Command="EditorContextMenus.CodeWindow.ToggleHeaderCodeFile" Scope="Global">Ctrl+K, Ctrl+O</RemoveShortcut>
-               <RemoveShortcut Command="EditorContextMenus.CodeWindow.ViewCallHierarchy" Scope="Global">Ctrl+K, T</RemoveShortcut>
-               <RemoveShortcut Command="EditorContextMenus.CodeWindow.ViewCallHierarchy" Scope="Global">Ctrl+K, Ctrl+T</RemoveShortcut>
-               <RemoveShortcut Command="Tools.CodeSnippetsManager" Scope="Global">Ctrl+K, Ctrl+B</RemoveShortcut>
-               <RemoveShortcut Command="View.BookmarkWindow" Scope="Global">Ctrl+K, Ctrl+W</RemoveShortcut>
-               <RemoveShortcut Command="View.ClassViewGoToSearchCombo" Scope="Global">Ctrl+K, Ctrl+V</RemoveShortcut>
-               <RemoveShortcut Command="View.ObjectBrowserGoToSearchCombo" Scope="Global">Ctrl+K, Ctrl+R</RemoveShortcut>
-               <RemoveShortcut Command="Edit.ClearBookmarks" Scope="Text Editor">Ctrl+K, Ctrl+L</RemoveShortcut>
-               <RemoveShortcut Command="Edit.ClearBookmarks" Scope="Global">Ctrl+Shift+F2</RemoveShortcut>
-               <RemoveShortcut Command="Edit.CommentSelection" Scope="Text Editor">Ctrl+K, Ctrl+C</RemoveShortcut>
-               <RemoveShortcut Command="Edit.DeleteHorizontalWhiteSpace" Scope="Text Editor">Ctrl+K, Ctrl+\</RemoveShortcut>
-               <RemoveShortcut Command="Edit.FormatDocument" Scope="Text Editor">Ctrl+K, Ctrl+D</RemoveShortcut>
-               <RemoveShortcut Command="Edit.FormatSelection" Scope="Text Editor">Ctrl+K, Ctrl+F</RemoveShortcut>
-               <RemoveShortcut Command="Edit.FormatSelection" Scope="Global">Alt+F8</RemoveShortcut>
-               <RemoveShortcut Command="Edit.QuickInfo" Scope="Find All References Tool Window">Ctrl+K, Ctrl+I</RemoveShortcut>
-               <RemoveShortcut Command="Edit.QuickInfo" Scope="Text Editor">Ctrl+K, Ctrl+I</RemoveShortcut>
-               <RemoveShortcut Command="Edit.ShowCodeLensMenu" Scope="Text Editor">Ctrl+K, Ctrl+`</RemoveShortcut>
-               <RemoveShortcut Command="Edit.ShowCodeLensMenu" Scope="Text Editor">Ctrl+K, `</RemoveShortcut>
-               <RemoveShortcut Command="Edit.SwapAnchor" Scope="Text Editor">Ctrl+K, Ctrl+A</RemoveShortcut>
-               <RemoveShortcut Command="Edit.ToggleBookmark" Scope="Global">Ctrl+F2</RemoveShortcut>
-               <RemoveShortcut Command="Edit.ToggleBookmark" Scope="Text Editor">Ctrl+K, Ctrl+K</RemoveShortcut>
-               <RemoveShortcut Command="Edit.ToggleLineComment" Scope="Text Editor">Ctrl+K, Ctrl+/</RemoveShortcut>
-               <RemoveShortcut Command="Edit.ToggleTaskListShortcut" Scope="Text Editor">Ctrl+K, Ctrl+H</RemoveShortcut>
-               <RemoveShortcut Command="Edit.UncommentSelection" Scope="Text Editor">Ctrl+K, Ctrl+U</RemoveShortcut>
-               <RemoveShortcut Command="EditorContextMenus.FileHealthIndicator.RunDefaultCodeCleanup" Scope="Text Editor">Ctrl+K, Ctrl+E</RemoveShortcut>
-               <RemoveShortcut Command="Edit.CollapseAllOutlining" Scope="Text Editor">Ctrl+M, Ctrl+A</RemoveShortcut>
-               <RemoveShortcut Command="Edit.CollapseCurrentRegion" Scope="Text Editor">Ctrl+M, Ctrl+S</RemoveShortcut>
-               <RemoveShortcut Command="Edit.CollapsetoDefinitions" Scope="Text Editor">Ctrl+M, Ctrl+O</RemoveShortcut>
-               <RemoveShortcut Command="Edit.ExpandAllOutlining" Scope="Text Editor">Ctrl+M, Ctrl+X</RemoveShortcut>
-               <RemoveShortcut Command="Edit.ExpandCurrentRegion" Scope="Text Editor">Ctrl+M, Ctrl+E</RemoveShortcut>
-               <RemoveShortcut Command="Edit.ExpandSelection" Scope="Text Editor">Shift+Alt+=</RemoveShortcut>
-               <RemoveShortcut Command="Edit.HideSelection" Scope="Text Editor">Ctrl+M, Ctrl+H</RemoveShortcut>
-               <RemoveShortcut Command="Edit.StopHidingCurrent" Scope="Text Editor">Ctrl+M, Ctrl+U</RemoveShortcut>
-               <RemoveShortcut Command="Edit.StopOutlining" Scope="Text Editor">Ctrl+M, Ctrl+P</RemoveShortcut>
-               <RemoveShortcut Command="Edit.StopSearch" Scope="Global">Alt+F3, S</RemoveShortcut>
-               <RemoveShortcut Command="Edit.ToggleAllOutlining" Scope="Text Editor">Ctrl+M, Ctrl+L</RemoveShortcut>
-               <RemoveShortcut Command="Edit.ToggleOutliningExpansion" Scope="Text Editor">Ctrl+M, Ctrl+M</RemoveShortcut>
-               <RemoveShortcut Command="Format.CheckMnemonics" Scope="VC Dialog Editor">Ctrl+M</RemoveShortcut>
-               <RemoveShortcut Command="Image.MagnificationTool" Scope="VC Image Editor">Ctrl+M</RemoveShortcut>
-               <RemoveShortcut Command="File.OpenFile" Scope="Global">Ctrl+O</RemoveShortcut>
-               <RemoveShortcut Command="File.Print" Scope="Global">Ctrl+P</RemoveShortcut>
-               <RemoveShortcut Command="Debug.ReverseContinue" Scope="Global">Ctrl+R, F5</RemoveShortcut>
-               <RemoveShortcut Command="Debug.StepBackInto" Scope="Global">Ctrl+R, F11</RemoveShortcut>
-               <RemoveShortcut Command="Debug.StepBackOut" Scope="Global">Ctrl+R, Shift+F11</RemoveShortcut>
-               <RemoveShortcut Command="Debug.StepBackOver" Scope="Global">Ctrl+R, F10</RemoveShortcut>
-               <RemoveShortcut Command="EditorContextMenus.CodeWindow.RemoveAndSort" Scope="Global">Ctrl+R, G</RemoveShortcut>
-               <RemoveShortcut Command="EditorContextMenus.CodeWindow.RemoveAndSort" Scope="Global">Ctrl+R, Ctrl+G</RemoveShortcut>
-               <RemoveShortcut Command="Edit.ViewWhiteSpace" Scope="Global">Ctrl+Shift+8</RemoveShortcut>
-               <RemoveShortcut Command="Edit.ViewWhiteSpace" Scope="Text Editor">Ctrl+R, Ctrl+W</RemoveShortcut>
-               <RemoveShortcut Command="Refactor.EncapsulateField" Scope="Global">Ctrl+R, Ctrl+E</RemoveShortcut>
-               <RemoveShortcut Command="Refactor.ExtractInterface" Scope="Global">Ctrl+R, Ctrl+I</RemoveShortcut>
-               <RemoveShortcut Command="Refactor.ExtractMethod" Scope="Global">Ctrl+R, Ctrl+M</RemoveShortcut>
-               <RemoveShortcut Command="Refactor.RemoveParameters" Scope="Global">Ctrl+R, Ctrl+V</RemoveShortcut>
-               <RemoveShortcut Command="Refactor.Rename" Scope="Global">Ctrl+R, Ctrl+R</RemoveShortcut>
-               <RemoveShortcut Command="Refactor.ReorderParameters" Scope="Global">Ctrl+R, Ctrl+O</RemoveShortcut>
                <RemoveShortcut Command="TestExplorer.DebugAllTests" Scope="Global">Ctrl+R, Ctrl+A</RemoveShortcut>
                <RemoveShortcut Command="TestExplorer.DebugAllTestsInContext" Scope="Global">Ctrl+R, Ctrl+T</RemoveShortcut>
                <RemoveShortcut Command="TestExplorer.DebugLastRun" Scope="Global">Ctrl+R, D</RemoveShortcut>
                <RemoveShortcut Command="TestExplorer.RepeatLastRun" Scope="Global">Ctrl+R, L</RemoveShortcut>
                <RemoveShortcut Command="TestExplorer.RunAllTests" Scope="Global">Ctrl+R, A</RemoveShortcut>
                <RemoveShortcut Command="TestExplorer.RunAllTestsInContext" Scope="Global">Ctrl+R, T</RemoveShortcut>
-               <RemoveShortcut Command="Edit.NavigateTo" Scope="Global">Ctrl+T</RemoveShortcut>
-               <RemoveShortcut Command="Format.TestDialog" Scope="VC Dialog Editor">Ctrl+T</RemoveShortcut>
-               <RemoveShortcut Command="Image.TextTool" Scope="VC Image Editor">Ctrl+T</RemoveShortcut>
-               <RemoveShortcut Command="Edit.Paste" Scope="Global">Ctrl+V</RemoveShortcut>
-               <RemoveShortcut Command="Edit.NextKeyTyped" Scope="VC Accelerator Editor">Ctrl+W</RemoveShortcut>
-               <RemoveShortcut Command="Window.CloseDocumentWindow" Scope="Text Editor">Ctrl+W</RemoveShortcut>
-               <RemoveShortcut Command="Edit.Redo" Scope="Global">Ctrl+Y</RemoveShortcut>
-               <RemoveShortcut Command="Edit.Redo" Scope="Global">Shift+Alt+Bkspce</RemoveShortcut>
-               <RemoveShortcut Command="Edit.Undo" Scope="Global">Ctrl+Z</RemoveShortcut>
+               <RemoveShortcut Command="TestExplorer.ShowTestExplorer" Scope="Global">Ctrl+E, T</RemoveShortcut>
+               <RemoveShortcut Command="Tools.CodeSnippetsManager" Scope="Global">Ctrl+K, Ctrl+B</RemoveShortcut>
+               <RemoveShortcut Command="View.BookmarkWindow" Scope="Global">Ctrl+K, Ctrl+W</RemoveShortcut>
+               <RemoveShortcut Command="View.ClassViewGoToSearchCombo" Scope="Global">Ctrl+K, Ctrl+V</RemoveShortcut>
+               <RemoveShortcut Command="View.FindSymbolResults" Scope="Global">Ctrl+Alt+Y</RemoveShortcut>
                <RemoveShortcut Command="View.NextError" Scope="Global">Ctrl+Shift+F12</RemoveShortcut>
-               <RemoveShortcut Command="Format.SpaceAcross" Scope="VC Dialog Editor">Alt+Left Arrow</RemoveShortcut>
-               <RemoveShortcut Command="Format.SpaceAcross" Scope="VC Dialog Editor">Alt+Right Arrow</RemoveShortcut>
-               <RemoveShortcut Command="GraphView.BottomtoTop" Scope="XML Schema Designer">Alt+Up Arrow</RemoveShortcut>
-               <RemoveShortcut Command="GraphView.LefttoRight" Scope="XML Schema Designer">Alt+Right Arrow</RemoveShortcut>
-               <RemoveShortcut Command="GraphView.RighttoLeft" Scope="XML Schema Designer">Alt+Left Arrow</RemoveShortcut>
-               <RemoveShortcut Command="GraphView.ToptoBottom" Scope="XML Schema Designer">Alt+Down Arrow</RemoveShortcut>
-               <RemoveShortcut Command="TeamFoundationContextMenus.Commands.TeamExplorerNavigateBackward" Scope="Team Explorer">Alt+Left Arrow</RemoveShortcut>
-               <RemoveShortcut Command="TeamFoundationContextMenus.Commands.TeamExplorerNavigateForward" Scope="Team Explorer">Alt+Right Arrow</RemoveShortcut>
+               <RemoveShortcut Command="View.ObjectBrowserGoToSearchCombo" Scope="Global">Ctrl+K, Ctrl+R</RemoveShortcut>
+               <RemoveShortcut Command="View.Output" Scope="Global">Ctrl+Alt+O</RemoveShortcut>
+               <RemoveShortcut Command="View.ShowTaskStatusCenter" Scope="Global">Ctrl+E, Ctrl+T</RemoveShortcut>
+               <RemoveShortcut Command="View.SolutionExplorer" Scope="Global">Ctrl+Alt+L</RemoveShortcut>
+               <RemoveShortcut Command="View.UnpublishedCommits" Scope="Global">Ctrl+E, Ctrl+C</RemoveShortcut>
+               <RemoveShortcut Command="VisualAssist.FindSelected" Scope="Text Editor">Alt+K</RemoveShortcut>
                <RemoveShortcut Command="VisualAssist.NavigateBack" Scope="Text Editor">Alt+Left Arrow</RemoveShortcut>
                <RemoveShortcut Command="VisualAssist.NavigateForward" Scope="Text Editor">Alt+Right Arrow</RemoveShortcut>
-               <RemoveShortcut Command="Format.SpaceDown" Scope="VC Dialog Editor">Alt+Down Arrow</RemoveShortcut>
-               <RemoveShortcut Command="Format.SpaceDown" Scope="VC Dialog Editor">Alt+Up Arrow</RemoveShortcut>
+               <RemoveShortcut Command="VisualAssist.RefactorCreateFromUsage" Scope="Text Editor">Shift+Alt+C</RemoveShortcut>
                <RemoveShortcut Command="VisualAssist.ScopeNext" Scope="Text Editor">Alt+Down Arrow</RemoveShortcut>
                <RemoveShortcut Command="VisualAssist.ScopePrevious" Scope="Text Editor">Alt+Up Arrow</RemoveShortcut>
                <RemoveShortcut Command="VisualAssist.SmartSelectExtend" Scope="Text Editor">Shift+Alt+]</RemoveShortcut>
                <RemoveShortcut Command="VisualAssist.SmartSelectExtendBlock" Scope="Text Editor">Alt+]</RemoveShortcut>
                <RemoveShortcut Command="VisualAssist.SmartSelectShrink" Scope="Text Editor">Shift+Alt+[</RemoveShortcut>
                <RemoveShortcut Command="VisualAssist.SmartSelectShrinkBlock" Scope="Text Editor">Alt+[</RemoveShortcut>
-               <RemoveShortcut Command="Edit.ToggleWordWrap" Scope="Text Editor">Alt+Z</RemoveShortcut>
-               <RemoveShortcut Command="Window.NextTab" Scope="Global">Ctrl+PgDn</RemoveShortcut>
+               <RemoveShortcut Command="Window.ActivateDocumentWindow" Scope="Global">Alt+0</RemoveShortcut>
+               <RemoveShortcut Command="Window.CloseDocumentWindow" Scope="Text Editor">Ctrl+W</RemoveShortcut>
                <RemoveShortcut Command="Window.NextTab" Scope="Global">Ctrl+Alt+PgDn</RemoveShortcut>
-               <RemoveShortcut Command="Window.PreviousTab" Scope="Global">Ctrl+PgUp</RemoveShortcut>
-               <RemoveShortcut Command="Window.PreviousTab" Scope="Global">Ctrl+Alt+PgUp</RemoveShortcut>
+               <RemoveShortcut Command="Window.NextTab" Scope="Global">Ctrl+PgDn</RemoveShortcut>
                <RemoveShortcut Command="Window.NextTabandAddtoSelection" Scope="Global">Ctrl+Shift+Alt+PgDn</RemoveShortcut>
+               <RemoveShortcut Command="Window.PreviousTab" Scope="Global">Ctrl+Alt+PgUp</RemoveShortcut>
+               <RemoveShortcut Command="Window.PreviousTab" Scope="Global">Ctrl+PgUp</RemoveShortcut>
                <RemoveShortcut Command="Window.PreviousTabandAddtoSelection" Scope="Global">Ctrl+Shift+Alt+PgUp</RemoveShortcut>
-               <Shortcut Command="VisualAssist.NavigateBack" Scope="Global">Alt+Left Arrow</Shortcut>
-               <Shortcut Command="VisualAssist.NavigateForward" Scope="Global">Alt+Right Arrow</Shortcut>
-               <Shortcut Command="VisualAssist.ResetEditorZoom" Scope="Text Editor">Ctrl+0</Shortcut>
-               <Shortcut Command="Window.CloseDocumentWindow" Scope="Global">Ctrl+F4</Shortcut>
-               <Shortcut Command="VisualAssist.Paste" Scope="Text Editor">Ctrl+Shift+V</Shortcut>
-               <Shortcut Command="View.SolutionExplorer" Scope="Global">Alt+1</Shortcut>
-               <Shortcut Command="SolutionExplorer.SyncWithActiveDocument" Scope="Global">Shift+Alt+1</Shortcut>
-               <Shortcut Command="View.Output" Scope="Global">Alt+4</Shortcut>
-               <Shortcut Command="View.FindSymbolResults" Scope="Global">Alt+3</Shortcut>
-               <Shortcut Command="View.PendingChanges" Scope="Global">Alt+9</Shortcut>
-               <Shortcut Command="Window.ActivateDocumentWindow" Scope="Solution Explorer">Alt+1</Shortcut>
+               <Shortcut Command="Build.BuildOnlyProject" Scope="Global">Ctrl+Shift+B</Shortcut>
+               <Shortcut Command="Build.BuildSolution" Scope="Global">Ctrl+Shift+Alt+B</Shortcut>
+               <Shortcut Command="Diff.InlineView" Scope="Global">Alt+I</Shortcut>
                <Shortcut Command="Diff.NextDifference" Scope="Global">Ctrl+L</Shortcut>
                <Shortcut Command="Diff.PreviousDifference" Scope="Global">Ctrl+Shift+L</Shortcut>
+               <Shortcut Command="Diff.RightOnlyView" Scope="Global">Alt+K</Shortcut>
+               <Shortcut Command="Diff.SideBySideView" Scope="Global">Alt+L</Shortcut>
+               <Shortcut Command="Diff.SwitchBetweenLeftAndRight" Scope="Global">Ctrl+W, Ctrl+W</Shortcut>
+               <Shortcut Command="Edit.ToggleLineComment" Scope="Global">Ctrl+/</Shortcut>
+               <Shortcut Command="EditorContextMenus.CodeWindow.ToggleHeaderCodeFile" Scope="Global">Alt+2</Shortcut>
                <Shortcut Command="File.Close" Scope="Global">Alt+C</Shortcut>
                <Shortcut Command="File.CloseAllButThis" Scope="Global">Shift+Alt+C</Shortcut>
-               <Shortcut Command="Build.BuildSolution" Scope="Global">Ctrl+Shift+Alt+B</Shortcut>
-               <Shortcut Command="Build.BuildOnlyProject" Scope="Global">Ctrl+Shift+B</Shortcut>
-               <Shortcut Command="EditorContextMenus.CodeWindow.ToggleHeaderCodeFile" Scope="Global">Alt+2</Shortcut>
+               <Shortcut Command="SolutionExplorer.SyncWithActiveDocument" Scope="Global">Shift+Alt+1</Shortcut>
                <Shortcut Command="Team.Git.CompareWithUnmodified" Scope="Global">Shift+Alt+2</Shortcut>
-               <Shortcut Command="Edit.ToggleLineComment" Scope="Global">Ctrl+/</Shortcut>
+               <Shortcut Command="View.FindSymbolResults" Scope="Global">Alt+3</Shortcut>
                <Shortcut Command="View.NextError" Scope="Global">Ctrl+;</Shortcut>
+               <Shortcut Command="View.Output" Scope="Global">Alt+4</Shortcut>
+               <Shortcut Command="View.PendingChanges" Scope="Global">Alt+9</Shortcut>
                <Shortcut Command="View.PreviousError" Scope="Global">Ctrl+Shift+;</Shortcut>
+               <Shortcut Command="View.SolutionExplorer" Scope="Global">Alt+1</Shortcut>
+               <Shortcut Command="VisualAssist.NavigateBack" Scope="Global">Alt+Left Arrow</Shortcut>
+               <Shortcut Command="VisualAssist.NavigateForward" Scope="Global">Alt+Right Arrow</Shortcut>
+               <Shortcut Command="VisualAssist.Paste" Scope="Text Editor">Ctrl+Shift+V</Shortcut>
+               <Shortcut Command="VisualAssist.ResetEditorZoom" Scope="Text Editor">Ctrl+0</Shortcut>
                <Shortcut Command="VisualAssist.ScopeNext" Scope="Global">Alt+Down Arrow</Shortcut>
                <Shortcut Command="VisualAssist.ScopePrevious" Scope="Global">Alt+Up Arrow</Shortcut>
+               <Shortcut Command="Window.ActivateDocumentWindow" Scope="Solution Explorer">Alt+1</Shortcut>
+               <Shortcut Command="Window.CloseDocumentWindow" Scope="Global">Ctrl+F4</Shortcut>
                <Shortcut Command="Window.NextTab" Scope="Global">Alt+X</Shortcut>
                <Shortcut Command="Window.NextTab" Scope="Global">Alt+]</Shortcut>
                <Shortcut Command="Window.PreviousTab" Scope="Global">Alt+Z</Shortcut>
                <Shortcut Command="Window.PreviousTab" Scope="Global">Alt+[</Shortcut>
-               <RemoveShortcut Command="Diff.InlineView" Scope="Text Editor">Ctrl+\, Ctrl+1</RemoveShortcut>
-               <Shortcut Command="Diff.InlineView" Scope="Global">Alt+I</Shortcut>
-               <Shortcut Command="Diff.SideBySideView" Scope="Global">Alt+L</Shortcut>
-               <RemoveShortcut Command="Diff.SideBySideView" Scope="Text Editor">Ctrl+\, Ctrl+2</RemoveShortcut>
-               <RemoveShortcut Command="VisualAssist.FindSelected" Scope="Text Editor">Alt+K</RemoveShortcut>
-               <RemoveShortcut Command="Diff.IgnoreTrimWhitespace" Scope="Text Editor">Ctrl+\, Ctrl+Space</RemoveShortcut>
-               <RemoveShortcut Command="Diff.LeftOnlyView" Scope="Text Editor">Ctrl+\, Ctrl+3</RemoveShortcut>
-               <RemoveShortcut Command="Diff.RightOnlyView" Scope="Text Editor">Ctrl+\, Ctrl+4</RemoveShortcut>
-               <Shortcut Command="Diff.RightOnlyView" Scope="Global">Alt+K</Shortcut>
-               <RemoveShortcut Command="Diff.SwitchBetweenLeftAndRight" Scope="Text Editor">Ctrl+\, Ctrl+Tab</RemoveShortcut>
-               <RemoveShortcut Command="Diff.SynchronizeViewToggle" Scope="Text Editor">Ctrl+\, Ctrl+Down Arrow</RemoveShortcut>
-               <Shortcut Command="Diff.SwitchBetweenLeftAndRight" Scope="Global">Ctrl+W, Ctrl+W</Shortcut>
             </UserShortcuts>
          </KeyboardShortcuts>
       </Category>
