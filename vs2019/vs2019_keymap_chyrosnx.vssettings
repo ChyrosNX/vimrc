@@ -79,6 +79,7 @@
                <RemoveShortcut Command="Diff.SideBySideView" Scope="Text Editor">Ctrl+\, Ctrl+2</RemoveShortcut>
                <RemoveShortcut Command="Diff.SwitchBetweenLeftAndRight" Scope="Text Editor">Ctrl+\, Ctrl+Tab</RemoveShortcut>
                <RemoveShortcut Command="Diff.SynchronizeViewToggle" Scope="Text Editor">Ctrl+\, Ctrl+Down Arrow</RemoveShortcut>
+               <RemoveShortcut Command="Edit.BriefBrowse" Scope="Global">Alt+G</RemoveShortcut>
                <RemoveShortcut Command="Edit.ClearBookmarks" Scope="Global">Ctrl+Shift+F2</RemoveShortcut>
                <RemoveShortcut Command="Edit.ClearBookmarks" Scope="Text Editor">Ctrl+K, Ctrl+L</RemoveShortcut>
                <RemoveShortcut Command="Edit.CollapseAllOutlining" Scope="Text Editor">Ctrl+M, Ctrl+A</RemoveShortcut>
@@ -134,6 +135,7 @@
                <RemoveShortcut Command="Edit.SelectAll" Scope="Global">Ctrl+A</RemoveShortcut>
                <RemoveShortcut Command="Edit.SelectCurrentWord" Scope="Text Editor">Ctrl+W</RemoveShortcut>
                <RemoveShortcut Command="Edit.SelectToLastGoBack" Scope="Text Editor">Ctrl+=</RemoveShortcut>
+               <RemoveShortcut Command="Edit.ShowClipboardHistory" Scope="Text Editor">Ctrl+Shift+V</RemoveShortcut>
                <RemoveShortcut Command="Edit.ShowCodeLensMenu" Scope="Text Editor">Ctrl+K, Ctrl+`</RemoveShortcut>
                <RemoveShortcut Command="Edit.ShowCodeLensMenu" Scope="Text Editor">Ctrl+K, `</RemoveShortcut>
                <RemoveShortcut Command="Edit.StopHidingCurrent" Scope="Text Editor">Ctrl+M, Ctrl+U</RemoveShortcut>
@@ -150,9 +152,11 @@
                <RemoveShortcut Command="Edit.ToggleWordWrap" Scope="Text Editor">Alt+Z</RemoveShortcut>
                <RemoveShortcut Command="Edit.ToggleWordWrap" Scope="Text Editor">Ctrl+E, Ctrl+W</RemoveShortcut>
                <RemoveShortcut Command="Edit.UncommentSelection" Scope="Text Editor">Ctrl+K, Ctrl+U</RemoveShortcut>
+               <RemoveShortcut Command="Edit.Undo" Scope="Global">Alt+Bkspce</RemoveShortcut>
                <RemoveShortcut Command="Edit.Undo" Scope="Global">Ctrl+Z</RemoveShortcut>
                <RemoveShortcut Command="Edit.ViewWhiteSpace" Scope="Global">Ctrl+Shift+8</RemoveShortcut>
                <RemoveShortcut Command="Edit.ViewWhiteSpace" Scope="Text Editor">Ctrl+R, Ctrl+W</RemoveShortcut>
+               <RemoveShortcut Command="Edit.WordDeleteToStart" Scope="Text Editor">Ctrl+Bkspce</RemoveShortcut>
                <RemoveShortcut Command="EditorContextMenus.CodeWindow.Annotation.MoveToNextAnnotation" Scope="Global">Ctrl+K, Ctrl+Right Arrow</RemoveShortcut>
                <RemoveShortcut Command="EditorContextMenus.CodeWindow.Annotation.MoveToPreviousAnnotation" Scope="Global">Ctrl+K, Ctrl+Left Arrow</RemoveShortcut>
                <RemoveShortcut Command="EditorContextMenus.CodeWindow.Annotation.ShowLineAnnotations" Scope="Global">Ctrl+K, Ctrl+M</RemoveShortcut>
@@ -167,6 +171,7 @@
                <RemoveShortcut Command="EditorContextMenus.Navigate.GoToContainingBlock" Scope="Text Editor">Shift+Alt+[</RemoveShortcut>
                <RemoveShortcut Command="File.Close" Scope="Text Editor">Alt+C</RemoveShortcut>
                <RemoveShortcut Command="File.CloseAllButThis" Scope="Text Editor">Shift+Alt+C</RemoveShortcut>
+               <RemoveShortcut Command="File.NewProject" Scope="Global">Ctrl+Shift+N</RemoveShortcut>
                <RemoveShortcut Command="File.OpenFile" Scope="Global">Ctrl+O</RemoveShortcut>
                <RemoveShortcut Command="File.Print" Scope="Global">Ctrl+P</RemoveShortcut>
                <RemoveShortcut Command="Format.ButtonBottom" Scope="VC Dialog Editor">Ctrl+B</RemoveShortcut>
@@ -279,6 +284,9 @@
                <RemoveShortcut Command="Tools.CodeSnippetsManager" Scope="Global">Ctrl+K, Ctrl+B</RemoveShortcut>
                <RemoveShortcut Command="View.BookmarkWindow" Scope="Global">Ctrl+K, Ctrl+W</RemoveShortcut>
                <RemoveShortcut Command="View.ClassViewGoToSearchCombo" Scope="Global">Ctrl+K, Ctrl+V</RemoveShortcut>
+               <RemoveShortcut Command="View.CodeDefinitionWindow" Scope="Global">Ctrl+Shift+V</RemoveShortcut>
+               <RemoveShortcut Command="View.CodeDefinitionWindow" Scope="Global">Ctrl+\, Ctrl+D</RemoveShortcut>
+               <RemoveShortcut Command="View.CodeDefinitionWindow" Scope="Global">Ctrl+\, D</RemoveShortcut>
                <RemoveShortcut Command="View.FindSymbolResults" Scope="Global">Ctrl+Alt+Y</RemoveShortcut>
                <RemoveShortcut Command="View.NavigateForward" Scope="Global">Ctrl+Shift+-</RemoveShortcut>
                <RemoveShortcut Command="View.NextError" Scope="Global">Ctrl+Shift+F12</RemoveShortcut>
@@ -294,8 +302,10 @@
                <RemoveShortcut Command="View.ZoomOut" Scope="Global">Ctrl+Shift+,</RemoveShortcut>
                <RemoveShortcut Command="VisualAssist.FindReferences" Scope="Text Editor">Shift+Alt+F</RemoveShortcut>
                <RemoveShortcut Command="VisualAssist.FindSelected" Scope="Text Editor">Alt+K</RemoveShortcut>
+               <RemoveShortcut Command="VisualAssist.GotoImplementation" Scope="Text Editor">Alt+G</RemoveShortcut>
                <RemoveShortcut Command="VisualAssist.NavigateBack" Scope="Text Editor">Alt+Left Arrow</RemoveShortcut>
                <RemoveShortcut Command="VisualAssist.NavigateForward" Scope="Text Editor">Alt+Right Arrow</RemoveShortcut>
+               <RemoveShortcut Command="VisualAssist.Paste" Scope="Text Editor">Ctrl+Shift+V</RemoveShortcut>
                <RemoveShortcut Command="VisualAssist.RefactorCreateFromUsage" Scope="Text Editor">Shift+Alt+C</RemoveShortcut>
                <RemoveShortcut Command="VisualAssist.ScopeNext" Scope="Text Editor">Alt+Down Arrow</RemoveShortcut>
                <RemoveShortcut Command="VisualAssist.ScopePrevious" Scope="Text Editor">Alt+Up Arrow</RemoveShortcut>
@@ -340,12 +350,13 @@
                <Shortcut Command="View.SolutionExplorer" Scope="Global">Alt+1</Shortcut>
                <Shortcut Command="View.ZoomIn" Scope="Global">Ctrl+=</Shortcut>
                <Shortcut Command="View.ZoomOut" Scope="Global">Ctrl+-</Shortcut>
+               <Shortcut Command="VisualAssist.GotoImplementation" Scope="Global">Alt+G</Shortcut>
                <Shortcut Command="VisualAssist.NavigateBack" Scope="Global">Alt+Left Arrow</Shortcut>
                <Shortcut Command="VisualAssist.NavigateForward" Scope="Global">Alt+Right Arrow</Shortcut>
-               <Shortcut Command="VisualAssist.Paste" Scope="Text Editor">Ctrl+Shift+V</Shortcut>
                <Shortcut Command="VisualAssist.ResetEditorZoom" Scope="Text Editor">Ctrl+0</Shortcut>
                <Shortcut Command="VisualAssist.ScopeNext" Scope="Global">Alt+Down Arrow</Shortcut>
                <Shortcut Command="VisualAssist.ScopePrevious" Scope="Global">Alt+Up Arrow</Shortcut>
+               <Shortcut Command="VsVim.ToggleEnabled" Scope="Global">Ctrl+Bkspce</Shortcut>
                <Shortcut Command="Window.ActivateDocumentWindow" Scope="Solution Explorer">Alt+1</Shortcut>
                <Shortcut Command="Window.ActivateDocumentWindow" Scope="Team Explorer">Alt+9</Shortcut>
                <Shortcut Command="Window.CloseDocumentWindow" Scope="Global">Ctrl+F4</Shortcut>
