@@ -1,0 +1,47 @@
+set backspace=indent,eol,start      " Make <BS> more useful
+set clipboard=unnamed               " Use gui-clipboard instead
+set history=1000                    " Max command-line history to persist
+
+" Tabstops and Indentions
+set tabstop=4                       " Number of spaces for <Tab>
+set shiftwidth=4                    " Number of spaces for << and >>
+set expandtab                       " Use spaces instead of a tab
+set autoindent                      " Copy indent to the next line
+
+set number                          " Show line numbers
+set nowrap                          " Don't wrap text by default
+set scrolloff=1                     " Use scroll offset of 1
+
+set ignorecase                      " Ignore-case searching
+set hlsearch                        " Enable search highlighting
+set incsearch                       " Enable incremental search
+
+""" Mappings
+let mapleader = "\\"
+
+" Unmap navigation keys
+noremap <Up>      :echo "One does not simply 'go up' with Arrow Keys."<CR>
+noremap <Down>    :echo "One does not simply 'go down' with Arrow Keys."<CR>
+noremap <Left>    :echo "One does not simply 'go left' with Arrow Keys."<CR>
+noremap <Right>   :echo "One does not simply 'go right' with Arrow Keys."<CR>
+noremap <Space>   <nop>
+noremap <C-Space> <nop>
+noremap <BS>      <nop>
+noremap <S-BS>    <nop>
+noremap <C-BS>    <nop>
+
+" Alt+[J|K] - Move lines up/down
+nnoremap <silent> <A-j>      :m . +1<CR>
+inoremap <silent> <A-j> <Esc>:m . +1<CR>
+nnoremap <silent> <A-k>      :m . -2<CR>
+inoremap <silent> <A-k> <Esc>:m . -2<CR>
+
+" Leader+r - Find and replace all (whole word)
+nnoremap <Leader>r yiw:%s/\<*\>//g<Left><Left>
+
+" Leader+R - Find and replace all
+nnoremap <Leader>R yiw:%s/*//g<Left><Left>
+
+" Leader+c - Count all from buffer with (Requires value in register *)
+nnoremap <Leader>c yiw:%s/*//gn<CR>
+
