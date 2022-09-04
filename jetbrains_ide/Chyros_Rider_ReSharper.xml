@@ -1,0 +1,246 @@
+<keymap version="1" name="Chyros_Rider_ReSharper" parent="ReSharper">
+  <action id="ActivateCommitToolWindow">
+    <keyboard-shortcut first-keystroke="alt 0" />
+  </action>
+  <action id="AddToFavoritesPopup">
+    <!--<keyboard-shortcut first-keystroke="shift alt f" />-->
+  </action>
+  <action id="Back">
+    <!--<keyboard-shortcut first-keystroke="ctrl minus" />-->
+    <!--<keyboard-shortcut first-keystroke="ctrl subtract" />-->
+    <mouse-shortcut keystroke="button4" />
+    <keyboard-shortcut first-keystroke="alt left" />
+  </action>
+  <action id="CIDR.Debugger.CopyAddress">
+    <!--<keyboard-shortcut first-keystroke="shift ctrl c" />-->
+  </action>
+  <action id="CallHierarchy">
+    <keyboard-shortcut first-keystroke="ctrl alt h" />
+  </action>
+  <action id="CheckinProject">
+    <!--<keyboard-shortcut first-keystroke="ctrl k" />-->
+    <keyboard-shortcut first-keystroke="shift alt k" />
+  </action>
+  <action id="CloseAllEditors">
+    <keyboard-shortcut first-keystroke="shift ctrl alt c" />
+  </action>
+  <action id="CloseAllEditorsButActive">
+    <keyboard-shortcut first-keystroke="shift alt c" />
+  </action>
+  <action id="CloseAllUnpinnedEditors">
+    <keyboard-shortcut first-keystroke="shift ctrl c" />
+  </action>
+  <action id="CloseContent">
+    <keyboard-shortcut first-keystroke="ctrl f4" />
+    <keyboard-shortcut first-keystroke="alt c" />
+  </action>
+  <action id="CollapseAll">
+    <!--<keyboard-shortcut first-keystroke="ctrl minus" />-->
+    <!--<keyboard-shortcut first-keystroke="ctrl subtract" />-->
+  </action>
+  <action id="CollapseAllRegions">
+    <!--<keyboard-shortcut first-keystroke="ctrl m" second-keystroke="a" />-->
+    <!--<keyboard-shortcut first-keystroke="ctrl m" second-keystroke="ctrl a" />-->
+    <keyboard-shortcut first-keystroke="shift ctrl minus" />
+  </action>
+  <action id="CollapseExpandableComponent">
+    <!--<keyboard-shortcut first-keystroke="ctrl minus" />-->
+    <!--<keyboard-shortcut first-keystroke="ctrl subtract" />-->
+    <keyboard-shortcut first-keystroke="shift enter" />
+  </action>
+  <action id="Console.TableResult.CopyAggregatorResult">
+    <!--<keyboard-shortcut first-keystroke="shift ctrl c" />-->
+  </action>
+  <action id="CopyAbsolutePath">
+    <!--<keyboard-shortcut first-keystroke="shift ctrl c" />-->
+  </action>
+  <action id="CopyPaths">
+    <!--<keyboard-shortcut first-keystroke="shift ctrl c" />-->
+  </action>
+  <action id="CopyReference">
+    <!--<keyboard-shortcut first-keystroke="shift ctrl alt c" />-->
+  </action>
+  <action id="DatabaseView.CopyDdlAction">
+    <!--<keyboard-shortcut first-keystroke="shift ctrl c" />-->
+    <keyboard-shortcut first-keystroke="shift ctrl alt g" />
+  </action>
+  <action id="EditorAddCaretPerSelectedLine">
+    <!--<keyboard-shortcut first-keystroke="shift alt g" />-->
+  </action>
+  <action id="EditorDecreaseFontSize">
+    <keyboard-shortcut first-keystroke="ctrl minus" />
+  </action>
+  <action id="EditorDeleteLine">
+    <!--<keyboard-shortcut first-keystroke="ctrl l" />-->
+    <!--<keyboard-shortcut first-keystroke="shift ctrl l" />-->
+  </action>
+  <action id="EditorDuplicate">
+    <!--<keyboard-shortcut first-keystroke="ctrl d" />-->
+  </action>
+  <action id="EditorIncreaseFontSize">
+    <keyboard-shortcut first-keystroke="ctrl equals" />
+  </action>
+  <action id="EditorNextWordInDifferentHumpsMode">
+    <keyboard-shortcut first-keystroke="ctrl alt right" />
+  </action>
+  <action id="EditorPreviousWordInDifferentHumpsMode">
+    <keyboard-shortcut first-keystroke="ctrl alt left" />
+  </action>
+  <action id="EditorResetFontSize">
+    <keyboard-shortcut first-keystroke="ctrl 0" />
+  </action>
+  <action id="ExpandAll">
+    <!--<keyboard-shortcut first-keystroke="ctrl equals" />-->
+    <!--<keyboard-shortcut first-keystroke="ctrl add" />-->
+  </action>
+  <action id="ExpandAllRegions">
+    <!--<keyboard-shortcut first-keystroke="ctrl m" second-keystroke="x" />-->
+    <!--<keyboard-shortcut first-keystroke="ctrl m" second-keystroke="ctrl x" />-->
+    <keyboard-shortcut first-keystroke="shift ctrl equals" />
+  </action>
+  <action id="ExpandExpandableComponent">
+    <!--<keyboard-shortcut first-keystroke="ctrl equals" />-->
+    <!--<keyboard-shortcut first-keystroke="ctrl add" />-->
+    <keyboard-shortcut first-keystroke="shift enter" />
+  </action>
+  <action id="ExternalSystem.CollapseAll">
+    <!--<keyboard-shortcut first-keystroke="ctrl minus" />-->
+    <!--<keyboard-shortcut first-keystroke="ctrl subtract" />-->
+  </action>
+  <action id="ExternalSystem.ExpandAll">
+    <!--<keyboard-shortcut first-keystroke="ctrl equals" />-->
+    <!--<keyboard-shortcut first-keystroke="ctrl add" />-->
+  </action>
+  <action id="FindUsages">
+    <keyboard-shortcut first-keystroke="alt f7" />
+    <keyboard-shortcut first-keystroke="shift alt f" />
+  </action>
+  <action id="Forward">
+    <!--<keyboard-shortcut first-keystroke="shift ctrl minus" />-->
+    <!--<keyboard-shortcut first-keystroke="shift ctrl subtract" />-->
+    <mouse-shortcut keystroke="button5" />
+    <keyboard-shortcut first-keystroke="alt right" />
+  </action>
+  <action id="GotoBookmark0">
+    <keyboard-shortcut first-keystroke="ctrl 0" />
+  </action>
+  <action id="GotoDeclaration">
+    <keyboard-shortcut first-keystroke="ctrl b" />
+    <mouse-shortcut keystroke="control button1" />
+    <mouse-shortcut keystroke="button2" />
+    <keyboard-shortcut first-keystroke="alt g" />
+  </action>
+  <action id="GotoFile">
+    <keyboard-shortcut first-keystroke="shift ctrl n" />
+    <keyboard-shortcut first-keystroke="shift alt o" />
+  </action>
+  <action id="GotoImplementation">
+    <keyboard-shortcut first-keystroke="ctrl alt b" />
+    <keyboard-shortcut first-keystroke="shift alt g" />
+  </action>
+  <action id="GotoNextError">
+    <keyboard-shortcut first-keystroke="f12" />
+    <keyboard-shortcut first-keystroke="ctrl semicolon" />
+  </action>
+  <action id="GotoPreviousError">
+    <keyboard-shortcut first-keystroke="shift f12" />
+    <keyboard-shortcut first-keystroke="shift ctrl semicolon" />
+  </action>
+  <action id="GotoSymbol">
+    <keyboard-shortcut first-keystroke="shift ctrl alt n" />
+    <keyboard-shortcut first-keystroke="shift alt s" />
+  </action>
+  <action id="GotoTest">
+    <keyboard-shortcut first-keystroke="shift ctrl t" />
+  </action>
+  <action id="GotoTypeDeclaration">
+    <!--<keyboard-shortcut first-keystroke="shift ctrl t" />-->
+    <mouse-shortcut keystroke="shift control button1" />
+  </action>
+  <action id="Images.Editor.ZoomIn">
+    <!--<keyboard-shortcut first-keystroke="ctrl equals" />-->
+    <!--<keyboard-shortcut first-keystroke="ctrl add" />-->
+  </action>
+  <action id="Images.Editor.ZoomOut">
+    <!--<keyboard-shortcut first-keystroke="ctrl minus" />-->
+    <!--<keyboard-shortcut first-keystroke="ctrl subtract" />-->
+  </action>
+  <action id="NextDiff">
+    <keyboard-shortcut first-keystroke="f7" />
+    <keyboard-shortcut first-keystroke="ctrl comma" />
+  </action>
+  <action id="NextTab">
+    <!--<keyboard-shortcut first-keystroke="alt right" />-->
+    <keyboard-shortcut first-keystroke="alt x" />
+  </action>
+  <action id="OptimizeImports">
+    <!--<keyboard-shortcut first-keystroke="ctrl alt o" />-->
+    <keyboard-shortcut first-keystroke="shift ctrl o" />
+  </action>
+  <action id="PreviousDiff">
+    <keyboard-shortcut first-keystroke="shift f7" />
+    <keyboard-shortcut first-keystroke="shift ctrl comma" />
+  </action>
+  <action id="PreviousTab">
+    <!--<keyboard-shortcut first-keystroke="alt left" />-->
+    <keyboard-shortcut first-keystroke="alt z" />
+  </action>
+  <action id="RemoteHostView.CopyPaths">
+    <!--<keyboard-shortcut first-keystroke="shift ctrl c" />-->
+  </action>
+  <action id="RenameElement">
+    <keyboard-shortcut first-keystroke="f2" />
+    <keyboard-shortcut first-keystroke="shift alt r" />
+  </action>
+  <action id="RiderOpenSolution">
+    <keyboard-shortcut first-keystroke="shift ctrl o" />
+  </action>
+  <action id="RiderTypeHierarchy.BaseOnThisType">
+    <!--<keyboard-shortcut first-keystroke="ctrl alt h" />-->
+  </action>
+  <action id="RiderUnitTestQuickListPopupAction">
+    <!--<keyboard-shortcut first-keystroke="shift alt u" />-->
+  </action>
+  <action id="RiderUnitTestTreeCollapseAllAction">
+    <!--<keyboard-shortcut first-keystroke="ctrl minus" />-->
+    <!--<keyboard-shortcut first-keystroke="ctrl subtract" />-->
+  </action>
+  <action id="RiderUnitTestTreeExpandAllAction">
+    <!--<keyboard-shortcut first-keystroke="ctrl equals" />-->
+    <!--<keyboard-shortcut first-keystroke="ctrl add" />-->
+  </action>
+  <action id="SelectVirtualTemplateElement">
+    <!--<keyboard-shortcut first-keystroke="shift alt o" />-->
+  </action>
+  <action id="TypeHierarchy">
+    <!--<keyboard-shortcut first-keystroke="ctrl alt h" />-->
+  </action>
+  <action id="TypeHierarchyBase.BaseOnThisType">
+    <!--<keyboard-shortcut first-keystroke="ctrl alt h" />-->
+  </action>
+  <action id="UpdateFiles">
+    <keyboard-shortcut first-keystroke="shift alt u" />
+  </action>
+  <action id="Vcs.Push">
+    <keyboard-shortcut first-keystroke="shift ctrl k" />
+    <keyboard-shortcut first-keystroke="ctrl alt k" />
+  </action>
+  <action id="VcsShowNextChangeMarker">
+    <keyboard-shortcut first-keystroke="ctrl comma" />
+  </action>
+  <action id="VcsShowPrevChangeMarker">
+    <keyboard-shortcut first-keystroke="shift ctrl comma" />
+  </action>
+  <action id="WelcomeScreen.CopyProjectPath">
+    <!--<keyboard-shortcut first-keystroke="shift ctrl c" />-->
+  </action>
+  <action id="context.save">
+    <!--<keyboard-shortcut first-keystroke="shift alt s" />-->
+  </action>
+  <action id="hg4idea.QGotoFromPatches">
+    <!--<keyboard-shortcut first-keystroke="shift alt g" />-->
+  </action>
+  <action id="org.intellij.plugins.markdown.ui.actions.styling.ToggleCodeSpanAction">
+    <!--<keyboard-shortcut first-keystroke="shift ctrl c" />-->
+  </action>
+</keymap>
